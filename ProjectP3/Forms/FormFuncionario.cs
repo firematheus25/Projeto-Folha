@@ -1,6 +1,7 @@
 ﻿using miscellaneous.Models;
 using Newtonsoft.Json;
 using ProjectP3.Others;
+using ProjectP3.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,19 +95,23 @@ namespace ProjectP3
                 Funcionario.Horista = Horista;
             }
 
-            using (var Cliente = new HttpClient())
-            {
-                Cliente.BaseAddress = new Uri("https://localhost:5001");
+            var Result = await new Services<Funcionario>().Post("api/Funcionario/", Funcionario);
 
-                var Content = new StringContent(JsonConvert.SerializeObject(Funcionario, Formatting.None), Encoding.UTF8, "application/Json");
+            MessageBox.Show(await Result.Content.ReadAsStringAsync());
 
-                var Result = await Cliente.PostAsync("api/funcionarios/", Content);
+            //using (var Cliente = new HttpClient())
+            //{
+            //    Cliente.BaseAddress = new Uri("https://localhost:5001");
+
+            //    var Content = new StringContent(JsonConvert.SerializeObject(Funcionario, Formatting.None), Encoding.UTF8, "application/Json");
+
+            //    var Result = await Cliente.PostAsync("api/funcionarios/", Content);
 
 
-                MessageBox.Show(await Result.Content.ReadAsStringAsync());
+            //    MessageBox.Show(await Result.Content.ReadAsStringAsync());
 
 
-            }
+            //}
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

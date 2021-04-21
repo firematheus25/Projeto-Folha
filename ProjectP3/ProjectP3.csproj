@@ -82,6 +82,8 @@
     <Compile Include="Forms\FormVendas.Designer.cs">
       <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\MyClient.cs" />
+    <Compile Include="Services\Services.cs" />
     <EmbeddedResource Include="Forms\FormFuncionario.resx">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
     </EmbeddedResource>
