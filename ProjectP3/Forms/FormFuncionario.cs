@@ -1,4 +1,5 @@
 ﻿using miscellaneous.Models;
+using Newtonsoft.Json;
 using ProjectP3.Others;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +24,9 @@ namespace ProjectP3
             MetodoPagamento.Items.Add("2 - Cheque em mãos");
             MetodoPagamento.Items.Add("3 - Deposito em conta bancária");
 
+            Sindicato.Items.Add("Sim");
+            Sindicato.Items.Add("Não");
+
             Salario.Visible = false;
             lbl_Salario.Visible = false;
             TaxaComissao.Visible = false;
@@ -31,75 +36,77 @@ namespace ProjectP3
             MetodoPagamento.DropDownWidth();
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
+
+            var Funcionario = new Funcionario();
+
+            if (!string.IsNullOrEmpty(FuncionariosId.Text))
+            {
+                Funcionario.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+            }
+            Funcionario.Nome = Nome.Text;
+            //Funcionario.Sindicatos = 
+            Funcionario.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));
+            Funcionario.CEP = Cep.Text;
+            Funcionario.Rua = Rua.Text;
+            Funcionario.Numero = Numero.Text;
+            Funcionario.Cidade = Cidade.Text;
+            Funcionario.Bairro = Bairro.Text;
+            Funcionario.Complemento = Complemento.Text;
+            Funcionario.UF = UF.Text.Substring(0, 2);
+            Funcionario.Banco = Banco.Text;
+            Funcionario.Agencia = Agencia.Text;
+            Funcionario.Conta = Conta.Text;
+            Funcionario.Operacao = NumeroConta.Text;
+
             if (Assalariado.Checked)
             {
                 var Assalariado = new Assalariado();
-
-                //Assalariado.FuncionariosId = FuncionariosId.Text.ToString();
-                Assalariado.Nome = Nome.Text;
-                //Assalariado.Sindicato = SindicatosId.GetValues<Sindicato>().SindicatoId;
-                Assalariado.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));
+                if (!string.IsNullOrEmpty(AssalariadoId.Text))
+                {
+                    Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
+                }                
                 Assalariado.Salario = Convert.ToDecimal(Salario.Text);
-                Assalariado.CEP = Cep.Text;
-                Assalariado.Rua = Rua.Text;
-                Assalariado.Numero = Numero.Text;
-                Assalariado.Cidade = Cidade.Text;
-                Assalariado.Bairro = Bairro.Text;
-                Assalariado.Complemento = Complemento.Text;
-                Assalariado.UF = UF.Text.Substring(0, 2);
-                Assalariado.Banco = Banco.Text;
-                Assalariado.Agencia = Agencia.Text;
-                Assalariado.Conta = Conta.Text;
-                Assalariado.NumeroConta = NumeroConta.Text;
+                Funcionario.Assalariado = Assalariado;
             }
 
             if (Comissionado.Checked)
             {
                 var Comissionado = new Comissionado();
-
-                //Assalariado.FuncionariosId = FuncionariosId.Text.ToString();
-                Comissionado.Nome = Nome.Text;
-                //Assalariado.Sindicato = SindicatosId.GetValues<Sindicato>().SindicatoId;
-                Comissionado.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));
+                if (!string.IsNullOrEmpty(ComissionadoId.Text))
+                {
+                    Comissionado.ComissionadoId = Convert.ToInt32(ComissionadoId.Text);
+                }
                 Comissionado.Salario = Convert.ToDecimal(Salario.Text);
-                Comissionado.CEP = Cep.Text;
-                Comissionado.Rua = Rua.Text;
-                Comissionado.Numero = Numero.Text;
-                Comissionado.Cidade = Cidade.Text;
-                Comissionado.Bairro = Bairro.Text;
-                Comissionado.Complemento = Complemento.Text;
-                Comissionado.UF = UF.Text.Substring(0, 2);
-                Comissionado.Banco = Banco.Text;
-                Comissionado.Agencia = Agencia.Text;
-                Comissionado.Conta = Conta.Text;
-                Comissionado.NumeroConta = NumeroConta.Text;
-
+                Comissionado.TaxaComissao = Convert.ToDecimal(TaxaComissao.Text);
+                Funcionario.Comissionado = Comissionado;
             }
 
             if (Horista.Checked)
             {
                 var Horista = new Horista();
-
-                //Assalariado.FuncionariosId = FuncionariosId.Text.ToString();
-                Horista.Nome = Nome.Text;
-                //Assalariado.Sindicato = SindicatosId.GetValues<Sindicato>().SindicatoId;
-                Horista.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));                
-                Horista.CEP = Cep.Text;
-                Horista.Rua = Rua.Text;
-                Horista.Numero = Numero.Text;
-                Horista.Cidade = Cidade.Text;
-                Horista.Bairro = Bairro.Text;
-                Horista.Complemento = Complemento.Text;
-                Horista.UF = UF.Text.Substring(0, 2);
-                Horista.Banco = Banco.Text;
-                Horista.Agencia = Agencia.Text;
-                Horista.Conta = Conta.Text;
-                Horista.NumeroConta = NumeroConta.Text;
-
+                if (!string.IsNullOrEmpty(HoristaId.Text))
+                {
+                    Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
+                }                
+                Horista.ValorHora = Convert.ToDecimal(ValorHora.Text);
+                Funcionario.Horista = Horista;
             }
 
+            using (var Cliente = new HttpClient())
+            {
+                Cliente.BaseAddress = new Uri("https://localhost:5001");
+
+                var Content = new StringContent(JsonConvert.SerializeObject(Funcionario, Formatting.None), Encoding.UTF8, "application/Json");
+
+                var Result = await Cliente.PostAsync("api/funcionarios/", Content);
+
+
+                MessageBox.Show(await Result.Content.ReadAsStringAsync());
+
+
+            }
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -116,7 +123,7 @@ namespace ProjectP3
 
             FuncionariosId.Clear();
             Nome.Clear();
-            SindicatosId.Clear();
+            Sindicato.SelectedIndex = -1;
             MetodoPagamento.SelectedIndex = -1;
             Salario.Clear();
             Cep.Clear();
@@ -192,6 +199,5 @@ namespace ProjectP3
             ValorHora.Visible = true;
             lbl_ValorHora.Visible = true;
         }
-
     }
 }

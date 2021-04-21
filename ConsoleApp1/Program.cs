@@ -12,14 +12,6 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            Horista Matheus = new Horista();
-
-            Matheus.Nome = "Matheus";
-
-
-            
-            Console.WriteLine(Matheus.Nome);
-            Console.ReadLine();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace ProjectP3
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var Ponto = new Ponto();
+            var Ponto = new RegistroPonto();
 
             Ponto.RegistroPontoId = 0;
             Ponto.FuncionariosId = 1;

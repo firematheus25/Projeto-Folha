@@ -35,7 +35,7 @@ namespace ProjectP3
                 var Vendas = new Vendas();
 
                 //Vendas.VendasId = VendasId.Text.ToString();
-                Vendas.FuncionariosId = FuncionariosId.GetValues<Comissionado>().FuncionariosId;
+               // Vendas.FuncionariosId = FuncionariosId.GetValues<Comissionado>().FuncionariosId;
                 Vendas.DtVenda = Data.Date.Value;
                 Vendas.Valor = ValorVenda.Valor;
                 Vendas.Porcentagem = PorcentagemVenda.Valor;

@@ -42,8 +42,8 @@ namespace ProjectP3
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Endereco = new System.Windows.Forms.TabPage();
-            this.Numero = new ProjectP3.componentes.CmpNumerico();
             this.label4 = new System.Windows.Forms.Label();
+            this.Numero = new System.Windows.Forms.TextBox();
             this.Complemento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Bairro = new System.Windows.Forms.TextBox();
@@ -56,8 +56,6 @@ namespace ProjectP3
             this.Rua = new System.Windows.Forms.TextBox();
             this.Cep = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Conta = new ProjectP3.componentes.CmpNumerico();
-            this.Agencia = new ProjectP3.componentes.CmpNumerico();
             this.label15 = new System.Windows.Forms.Label();
             this.NumeroConta = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -70,8 +68,15 @@ namespace ProjectP3
             this.TaxaComissao = new System.Windows.Forms.TextBox();
             this.lbl_Salario = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.SindicatosId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.Salario = new ProjectP3.componentes.CmpNumerico();
+            this.ComissionadoId = new System.Windows.Forms.TextBox();
+            this.AssalariadoId = new System.Windows.Forms.TextBox();
+            this.HoristaId = new System.Windows.Forms.TextBox();
+            this.Sindicato = new System.Windows.Forms.ComboBox();
+            this.cmpNumerico1 = new ProjectP3.componentes.CmpNumerico();
+            this.label16 = new System.Windows.Forms.Label();
+            this.Agencia = new System.Windows.Forms.TextBox();
+            this.Conta = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -89,12 +94,12 @@ namespace ProjectP3
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(287, 15);
+            this.btnLimpar.Location = new System.Drawing.Point(202, 15);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(206, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(121, 15);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // FuncionariosId
@@ -109,9 +114,9 @@ namespace ProjectP3
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "ID:";
+            this.label1.Text = "Matrícula:";
             // 
             // Nome
             // 
@@ -217,8 +222,8 @@ namespace ProjectP3
             // Endereco
             // 
             this.Endereco.BackColor = System.Drawing.Color.Transparent;
-            this.Endereco.Controls.Add(this.Numero);
             this.Endereco.Controls.Add(this.label4);
+            this.Endereco.Controls.Add(this.Numero);
             this.Endereco.Controls.Add(this.Complemento);
             this.Endereco.Controls.Add(this.label3);
             this.Endereco.Controls.Add(this.Bairro);
@@ -238,21 +243,6 @@ namespace ProjectP3
             this.Endereco.TabIndex = 0;
             this.Endereco.Text = "Endereço";
             // 
-            // Numero
-            // 
-            this.Numero.CasasDecimais = 2;
-            this.Numero.Location = new System.Drawing.Point(318, 13);
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(50, 20);
-            this.Numero.TabIndex = 26;
-            this.Numero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Numero.Valor = null;
-            this.Numero.ValorMaximo = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -261,6 +251,13 @@ namespace ProjectP3
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "Complemento:";
+            // 
+            // Numero
+            // 
+            this.Numero.Location = new System.Drawing.Point(310, 13);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(48, 20);
+            this.Numero.TabIndex = 35;
             // 
             // Complemento
             // 
@@ -298,6 +295,34 @@ namespace ProjectP3
             // 
             this.UF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UF.FormattingEnabled = true;
+            this.UF.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"});
             this.UF.Location = new System.Drawing.Point(452, 13);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(51, 21);
@@ -368,36 +393,6 @@ namespace ProjectP3
             this.tabPage2.Size = new System.Drawing.Size(510, 119);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dados Bancários";
-            // 
-            // Conta
-            // 
-            this.Conta.CasasDecimais = 2;
-            this.Conta.Location = new System.Drawing.Point(224, 50);
-            this.Conta.Name = "Conta";
-            this.Conta.Size = new System.Drawing.Size(100, 20);
-            this.Conta.TabIndex = 28;
-            this.Conta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Conta.Valor = null;
-            this.Conta.ValorMaximo = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            // 
-            // Agencia
-            // 
-            this.Agencia.CasasDecimais = 2;
-            this.Agencia.Location = new System.Drawing.Point(63, 50);
-            this.Agencia.Name = "Agencia";
-            this.Agencia.Size = new System.Drawing.Size(100, 20);
-            this.Agencia.TabIndex = 27;
-            this.Agencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Agencia.Valor = null;
-            this.Agencia.ValorMaximo = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
             // 
             // label15
             // 
@@ -499,18 +494,6 @@ namespace ProjectP3
             this.label9.TabIndex = 25;
             this.label9.Text = "Sindicato:";
             // 
-            // SindicatosId
-            // 
-            this.SindicatosId.BackColor = System.Drawing.Color.Transparent;
-            this.SindicatosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.SindicatosId.CorFundo = System.Drawing.Color.Transparent;
-            this.SindicatosId.LarguraCodigo = 100;
-            this.SindicatosId.Location = new System.Drawing.Point(116, 134);
-            this.SindicatosId.Mascara = "";
-            this.SindicatosId.Name = "SindicatosId";
-            this.SindicatosId.Size = new System.Drawing.Size(327, 21);
-            this.SindicatosId.TabIndex = 24;
-            // 
             // Salario
             // 
             this.Salario.CasasDecimais = 2;
@@ -526,14 +509,90 @@ namespace ProjectP3
             0,
             0});
             // 
+            // ComissionadoId
+            // 
+            this.ComissionadoId.Location = new System.Drawing.Point(426, 187);
+            this.ComissionadoId.Name = "ComissionadoId";
+            this.ComissionadoId.Size = new System.Drawing.Size(100, 20);
+            this.ComissionadoId.TabIndex = 29;
+            this.ComissionadoId.Visible = false;
+            // 
+            // AssalariadoId
+            // 
+            this.AssalariadoId.Location = new System.Drawing.Point(426, 239);
+            this.AssalariadoId.Name = "AssalariadoId";
+            this.AssalariadoId.Size = new System.Drawing.Size(100, 20);
+            this.AssalariadoId.TabIndex = 30;
+            this.AssalariadoId.Visible = false;
+            // 
+            // HoristaId
+            // 
+            this.HoristaId.Location = new System.Drawing.Point(426, 213);
+            this.HoristaId.Name = "HoristaId";
+            this.HoristaId.Size = new System.Drawing.Size(100, 20);
+            this.HoristaId.TabIndex = 31;
+            this.HoristaId.Visible = false;
+            // 
+            // Sindicato
+            // 
+            this.Sindicato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Sindicato.FormattingEnabled = true;
+            this.Sindicato.Location = new System.Drawing.Point(116, 134);
+            this.Sindicato.Name = "Sindicato";
+            this.Sindicato.Size = new System.Drawing.Size(100, 21);
+            this.Sindicato.TabIndex = 32;
+            // 
+            // cmpNumerico1
+            // 
+            this.cmpNumerico1.CasasDecimais = 2;
+            this.cmpNumerico1.Location = new System.Drawing.Point(343, 134);
+            this.cmpNumerico1.Name = "cmpNumerico1";
+            this.cmpNumerico1.Size = new System.Drawing.Size(100, 20);
+            this.cmpNumerico1.TabIndex = 33;
+            this.cmpNumerico1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cmpNumerico1.Valor = null;
+            this.cmpNumerico1.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(258, 137);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 13);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "Taxa Sindical:";
+            // 
+            // Agencia
+            // 
+            this.Agencia.Location = new System.Drawing.Point(63, 50);
+            this.Agencia.Name = "Agencia";
+            this.Agencia.Size = new System.Drawing.Size(100, 20);
+            this.Agencia.TabIndex = 35;
+            // 
+            // Conta
+            // 
+            this.Conta.Location = new System.Drawing.Point(224, 49);
+            this.Conta.Name = "Conta";
+            this.Conta.Size = new System.Drawing.Size(100, 20);
+            this.Conta.TabIndex = 36;
+            // 
             // Empregado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.cmpNumerico1);
+            this.Controls.Add(this.Sindicato);
+            this.Controls.Add(this.HoristaId);
+            this.Controls.Add(this.AssalariadoId);
+            this.Controls.Add(this.ComissionadoId);
             this.Controls.Add(this.Salario);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.SindicatosId);
             this.Controls.Add(this.lbl_Salario);
             this.Controls.Add(this.lbl_TaxaComissao);
             this.Controls.Add(this.TaxaComissao);
@@ -562,10 +621,15 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.TaxaComissao, 0);
             this.Controls.SetChildIndex(this.lbl_TaxaComissao, 0);
             this.Controls.SetChildIndex(this.lbl_Salario, 0);
-            this.Controls.SetChildIndex(this.SindicatosId, 0);
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Salario, 0);
+            this.Controls.SetChildIndex(this.ComissionadoId, 0);
+            this.Controls.SetChildIndex(this.AssalariadoId, 0);
+            this.Controls.SetChildIndex(this.HoristaId, 0);
+            this.Controls.SetChildIndex(this.Sindicato, 0);
+            this.Controls.SetChildIndex(this.cmpNumerico1, 0);
+            this.Controls.SetChildIndex(this.label16, 0);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -619,11 +683,16 @@ namespace ProjectP3
         private System.Windows.Forms.TextBox TaxaComissao;
         private System.Windows.Forms.Label lbl_Salario;
         private System.Windows.Forms.Label label9;
-        private componentes.CmpBuscaCombinada SindicatosId;
-        private componentes.CmpNumerico Numero;
-        private componentes.CmpNumerico Agencia;
-        private componentes.CmpNumerico Conta;
         private componentes.CmpNumerico Salario;
+        private System.Windows.Forms.TextBox ComissionadoId;
+        private System.Windows.Forms.TextBox AssalariadoId;
+        private System.Windows.Forms.TextBox HoristaId;
+        private System.Windows.Forms.ComboBox Sindicato;
+        private componentes.CmpNumerico cmpNumerico1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox Numero;
+        private System.Windows.Forms.TextBox Conta;
+        private System.Windows.Forms.TextBox Agencia;
     }
 }
 
