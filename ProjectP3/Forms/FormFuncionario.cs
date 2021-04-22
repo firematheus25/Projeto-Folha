@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace ProjectP3
 {
-    public partial class Empregado : FormPadrao
+    public partial class FormFuncionario : FormPadrao
     {
-        public Empregado()
+        public FormFuncionario()
         {
             InitializeComponent();
 
@@ -39,79 +39,81 @@ namespace ProjectP3
 
         private async void btnSalvar_Click(object sender, EventArgs e)
         {
-
-            var Funcionario = new Funcionario();
-
-            if (!string.IsNullOrEmpty(FuncionariosId.Text))
+            try
             {
-                Funcionario.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
-            }
-            Funcionario.Nome = Nome.Text;
-            //Funcionario.Sindicatos = 
-            Funcionario.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));
-            Funcionario.CEP = Cep.Text;
-            Funcionario.Rua = Rua.Text;
-            Funcionario.Numero = Numero.Text;
-            Funcionario.Cidade = Cidade.Text;
-            Funcionario.Bairro = Bairro.Text;
-            Funcionario.Complemento = Complemento.Text;
-            Funcionario.UF = UF.Text.Substring(0, 2);
-            Funcionario.Banco = Banco.Text;
-            Funcionario.Agencia = Agencia.Text;
-            Funcionario.Conta = Conta.Text;
-            Funcionario.Operacao = NumeroConta.Text;
+                var Funcionario = new Funcionario();
 
-            if (Assalariado.Checked)
-            {
-                var Assalariado = new Assalariado();
-                if (!string.IsNullOrEmpty(AssalariadoId.Text))
+                if (!string.IsNullOrEmpty(FuncionariosId.Text))
                 {
-                    Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
-                }                
-                Assalariado.Salario = Convert.ToDecimal(Salario.Text);
-                Funcionario.Assalariado = Assalariado;
-            }
-
-            if (Comissionado.Checked)
-            {
-                var Comissionado = new Comissionado();
-                if (!string.IsNullOrEmpty(ComissionadoId.Text))
-                {
-                    Comissionado.ComissionadoId = Convert.ToInt32(ComissionadoId.Text);
+                    Funcionario.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
                 }
-                Comissionado.Salario = Convert.ToDecimal(Salario.Text);
-                Comissionado.TaxaComissao = Convert.ToDecimal(TaxaComissao.Text);
-                Funcionario.Comissionado = Comissionado;
-            }
 
-            if (Horista.Checked)
-            {
-                var Horista = new Horista();
-                if (!string.IsNullOrEmpty(HoristaId.Text))
+                Funcionario.Nome = Nome.Text;             
+                Funcionario.MetodoPagamento = Convert.ToInt32(MetodoPagamento.Text.Substring(0, 1));
+                Funcionario.CEP = Cep.Text;
+                Funcionario.Rua = Rua.Text;
+                Funcionario.Numero = Numero.Text;
+                Funcionario.Cidade = Cidade.Text;
+                Funcionario.Bairro = Bairro.Text;
+                Funcionario.Complemento = Complemento.Text;
+                Funcionario.UF = UF.Text.Substring(0, 2);
+                Funcionario.Banco = Banco.Text;
+                Funcionario.Agencia = Agencia.Text;
+                Funcionario.Conta = Conta.Text;
+                Funcionario.Operacao = NumeroConta.Text;
+
+                if (Sindicato.SelectedIndex != -1)
                 {
-                    Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
-                }                
-                Horista.ValorHora = Convert.ToDecimal(ValorHora.Text);
-                Funcionario.Horista = Horista;
+                    Funcionario.Sindicato = Sindicato.Text.Substring(0, 1);
+                    Funcionario.TaxaSindical = Convert.ToDecimal(TaxaSindical.Text);
+
+                }
+
+                if (Assalariado.Checked)
+                {
+                    var Assalariado = new Assalariado();
+                    if (!string.IsNullOrEmpty(AssalariadoId.Text))
+                    {
+                        Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
+                    }
+                    Assalariado.Salario = Convert.ToDecimal(Salario.Text);
+                    Funcionario.Assalariado = Assalariado;
+                }
+
+                if (Comissionado.Checked)
+                {
+                    var Comissionado = new Comissionado();
+                    if (!string.IsNullOrEmpty(ComissionadoId.Text))
+                    {
+                        Comissionado.ComissionadoId = Convert.ToInt32(ComissionadoId.Text);
+                    }
+                    Comissionado.Salario = Convert.ToDecimal(Salario.Text);
+                    Comissionado.TaxaComissao = Convert.ToDecimal(TaxaComissao.Text);
+                    Funcionario.Comissionado = Comissionado;
+                }
+
+                if (Horista.Checked)
+                {
+                    var Horista = new Horista();
+                    if (!string.IsNullOrEmpty(HoristaId.Text))
+                    {
+                        Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
+                    }
+                    Horista.ValorHora = Convert.ToDecimal(ValorHora.Text);
+                    Funcionario.Horista = Horista;
+                }
+
+                var Result = await new Services<Funcionario>().Post("api/Funcionarios/", Funcionario);
+                var Message = await Result.Content.ReadAsStringAsync();
+
+            }
+            catch (Exception M)
+            {
+
+                MessageBox.Show(M.Message);
             }
 
-            var Result = await new Services<Funcionario>().Post("api/Funcionario/", Funcionario);
-
-            MessageBox.Show(await Result.Content.ReadAsStringAsync());
-
-            //using (var Cliente = new HttpClient())
-            //{
-            //    Cliente.BaseAddress = new Uri("https://localhost:5001");
-
-            //    var Content = new StringContent(JsonConvert.SerializeObject(Funcionario, Formatting.None), Encoding.UTF8, "application/Json");
-
-            //    var Result = await Cliente.PostAsync("api/funcionarios/", Content);
-
-
-            //    MessageBox.Show(await Result.Content.ReadAsStringAsync());
-
-
-            //}
+           
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -125,6 +127,8 @@ namespace ProjectP3
             lbl_TaxaComissao.Visible = false;
             ValorHora.Visible = false;
             lbl_ValorHora.Visible = false;
+            lbl_TxSindical.Visible = false;
+            TaxaSindical.Visible = false;
 
             FuncionariosId.Clear();
             Nome.Clear();
@@ -203,6 +207,16 @@ namespace ProjectP3
             lbl_Salario.Visible = false;
             ValorHora.Visible = true;
             lbl_ValorHora.Visible = true;
+        }
+
+        private void Sindicato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Sindicato.SelectedIndex == 0)
+            {
+                lbl_TxSindical.Visible = true;
+                TaxaSindical.Visible = true;
+
+            }
         }
     }
 }

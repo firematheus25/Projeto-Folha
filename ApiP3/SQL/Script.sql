@@ -1,4 +1,4 @@
-﻿create table Funcionario
+﻿create table Funcionarios
 (
 	FuncionariosId int identity NOT NULL,
 	Nome varchar(100) NOT NULL,
@@ -15,7 +15,7 @@
 	Conta varchar(8),
 	Agencia varchar(4),
 	Operacao varchar(3),
-	Sindicatos int,
+	Sindicato varchar(1),
 	TaxaSindical decimal,
 	ComissionadoId int,
 	HoristaId int,
@@ -29,7 +29,7 @@
 
 drop table Funcionario
 
-create table Comissionado
+create table Comissionados
 (
 	ComissionadoId int identity,
 	Salario decimal,
@@ -39,7 +39,7 @@ create table Comissionado
 		
 );
 
-create table Horista
+create table Horistas
 (
 	HoristaId int identity,
 	ValorHora decimal,
@@ -48,7 +48,7 @@ create table Horista
 
 );
 
-create table Assalariado
+create table Assalariados
 (
 	AssalariadoId int identity,
 	Salario decimal,
@@ -69,7 +69,7 @@ create table Vendas
 	Constraint FK_FuncionariosId foreign key (funcionariosId) references Funcionario(FuncionariosId)
 
 );
-create table RegistroPonto
+create table RegistroPontos
 (
 	RegistroPontoId int identity,
 	FuncionariosId int,

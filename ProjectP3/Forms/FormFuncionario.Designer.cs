@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectP3
 {
-    partial class Empregado
+    partial class FormFuncionario
     {
         /// <summary>
         /// Required designer variable.
@@ -56,6 +56,8 @@ namespace ProjectP3
             this.Rua = new System.Windows.Forms.TextBox();
             this.Cep = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Conta = new System.Windows.Forms.TextBox();
+            this.Agencia = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.NumeroConta = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -73,10 +75,9 @@ namespace ProjectP3
             this.AssalariadoId = new System.Windows.Forms.TextBox();
             this.HoristaId = new System.Windows.Forms.TextBox();
             this.Sindicato = new System.Windows.Forms.ComboBox();
-            this.cmpNumerico1 = new ProjectP3.componentes.CmpNumerico();
-            this.label16 = new System.Windows.Forms.Label();
-            this.Agencia = new System.Windows.Forms.TextBox();
-            this.Conta = new System.Windows.Forms.TextBox();
+            this.lbl_TxSindical = new System.Windows.Forms.Label();
+            this.TaxaSindical = new System.Windows.Forms.TextBox();
+            this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -84,9 +85,10 @@ namespace ProjectP3
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelInferior
             // 
-            this.panel1.Size = new System.Drawing.Size(538, 46);
+            this.panelInferior.Location = new System.Drawing.Point(0, 404);
+            this.panelInferior.Size = new System.Drawing.Size(538, 46);
             // 
             // btnConsultar
             // 
@@ -94,16 +96,22 @@ namespace ProjectP3
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(202, 15);
+            this.btnLimpar.Location = new System.Drawing.Point(134, 15);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(121, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(53, 15);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.TaxaSindical);
+            this.panel1.Size = new System.Drawing.Size(538, 450);
             // 
             // FuncionariosId
             // 
+            this.FuncionariosId.Enabled = false;
             this.FuncionariosId.Location = new System.Drawing.Point(116, 82);
             this.FuncionariosId.Name = "FuncionariosId";
             this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
@@ -394,6 +402,20 @@ namespace ProjectP3
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dados Bancários";
             // 
+            // Conta
+            // 
+            this.Conta.Location = new System.Drawing.Point(224, 49);
+            this.Conta.Name = "Conta";
+            this.Conta.Size = new System.Drawing.Size(100, 20);
+            this.Conta.TabIndex = 36;
+            // 
+            // Agencia
+            // 
+            this.Agencia.Location = new System.Drawing.Point(63, 50);
+            this.Agencia.Name = "Agencia";
+            this.Agencia.Size = new System.Drawing.Size(100, 20);
+            this.Agencia.TabIndex = 35;
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -541,52 +563,32 @@ namespace ProjectP3
             this.Sindicato.Name = "Sindicato";
             this.Sindicato.Size = new System.Drawing.Size(100, 21);
             this.Sindicato.TabIndex = 32;
+            this.Sindicato.SelectedIndexChanged += new System.EventHandler(this.Sindicato_SelectedIndexChanged);
             // 
-            // cmpNumerico1
+            // lbl_TxSindical
             // 
-            this.cmpNumerico1.CasasDecimais = 2;
-            this.cmpNumerico1.Location = new System.Drawing.Point(343, 134);
-            this.cmpNumerico1.Name = "cmpNumerico1";
-            this.cmpNumerico1.Size = new System.Drawing.Size(100, 20);
-            this.cmpNumerico1.TabIndex = 33;
-            this.cmpNumerico1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.cmpNumerico1.Valor = null;
-            this.cmpNumerico1.ValorMaximo = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
+            this.lbl_TxSindical.AutoSize = true;
+            this.lbl_TxSindical.Location = new System.Drawing.Point(258, 137);
+            this.lbl_TxSindical.Name = "lbl_TxSindical";
+            this.lbl_TxSindical.Size = new System.Drawing.Size(74, 13);
+            this.lbl_TxSindical.TabIndex = 34;
+            this.lbl_TxSindical.Text = "Taxa Sindical:";
+            this.lbl_TxSindical.Visible = false;
             // 
-            // label16
+            // TaxaSindical
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(258, 137);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 13);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "Taxa Sindical:";
-            // 
-            // Agencia
-            // 
-            this.Agencia.Location = new System.Drawing.Point(63, 50);
-            this.Agencia.Name = "Agencia";
-            this.Agencia.Size = new System.Drawing.Size(100, 20);
-            this.Agencia.TabIndex = 35;
-            // 
-            // Conta
-            // 
-            this.Conta.Location = new System.Drawing.Point(224, 49);
-            this.Conta.Name = "Conta";
-            this.Conta.Size = new System.Drawing.Size(100, 20);
-            this.Conta.TabIndex = 36;
+            this.TaxaSindical.Location = new System.Drawing.Point(343, 134);
+            this.TaxaSindical.Name = "TaxaSindical";
+            this.TaxaSindical.Size = new System.Drawing.Size(100, 20);
+            this.TaxaSindical.TabIndex = 35;
+            this.TaxaSindical.Visible = false;
             // 
             // Empregado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.cmpNumerico1);
+            this.Controls.Add(this.lbl_TxSindical);
             this.Controls.Add(this.Sindicato);
             this.Controls.Add(this.HoristaId);
             this.Controls.Add(this.AssalariadoId);
@@ -608,6 +610,7 @@ namespace ProjectP3
             this.Controls.Add(this.FuncionariosId);
             this.Name = "Empregado";
             this.Text = "Funcionário";
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.FuncionariosId, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.Nome, 0);
@@ -622,15 +625,16 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.lbl_TaxaComissao, 0);
             this.Controls.SetChildIndex(this.lbl_Salario, 0);
             this.Controls.SetChildIndex(this.label9, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panelInferior, 0);
             this.Controls.SetChildIndex(this.Salario, 0);
             this.Controls.SetChildIndex(this.ComissionadoId, 0);
             this.Controls.SetChildIndex(this.AssalariadoId, 0);
             this.Controls.SetChildIndex(this.HoristaId, 0);
             this.Controls.SetChildIndex(this.Sindicato, 0);
-            this.Controls.SetChildIndex(this.cmpNumerico1, 0);
-            this.Controls.SetChildIndex(this.label16, 0);
+            this.Controls.SetChildIndex(this.lbl_TxSindical, 0);
+            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -688,11 +692,11 @@ namespace ProjectP3
         private System.Windows.Forms.TextBox AssalariadoId;
         private System.Windows.Forms.TextBox HoristaId;
         private System.Windows.Forms.ComboBox Sindicato;
-        private componentes.CmpNumerico cmpNumerico1;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl_TxSindical;
         private System.Windows.Forms.TextBox Numero;
         private System.Windows.Forms.TextBox Conta;
         private System.Windows.Forms.TextBox Agencia;
+        private System.Windows.Forms.TextBox TaxaSindical;
     }
 }
 

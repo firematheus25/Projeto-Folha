@@ -38,13 +38,13 @@ namespace ProjectP3
             this.Data = new ProjectP3.componentes.CmpDataCalendario();
             this.Entrada = new System.Windows.Forms.DateTimePicker();
             this.Saida = new System.Windows.Forms.DateTimePicker();
-            this.panel1.SuspendLayout();
+            this.panelInferior.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 190);
-            this.panel1.Size = new System.Drawing.Size(421, 48);
+            this.panelInferior.Location = new System.Drawing.Point(0, 190);
+            this.panelInferior.Size = new System.Drawing.Size(421, 48);
             // 
             // btnLimpar
             // 
@@ -162,14 +162,14 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.RegistroPontoId, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.FuncionariosId, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panelInferior, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.Data, 0);
             this.Controls.SetChildIndex(this.Entrada, 0);
             this.Controls.SetChildIndex(this.Saida, 0);
-            this.panel1.ResumeLayout(false);
+            this.panelInferior.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

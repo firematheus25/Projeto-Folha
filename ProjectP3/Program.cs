@@ -16,7 +16,7 @@ namespace ProjectP3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Empregado());
+            Application.Run(new FormFuncionario());
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ProjectP3
         /// </summary>
         private void InitializeComponent()
         {
-            this.FuncionariosId = new ProjectP3.componentes.CmpBuscaCombinada();
+            this.FuncionariosId1 = new ProjectP3.componentes.CmpBuscaCombinada();
             this.Funcionarios = new System.Windows.Forms.Label();
             this.Data = new ProjectP3.componentes.CmpDataCalendario();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,35 +38,42 @@ namespace ProjectP3
             this.label1 = new System.Windows.Forms.Label();
             this.PorcentagemVenda = new ProjectP3.componentes.CmpNumerico();
             this.VendasId = new System.Windows.Forms.TextBox();
+            this.FuncionariosId = new System.Windows.Forms.TextBox();
+            this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelInferior
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 185);
-            this.panel1.Size = new System.Drawing.Size(425, 46);
+            this.panelInferior.Location = new System.Drawing.Point(0, 185);
+            this.panelInferior.Size = new System.Drawing.Size(425, 46);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(338, 15);
+            this.btnLimpar.Location = new System.Drawing.Point(-52, 15);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(257, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(-133, 15);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // FuncionariosId
+            // panel1
             // 
-            this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;
-            this.FuncionariosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FuncionariosId.CorFundo = System.Drawing.Color.Transparent;
-            this.FuncionariosId.LarguraCodigo = 100;
-            this.FuncionariosId.Location = new System.Drawing.Point(93, 27);
-            this.FuncionariosId.Mascara = "";
-            this.FuncionariosId.Name = "FuncionariosId";
-            this.FuncionariosId.Size = new System.Drawing.Size(320, 21);
-            this.FuncionariosId.TabIndex = 1;
+            this.panel1.Controls.Add(this.FuncionariosId);
+            this.panel1.Size = new System.Drawing.Size(425, 231);
+            // 
+            // FuncionariosId1
+            // 
+            this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionariosId1.LarguraCodigo = 100;
+            this.FuncionariosId1.Location = new System.Drawing.Point(93, 27);
+            this.FuncionariosId1.Mascara = "";
+            this.FuncionariosId1.Name = "FuncionariosId1";
+            this.FuncionariosId1.Size = new System.Drawing.Size(320, 21);
+            this.FuncionariosId1.TabIndex = 1;
             // 
             // Funcionarios
             // 
@@ -81,8 +88,8 @@ namespace ProjectP3
             // 
             this.Data.BackColor = System.Drawing.SystemColors.Control;
             this.Data.CorFundo = System.Drawing.SystemColors.Control;
-            this.Data.DataMaxima = new System.DateTime(((long)(0)));
-            this.Data.DataMinima = new System.DateTime(((long)(0)));
+            this.Data.DataMaxima = new System.DateTime(2109, 12, 31, 0, 0, 0, 0);
+            this.Data.DataMinima = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.Data.Date = null;
             this.Data.formatoCompetencia = false;
             this.Data.Location = new System.Drawing.Point(93, 54);
@@ -156,7 +163,14 @@ namespace ProjectP3
             this.VendasId.TabIndex = 9;
             this.VendasId.Visible = false;
             // 
-            // Vendas
+            // FuncionariosId
+            // 
+            this.FuncionariosId.Location = new System.Drawing.Point(208, 55);
+            this.FuncionariosId.Name = "FuncionariosId";
+            this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
+            this.FuncionariosId.TabIndex = 10;
+            // 
+            // FormVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,11 +183,12 @@ namespace ProjectP3
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Data);
             this.Controls.Add(this.Funcionarios);
-            this.Controls.Add(this.FuncionariosId);
-            this.Name = "Vendas";
+            this.Controls.Add(this.FuncionariosId1);
+            this.Name = "FormVendas";
             this.Text = "Vendas";
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.Controls.SetChildIndex(this.panelInferior, 0);
+            this.Controls.SetChildIndex(this.FuncionariosId1, 0);
             this.Controls.SetChildIndex(this.Funcionarios, 0);
             this.Controls.SetChildIndex(this.Data, 0);
             this.Controls.SetChildIndex(this.label4, 0);
@@ -182,7 +197,9 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.PorcentagemVenda, 0);
             this.Controls.SetChildIndex(this.VendasId, 0);
+            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,7 +207,7 @@ namespace ProjectP3
 
         #endregion
 
-        private componentes.CmpBuscaCombinada FuncionariosId;
+        private componentes.CmpBuscaCombinada FuncionariosId1;
         private System.Windows.Forms.Label Funcionarios;
         private componentes.CmpDataCalendario Data;
         private System.Windows.Forms.Label label4;
@@ -199,5 +216,6 @@ namespace ProjectP3
         private System.Windows.Forms.Label label1;
         private componentes.CmpNumerico PorcentagemVenda;
         private System.Windows.Forms.TextBox VendasId;
+        private System.Windows.Forms.TextBox FuncionariosId;
     }
 }

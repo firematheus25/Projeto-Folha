@@ -14,13 +14,33 @@ namespace ProjectP3.Services
         {
             using (var client = new HttpClient())
             {
-                var Url = new MyClient().BuilderUri(Api);
+                var url = new MyClient().BuilderUri(Api);
 
-                var Content = new StringContent(JsonConvert.SerializeObject(Objeto, Formatting.None), Encoding.UTF8, "application/Json");
+                var teste = JsonConvert.SerializeObject(Objeto, Formatting.None);
 
-                return await client.PostAsync(Url, Content);
+                var Content = new StringContent(teste, Encoding.UTF8, "application/Json");
+
+                return await client.PostAsync(url, Content);
             }
+        }
 
+        public async Task<List<T>> Get(string Api)
+        {
+            using (var client = new HttpClient())
+            {
+                var url = new MyClient().BuilderUri(Api);
+
+                var result = await client.GetAsync(url);
+                if(result.IsSuccessStatusCode)
+                {
+                    var json = await result.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<List<T>>(json).ToList();
+
+                    return model;
+                }
+
+                return null;
+            }
         }
     }
 }

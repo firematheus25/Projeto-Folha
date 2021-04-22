@@ -33,7 +33,22 @@ namespace ApiP3.Controllers
             funcionario.AssalariadoId = funcionario.Assalariado.AssalariadoId;
             db.Funcionario.Add(funcionario);
             db.SaveChanges();
+
+
         }
+
+        [HttpPut]
+        public void Put(Funcionario funcionario)
+        {
+            if (funcionario.FuncionariosId != 0)
+            {
+                db.Assalariado.Update(funcionario.Assalariado);
+                db.SaveChanges();
+                db.Funcionario.Update(funcionario);
+                db.SaveChanges();
+            }
+        }
+
 
     }
 }

@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace miscellaneous.Models
-{
+{   
+    [Table("Assalariados")]
     public class Assalariado
     {
 

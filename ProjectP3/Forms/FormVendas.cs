@@ -1,4 +1,5 @@
 ﻿using miscellaneous.Models;
+using ProjectP3.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,24 +22,32 @@ namespace ProjectP3
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             VendasId.Clear();
-            FuncionariosId.Clear();
+            FuncionariosId1.Clear();
             Data.Clear();
             ValorVenda.Clear();
             PorcentagemVenda.Clear();
             
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
                 var Vendas = new Vendas();
 
-                //Vendas.VendasId = VendasId.Text.ToString();
-               // Vendas.FuncionariosId = FuncionariosId.GetValues<Comissionado>().FuncionariosId;
+                if (!string.IsNullOrEmpty(VendasId.Text))
+                {
+                    Vendas.VendasId = Convert.ToInt32(VendasId.Text);
+                }
+
+                Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
                 Vendas.DtVenda = Data.Date.Value;
                 Vendas.Valor = ValorVenda.Valor;
                 Vendas.Porcentagem = PorcentagemVenda.Valor;
+
+
+                var teste = await new Services<Vendas>().Post("api/Vendas/", Vendas);
+                var tes2 = await teste.Content.ReadAsStringAsync();
 
 
             }

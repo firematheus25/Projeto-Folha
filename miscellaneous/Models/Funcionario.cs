@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace miscellaneous.Models
 {
+    [Table("Funcionarios")]
     public class Funcionario
     {
         [Key]
@@ -26,7 +27,7 @@ namespace miscellaneous.Models
         public string Conta { get; set; }
         public string Agencia { get; set; }
         public string Operacao { get; set; }
-        public int Sindicatos { get; set; }
+        public string Sindicato { get; set; }
         public decimal TaxaSindical { get; set; }
         public int? ComissionadoId { get; set; }
         public int? HoristaId { get; set; }
