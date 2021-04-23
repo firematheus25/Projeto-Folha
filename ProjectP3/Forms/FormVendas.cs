@@ -42,12 +42,12 @@ namespace ProjectP3
 
                 Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
                 Vendas.DtVenda = Data.Date.Value;
-                Vendas.Valor = ValorVenda.Valor;
+                Vendas.ValorVenda = ValorVenda.Valor;
                 Vendas.Porcentagem = PorcentagemVenda.Valor;
 
 
-                var teste = await new Services<Vendas>().Post("api/Vendas/", Vendas);
-                var tes2 = await teste.Content.ReadAsStringAsync();
+                var Result = await new Services<Vendas>().Post("api/Vendas/", Vendas);
+                var tes2 = await Result.Content.ReadAsStringAsync();
 
 
             }

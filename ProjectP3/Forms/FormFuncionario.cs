@@ -71,6 +71,7 @@ namespace ProjectP3
 
                 if (Assalariado.Checked)
                 {
+                    Funcionario.TipoFuncionario = 1;
                     var Assalariado = new Assalariado();
                     if (!string.IsNullOrEmpty(AssalariadoId.Text))
                     {
@@ -82,6 +83,7 @@ namespace ProjectP3
 
                 if (Comissionado.Checked)
                 {
+                    Funcionario.TipoFuncionario = 2;
                     var Comissionado = new Comissionado();
                     if (!string.IsNullOrEmpty(ComissionadoId.Text))
                     {
@@ -94,6 +96,7 @@ namespace ProjectP3
 
                 if (Horista.Checked)
                 {
+                    Funcionario.TipoFuncionario = 3;
                     var Horista = new Horista();
                     if (!string.IsNullOrEmpty(HoristaId.Text))
                     {
@@ -191,6 +194,8 @@ namespace ProjectP3
                 ValorHora.Visible = false;
                 lbl_ValorHora.Visible = false;
 
+                lbl_Salario.Visible = true;
+                Salario.Visible = true;
                 lbl_TaxaComissao.Visible = true;
                 TaxaComissao.Visible = true;
             }

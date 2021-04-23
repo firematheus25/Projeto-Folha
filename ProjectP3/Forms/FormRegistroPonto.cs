@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Humanizer;
+using ProjectP3.Services;
 
 namespace ProjectP3
 {
@@ -28,20 +29,33 @@ namespace ProjectP3
             Saida.Value = DateTimePicker.MinimumDateTime;
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
-            var Ponto = new RegistroPonto();
+            try
+            {
+                var Ponto = new RegistroPonto();
 
-            Ponto.RegistroPontoId = 0;
-            Ponto.FuncionariosId = 1;
-            Ponto.Data = Data.Date.Value;
-            Ponto.HoraChegada = Entrada.Value.TimeOfDay;
-            Ponto.HoraSaida = Saida.Value.TimeOfDay;
+                //Ponto.RegistroPontoId = 0;
+                Ponto.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                Ponto.DtPonto = Data.Date.Value;
+                Ponto.Entrada = Entrada.Value.TimeOfDay.ToString();
+                Ponto.Saida = Saida.Value.TimeOfDay.ToString();
 
-            var time = Saida.Value.TimeOfDay.Subtract(Entrada.Value.TimeOfDay);
-            MessageBox.Show(time.ToString());
+                int teste = Convert.ToInt32(Ponto.Saida.Replace(":", "").Trim());
 
+                TimeSpan teste1 = TimeSpan.FromTicks(teste); 
 
+                //var time = Saida.Value.TimeOfDay.Subtract(Entrada.Value.TimeOfDay);
+
+                var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
+                var tes2 = await Result.Content.ReadAsStringAsync();
+
+            }
+            catch (Exception M)
+            {
+
+                MessageBox.Show(M.Message);
+            }
             
 
         }

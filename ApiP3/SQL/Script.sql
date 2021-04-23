@@ -1,6 +1,7 @@
 ﻿create table Funcionarios
 (
 	FuncionariosId int identity NOT NULL,
+	TipoFuncionario int,
 	Nome varchar(100) NOT NULL,
 	MetodoPagamento int NOT NULL,
 	Cep varchar(8),

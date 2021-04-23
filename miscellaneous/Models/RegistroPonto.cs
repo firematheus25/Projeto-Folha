@@ -14,9 +14,9 @@ namespace miscellaneous.Models
         [Key]
         public int RegistroPontoId { get; set; }
         public int FuncionariosId { get; set; }
-        public DateTime? Data { get; set; }
-        public TimeSpan HoraChegada { get; set; }
-        public TimeSpan HoraSaida { get; set; }
+        public DateTime? DtPonto { get; set; }
+        public string Entrada { get; set; }
+        public string Saida { get; set; }
 
 
     }

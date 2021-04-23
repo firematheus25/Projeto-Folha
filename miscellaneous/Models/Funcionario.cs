@@ -13,6 +13,7 @@ namespace miscellaneous.Models
     {
         [Key]
         public int FuncionariosId { get; set; }
+        public int TipoFuncionario { get; set; }
         public string Nome { get; set; }
         public int MetodoPagamento { get; set; }
         public string CEP { get; set; }

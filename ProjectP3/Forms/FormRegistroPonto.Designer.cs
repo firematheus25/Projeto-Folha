@@ -31,30 +31,37 @@ namespace ProjectP3
         {
             this.RegistroPontoId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.FuncionariosId = new ProjectP3.componentes.CmpBuscaCombinada();
+            this.FuncionariosId1 = new ProjectP3.componentes.CmpBuscaCombinada();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Data = new ProjectP3.componentes.CmpDataCalendario();
             this.Entrada = new System.Windows.Forms.DateTimePicker();
             this.Saida = new System.Windows.Forms.DateTimePicker();
+            this.FuncionariosId = new System.Windows.Forms.TextBox();
             this.panelInferior.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelInferior
             // 
             this.panelInferior.Location = new System.Drawing.Point(0, 190);
             this.panelInferior.Size = new System.Drawing.Size(421, 48);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(200, 13);
+            this.btnLimpar.Location = new System.Drawing.Point(66, 13);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(119, 13);
+            this.btnSalvar.Location = new System.Drawing.Point(-15, 13);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.FuncionariosId);
+            this.panel1.Size = new System.Drawing.Size(421, 238);
             // 
             // RegistroPontoId
             // 
@@ -73,17 +80,17 @@ namespace ProjectP3
             this.label1.TabIndex = 2;
             this.label1.Text = "Funcionário";
             // 
-            // FuncionariosId
+            // FuncionariosId1
             // 
-            this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;
-            this.FuncionariosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FuncionariosId.CorFundo = System.Drawing.Color.Transparent;
-            this.FuncionariosId.LarguraCodigo = 100;
-            this.FuncionariosId.Location = new System.Drawing.Point(80, 35);
-            this.FuncionariosId.Mascara = "";
-            this.FuncionariosId.Name = "FuncionariosId";
-            this.FuncionariosId.Size = new System.Drawing.Size(330, 21);
-            this.FuncionariosId.TabIndex = 3;
+            this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionariosId1.LarguraCodigo = 100;
+            this.FuncionariosId1.Location = new System.Drawing.Point(80, 35);
+            this.FuncionariosId1.Mascara = "";
+            this.FuncionariosId1.Name = "FuncionariosId1";
+            this.FuncionariosId1.Size = new System.Drawing.Size(330, 21);
+            this.FuncionariosId1.TabIndex = 3;
             // 
             // label2
             // 
@@ -143,6 +150,13 @@ namespace ProjectP3
             this.Saida.Size = new System.Drawing.Size(101, 20);
             this.Saida.TabIndex = 10;
             // 
+            // FuncionariosId
+            // 
+            this.FuncionariosId.Location = new System.Drawing.Point(187, 63);
+            this.FuncionariosId.Name = "FuncionariosId";
+            this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
+            this.FuncionariosId.TabIndex = 11;
+            // 
             // FormRegistroPonto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,14 +168,15 @@ namespace ProjectP3
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.FuncionariosId);
+            this.Controls.Add(this.FuncionariosId1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RegistroPontoId);
             this.Name = "FormRegistroPonto";
             this.Text = "Registro de Ponto";
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.RegistroPontoId, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.Controls.SetChildIndex(this.FuncionariosId1, 0);
             this.Controls.SetChildIndex(this.panelInferior, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -170,6 +185,8 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.Entrada, 0);
             this.Controls.SetChildIndex(this.Saida, 0);
             this.panelInferior.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,12 +196,13 @@ namespace ProjectP3
 
         private System.Windows.Forms.TextBox RegistroPontoId;
         private System.Windows.Forms.Label label1;
-        private componentes.CmpBuscaCombinada FuncionariosId;
+        private componentes.CmpBuscaCombinada FuncionariosId1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private componentes.CmpDataCalendario Data;
         private System.Windows.Forms.DateTimePicker Entrada;
         private System.Windows.Forms.DateTimePicker Saida;
+        private System.Windows.Forms.TextBox FuncionariosId;
     }
 }

@@ -28,9 +28,25 @@ namespace ApiP3.Controllers
         [HttpPost]
         public void Post(Funcionario funcionario)
         {
-            db.Assalariado.Add(funcionario.Assalariado);
-            db.SaveChanges();
-            funcionario.AssalariadoId = funcionario.Assalariado.AssalariadoId;
+            if (funcionario.TipoFuncionario == 1)
+            {
+                db.Assalariado.Add(funcionario.Assalariado);
+                db.SaveChanges();
+                funcionario.AssalariadoId = funcionario.Assalariado.AssalariadoId;
+            }
+            else if(funcionario.TipoFuncionario == 2)
+            {
+                db.Comissionado.Add(funcionario.Comissionado);
+                db.SaveChanges();
+                funcionario.ComissionadoId = funcionario.Comissionado.ComissionadoId;
+            }
+            else
+            {
+                db.Horista.Add(funcionario.Horista);
+                db.SaveChanges();
+                funcionario.HoristaId = funcionario.Horista.HoristaId;
+            }
+                      
             db.Funcionario.Add(funcionario);
             db.SaveChanges();
 
