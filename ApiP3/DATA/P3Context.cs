@@ -26,6 +26,6 @@ namespace ApiP3.DATA
         public DbSet<RegistroPonto> RegistroPontos { get; set; }
         public DbSet<Folha> Folhas { get; set; }
 
-        public DbSet<FuncionarioVw> funcionarioVw { get; set; }
+        public DbSet<FuncionarioVw> FuncionarioVw { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace ProjectP3
         public FormRegistroPonto()
         {
             InitializeComponent();
+            Entrada.Value = DateTimePicker.MinimumDateTime;
             Saida.Value = DateTimePicker.MinimumDateTime;
         }
 
@@ -40,12 +41,7 @@ namespace ProjectP3
                 Ponto.DtPonto = Data.Date.Value;
                 Ponto.Entrada = Entrada.Value.TimeOfDay.ToString();
                 Ponto.Saida = Saida.Value.TimeOfDay.ToString();
-
-                int teste = Convert.ToInt32(Ponto.Saida.Replace(":", "").Trim());
-
-                TimeSpan teste1 = TimeSpan.FromTicks(teste); 
-
-                //var time = Saida.Value.TimeOfDay.Subtract(Entrada.Value.TimeOfDay);
+                Ponto.Horas = Horas.Text;
 
                 var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
                 var tes2 = await Result.Content.ReadAsStringAsync();
@@ -60,6 +56,21 @@ namespace ProjectP3
 
         }
 
+        private void panelInferior_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void Saida_ValueChanged(object sender, EventArgs e)
+        {
+            if (Saida.Value == DateTimePicker.MinimumDateTime || Saida.Value.TimeOfDay < Entrada.Value.TimeOfDay)
+            {
+
+            }
+            if (Saida.Value.TimeOfDay > Entrada.Value.TimeOfDay)
+            {
+                Horas.Text = Convert.ToString(Saida.Value.TimeOfDay - Entrada.Value.TimeOfDay);
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace ApiP3.Controllers
         [HttpGet]
         public List<FuncionarioVw> Get()
         {
-            return db.funcionarioVw.ToList();
+            return db.FuncionarioVw.ToList();
         }
 
         [HttpPost]

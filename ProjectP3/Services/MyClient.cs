@@ -17,5 +17,10 @@ namespace ProjectP3.Services
         {
             return new Uri($"{BaseAddress}/{Uri}");
         }
+
+        public Uri BuilderUri(string Uri, string Id)
+        {
+            return new Uri($"{BaseAddress}/{Uri}?id={Id}");
+        }
     }
 }

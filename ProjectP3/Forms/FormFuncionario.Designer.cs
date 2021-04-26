@@ -77,37 +77,37 @@ namespace ProjectP3
             this.Sindicato = new System.Windows.Forms.ComboBox();
             this.lbl_TxSindical = new System.Windows.Forms.Label();
             this.TaxaSindical = new System.Windows.Forms.TextBox();
-            this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelInferior.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Endereco.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelInferior
+            // panel1
             // 
-            this.panelInferior.Location = new System.Drawing.Point(0, 404);
-            this.panelInferior.Size = new System.Drawing.Size(538, 46);
+            this.panel1.Controls.Add(this.TaxaSindical);
+            this.panel1.Size = new System.Drawing.Size(538, 450);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(355, 15);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(436, 15);
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnConsultar
             // 
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // btnLimpar
+            // panelInferior
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(134, 15);
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Location = new System.Drawing.Point(53, 15);
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.TaxaSindical);
-            this.panel1.Size = new System.Drawing.Size(538, 450);
+            this.panelInferior.Location = new System.Drawing.Point(0, 404);
+            this.panelInferior.Size = new System.Drawing.Size(538, 46);
             // 
             // FuncionariosId
             // 
@@ -577,13 +577,13 @@ namespace ProjectP3
             // 
             // TaxaSindical
             // 
-            this.TaxaSindical.Location = new System.Drawing.Point(343, 134);
+            this.TaxaSindical.Location = new System.Drawing.Point(336, 132);
             this.TaxaSindical.Name = "TaxaSindical";
             this.TaxaSindical.Size = new System.Drawing.Size(100, 20);
             this.TaxaSindical.TabIndex = 35;
             this.TaxaSindical.Visible = false;
             // 
-            // Empregado
+            // FormFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -608,7 +608,8 @@ namespace ProjectP3
             this.Controls.Add(this.Nome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FuncionariosId);
-            this.Name = "Empregado";
+            this.MaximizeBox = false;
+            this.Name = "FormFuncionario";
             this.Text = "Funcionário";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.FuncionariosId, 0);
@@ -632,9 +633,9 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.HoristaId, 0);
             this.Controls.SetChildIndex(this.Sindicato, 0);
             this.Controls.SetChildIndex(this.lbl_TxSindical, 0);
-            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelInferior.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);

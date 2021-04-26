@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectP3.Forms;
+using ProjectP3.MDI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace ProjectP3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormRegistroPonto());
+            Application.Run(new FormMDI());
         }
     }
 }

@@ -67,7 +67,7 @@ create table Vendas
 	Porcentagem decimal,
 
 	primary key(VendasId),
-	Constraint FK_FuncionariosId foreign key (funcionariosId) references Funcionario(FuncionariosId)
+	Constraint FK_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
 
 );
 create table RegistroPontos
@@ -75,11 +75,12 @@ create table RegistroPontos
 	RegistroPontoId int identity,
 	FuncionariosId int,
 	DtPonto date,
-	Entrada time,
-	Saida time,
+	Entrada varchar(8),
+	Saida varchar(8),
+	Horas varchar(8),
 
 	Primary Key(RegistroPontoId),
-	Constraint FK_RP_FuncionariosId foreign key (funcionariosId) references Funcionario(FuncionariosId)
+	Constraint FK_RP_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
 );
 
 create table Taxas
@@ -90,7 +91,7 @@ create table Taxas
 	TaxaServico decimal,
 
 	Primary Key(TaxasId),
-	Constraint FK_TX_FuncionariosId foreign key (funcionariosId) references Funcionario(FuncionariosId)
+	Constraint FK_TX_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
 );
 
 create table Folha
@@ -99,8 +100,17 @@ create table Folha
 	FuncionariosId int,
 	DtPagamento date,
 	Salario decimal,
+	MetodoPagamento int,
 
 	Primary Key(FolhasId),
-	Constraint FK_FL_FuncionariosId foreign key (funcionariosId) references Funcionario(FuncionariosId)
+	Constraint FK_FL_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
 	
 );
+
+create view FuncionariosVw AS
+select F.*, A.Salario, C.Salario AS SalarioComissao, C.TaxaComissao, H.ValorHora from Funcionarios F
+Left Join Assalariados A ON (F.AssalariadoId = A.AssalariadoId)
+Left Join Comissionados C ON (F.ComissionadoId = C.ComissionadoId)
+Left Join Horistas H ON (F.HoristaId = H.HoristaId)
+
+GO

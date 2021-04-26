@@ -39,29 +39,32 @@ namespace ProjectP3
             this.PorcentagemVenda = new ProjectP3.componentes.CmpNumerico();
             this.VendasId = new System.Windows.Forms.TextBox();
             this.FuncionariosId = new System.Windows.Forms.TextBox();
-            this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelInferior.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.VendasId);
+            this.panel1.Controls.Add(this.FuncionariosId);
+            this.panel1.Size = new System.Drawing.Size(435, 231);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Location = new System.Drawing.Point(142, 15);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(223, 15);
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
             // 
             this.panelInferior.Location = new System.Drawing.Point(0, 185);
-            this.panelInferior.Size = new System.Drawing.Size(425, 46);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(-52, 15);
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Location = new System.Drawing.Point(-133, 15);
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Size = new System.Drawing.Size(425, 231);
+            this.panelInferior.Size = new System.Drawing.Size(435, 46);
             // 
             // FuncionariosId1
             // 
@@ -157,7 +160,7 @@ namespace ProjectP3
             // 
             // VendasId
             // 
-            this.VendasId.Location = new System.Drawing.Point(313, 150);
+            this.VendasId.Location = new System.Drawing.Point(92, 131);
             this.VendasId.Name = "VendasId";
             this.VendasId.Size = new System.Drawing.Size(100, 20);
             this.VendasId.TabIndex = 9;
@@ -174,8 +177,7 @@ namespace ProjectP3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 231);
-            this.Controls.Add(this.VendasId);
+            this.ClientSize = new System.Drawing.Size(435, 231);
             this.Controls.Add(this.PorcentagemVenda);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ValorVenda);
@@ -184,6 +186,7 @@ namespace ProjectP3
             this.Controls.Add(this.Data);
             this.Controls.Add(this.Funcionarios);
             this.Controls.Add(this.FuncionariosId1);
+            this.MaximizeBox = false;
             this.Name = "FormVendas";
             this.Text = "Vendas";
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -196,10 +199,9 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.ValorVenda, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.PorcentagemVenda, 0);
-            this.Controls.SetChildIndex(this.VendasId, 0);
-            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelInferior.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

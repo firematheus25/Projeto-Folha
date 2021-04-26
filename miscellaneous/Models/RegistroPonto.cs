@@ -17,7 +17,7 @@ namespace miscellaneous.Models
         public DateTime? DtPonto { get; set; }
         public string Entrada { get; set; }
         public string Saida { get; set; }
-
+        public string Horas { get; set; }
 
     }
 }

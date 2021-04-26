@@ -55,11 +55,23 @@
     <Compile Include="Componentes\CmpBuscaCombinada.cs" />
     <Compile Include="Componentes\CmpDataCalendario.cs" />
     <Compile Include="Componentes\CmpNumerico.cs" />
+    <Compile Include="Forms\FormFolha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFolha.Designer.cs">
+      <DependentUpon>FormFolha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormFuncionario.Designer.cs">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDI\FormMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI\FormMDI.Designer.cs">
+      <DependentUpon>FormMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="MDI\FormPadrao.cs">
       <SubType>Form</SubType>
@@ -84,8 +96,14 @@
     </Compile>
     <Compile Include="Services\MyClient.cs" />
     <Compile Include="Services\Services.cs" />
+    <EmbeddedResource Include="Forms\FormFolha.resx">
+      <DependentUpon>FormFolha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFuncionario.resx">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDI\FormMDI.resx">
+      <DependentUpon>FormMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI\FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>

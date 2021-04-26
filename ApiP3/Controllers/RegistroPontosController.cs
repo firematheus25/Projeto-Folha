@@ -27,6 +27,14 @@ namespace ApiP3.Controllers
             return db.RegistroPontos.ToList();
         }
 
+        [HttpGet]
+        public List<RegistroPonto> GetById(int Id)
+        {
+            return db.RegistroPontos.Where(X => X.FuncionariosId == Id).ToList();
+        }
+
+
+
         [HttpPost]
         public void Post(RegistroPonto Ponto)
         {

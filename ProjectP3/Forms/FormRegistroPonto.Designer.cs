@@ -39,33 +39,40 @@ namespace ProjectP3
             this.Entrada = new System.Windows.Forms.DateTimePicker();
             this.Saida = new System.Windows.Forms.DateTimePicker();
             this.FuncionariosId = new System.Windows.Forms.TextBox();
-            this.panelInferior.SuspendLayout();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Horas = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panelInferior.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelInferior
-            // 
-            this.panelInferior.Location = new System.Drawing.Point(0, 190);
-            this.panelInferior.Size = new System.Drawing.Size(421, 48);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(66, 13);
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Location = new System.Drawing.Point(-15, 13);
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Horas);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Size = new System.Drawing.Size(421, 238);
+            this.panel1.Controls.Add(this.RegistroPontoId);
+            this.panel1.Size = new System.Drawing.Size(435, 231);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Location = new System.Drawing.Point(-104, 15);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(-23, 15);
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // panelInferior
+            // 
+            this.panelInferior.Location = new System.Drawing.Point(0, 183);
+            this.panelInferior.Size = new System.Drawing.Size(435, 48);
             // 
             // RegistroPontoId
             // 
-            this.RegistroPontoId.Location = new System.Drawing.Point(310, 164);
+            this.RegistroPontoId.Location = new System.Drawing.Point(321, 143);
             this.RegistroPontoId.Name = "RegistroPontoId";
             this.RegistroPontoId.Size = new System.Drawing.Size(100, 20);
             this.RegistroPontoId.TabIndex = 1;
@@ -134,7 +141,8 @@ namespace ProjectP3
             // 
             // Entrada
             // 
-            this.Entrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.Entrada.CustomFormat = "HH:mm:00";
+            this.Entrada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Entrada.Location = new System.Drawing.Point(80, 92);
             this.Entrada.Name = "Entrada";
             this.Entrada.ShowUpDown = true;
@@ -143,12 +151,14 @@ namespace ProjectP3
             // 
             // Saida
             // 
-            this.Saida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.Saida.CustomFormat = "HH:mm:00";
+            this.Saida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Saida.Location = new System.Drawing.Point(80, 119);
             this.Saida.Name = "Saida";
             this.Saida.ShowUpDown = true;
             this.Saida.Size = new System.Drawing.Size(101, 20);
             this.Saida.TabIndex = 10;
+            this.Saida.ValueChanged += new System.EventHandler(this.Saida_ValueChanged);
             // 
             // FuncionariosId
             // 
@@ -157,11 +167,28 @@ namespace ProjectP3
             this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
             this.FuncionariosId.TabIndex = 11;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Horas:";
+            // 
+            // Horas
+            // 
+            this.Horas.Enabled = false;
+            this.Horas.Location = new System.Drawing.Point(78, 143);
+            this.Horas.Name = "Horas";
+            this.Horas.Size = new System.Drawing.Size(100, 20);
+            this.Horas.TabIndex = 12;
+            // 
             // FormRegistroPonto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 238);
+            this.ClientSize = new System.Drawing.Size(435, 231);
             this.Controls.Add(this.Saida);
             this.Controls.Add(this.Entrada);
             this.Controls.Add(this.Data);
@@ -170,11 +197,10 @@ namespace ProjectP3
             this.Controls.Add(this.label2);
             this.Controls.Add(this.FuncionariosId1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.RegistroPontoId);
+            this.MaximizeBox = false;
             this.Name = "FormRegistroPonto";
             this.Text = "Registro de Ponto";
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.RegistroPontoId, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.FuncionariosId1, 0);
             this.Controls.SetChildIndex(this.panelInferior, 0);
@@ -184,9 +210,9 @@ namespace ProjectP3
             this.Controls.SetChildIndex(this.Data, 0);
             this.Controls.SetChildIndex(this.Entrada, 0);
             this.Controls.SetChildIndex(this.Saida, 0);
-            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelInferior.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +230,7 @@ namespace ProjectP3
         private System.Windows.Forms.DateTimePicker Entrada;
         private System.Windows.Forms.DateTimePicker Saida;
         private System.Windows.Forms.TextBox FuncionariosId;
+        private System.Windows.Forms.TextBox Horas;
+        private System.Windows.Forms.Label label5;
     }
 }
