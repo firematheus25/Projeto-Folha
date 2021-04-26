@@ -67,6 +67,12 @@
     <Compile Include="Forms\FormFuncionario.Designer.cs">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDI\FormConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI\FormConsulta.Designer.cs">
+      <DependentUpon>FormConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDI\FormMDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,13 +100,25 @@
     <Compile Include="Forms\FormVendas.Designer.cs">
       <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormConsulta\RegistroPontoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\RegistroPontoConsulta.Designer.cs">
+      <DependentUpon>RegistroPontoConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\MyClient.cs" />
     <Compile Include="Services\Services.cs" />
+    <EmbeddedResource Include="Forms\FormConsulta\RegistroPontoConsulta.resx">
+      <DependentUpon>RegistroPontoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFolha.resx">
       <DependentUpon>FormFolha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFuncionario.resx">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDI\FormConsulta.resx">
+      <DependentUpon>FormConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI\FormMDI.resx">
       <DependentUpon>FormMDI.cs</DependentUpon>

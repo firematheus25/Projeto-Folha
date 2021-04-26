@@ -46,7 +46,7 @@ namespace ProjectP3.Forms
 
                 for (int i = 0; i < Funcionario.Count; i++)
                 {
-                    if (Funcionario[i].TipoFuncionario == 1)
+                    if (Funcionario[i].TipoFuncionario == 1)//ASSALARIADO
                     {
                         if (DtPagamento.Date.Value == ultimoDiaDoMes)
                         {
@@ -67,7 +67,18 @@ namespace ProjectP3.Forms
                                 var folha = new Folha();
                                 folha.FuncionariosId = X.FuncionariosId;
                                 folha.Nome = X.Nome;
-                                folha.MetodoPagamento = X.MetodoPagamento.Value;
+                                if (X.MetodoPagamento == 1)
+                                {
+                                    folha.MetodoPagamento = "Cheque pelos correios";
+                                }
+                                if (X.MetodoPagamento == 2)
+                                {
+                                    folha.MetodoPagamento = "Cheque em mãos";
+                                }
+                                if (X.MetodoPagamento == 3)
+                                {
+                                    folha.MetodoPagamento = "Deposito em conta bancária";
+                                }
                                 folha.DtPagamento = DtPagamento.Date.Value;
                                 folha.Salario = salario;
 
@@ -76,17 +87,38 @@ namespace ProjectP3.Forms
                         }
 
                     }
-                    if (Funcionario[i].TipoFuncionario == 2)
+                    if (Funcionario[i].TipoFuncionario == 2)//COMISSIONADO
                     {
 
                     }
-                    if (Funcionario[i].TipoFuncionario == 3)
-                    {
-                        var Horista = await new Services<RegistroPonto>().GetByIds("api/Horista/", Funcionario[i].HoristaId.ToString());
+                    if (Funcionario[i].TipoFuncionario == 3)//HORISTA
+                    {                        
                         if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Friday")
                         {
-                            
-                            
+                            var Horista = await new Services<RegistroPonto>().GetByIds("api/RegistroPontos/", Funcionario[i].FuncionariosId.ToString());
+                            if (Funcionario[i].FuncionariosId == Horista[0].FuncionariosId)
+                            {
+                                var teste = DtPagamento.Date.Value.Day - 6;
+                                decimal? salarioHorista = 0; 
+
+                                for (int j = 0; j < Horista.Count; j++)
+                                {
+                                    var Y = Horista[j];
+                                    if (Y.DtPonto.Value.Day >= teste && Y.DtPonto.Value.Day <= teste)
+                                    {
+                                        var HS = Convert.ToInt32(Y.Horas);
+                                        //if (Y.Horas > 8)
+                                        //{
+
+                                        //}
+                                        //salarioHorista += 
+                                    }
+                                }
+
+
+                            }
+
+
 
                         }
 

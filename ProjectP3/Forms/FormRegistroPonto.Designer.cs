@@ -51,24 +51,24 @@ namespace ProjectP3
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.FuncionariosId);
             this.panel1.Controls.Add(this.RegistroPontoId);
-            this.panel1.Size = new System.Drawing.Size(435, 231);
+            this.panel1.Size = new System.Drawing.Size(810, 231);
             // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Location = new System.Drawing.Point(-104, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(148, 15);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpar.Location = new System.Drawing.Point(-23, 15);
+            this.btnLimpar.Location = new System.Drawing.Point(229, 15);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
             // 
             this.panelInferior.Location = new System.Drawing.Point(0, 183);
-            this.panelInferior.Size = new System.Drawing.Size(435, 48);
+            this.panelInferior.Size = new System.Drawing.Size(810, 48);
             // 
             // RegistroPontoId
             // 
@@ -98,6 +98,8 @@ namespace ProjectP3
             this.FuncionariosId1.Name = "FuncionariosId1";
             this.FuncionariosId1.Size = new System.Drawing.Size(330, 21);
             this.FuncionariosId1.TabIndex = 3;
+            this.FuncionariosId1.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId1_ConsultarAPI);
+            this.FuncionariosId1.ConsultarClick += new System.EventHandler(this.FuncionariosId1_ConsultarClick);
             // 
             // label2
             // 
@@ -188,7 +190,7 @@ namespace ProjectP3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 231);
+            this.ClientSize = new System.Drawing.Size(810, 231);
             this.Controls.Add(this.Saida);
             this.Controls.Add(this.Entrada);
             this.Controls.Add(this.Data);

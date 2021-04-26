@@ -25,6 +25,19 @@ namespace ApiP3.Controllers
             return db.FuncionarioVw.ToList();
         }
 
+        [HttpGet("List/")]
+        public List<FuncionarioVw> GetConsulta()
+        {
+            return db.FuncionarioVw.Select(x => new FuncionarioVw()
+            {
+                FuncionariosId = x.FuncionariosId,
+                Nome = x.Nome
+            }).ToList();
+
+        }
+
+                    
+
         [HttpPost]
         public void Post(Funcionario funcionario)
         {

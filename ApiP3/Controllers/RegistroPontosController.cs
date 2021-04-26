@@ -21,11 +21,11 @@ namespace ApiP3.Controllers
             this.db = db;
         }
 
-        [HttpGet]
-        public List<RegistroPonto> Get()
-        {
-            return db.RegistroPontos.ToList();
-        }
+        //[HttpGet]
+        //public List<RegistroPonto> Get()
+        //{
+        //    return db.RegistroPontos.ToList();
+        //}
 
         [HttpGet]
         public List<RegistroPonto> GetById(int Id)

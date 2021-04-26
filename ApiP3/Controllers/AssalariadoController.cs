@@ -24,7 +24,6 @@ namespace ApiP3.Controllers
         [HttpGet]
         public Assalariado Get(int Id)
         {
-            //return (Assalariado)db.Assalariado.ToList().Where(x => x.AssalariadoId == Id);
 
             return (Assalariado)db.Assalariado.Where(x => x.AssalariadoId == Id).First();
 

@@ -72,5 +72,18 @@ namespace ProjectP3
                 Horas.Text = Convert.ToString(Saida.Value.TimeOfDay - Entrada.Value.TimeOfDay);
             }
         }
+
+
+
+        private void FuncionariosId1_ConsultarClick(object sender, EventArgs e)
+        {
+            var frmConsulta = new RegistroPontoConsulta();
+            frmConsulta.ShowDialog();
+        }
+
+        private async void FuncionariosId1_ConsultarAPI(object sender)
+        {
+
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace miscellaneous.Models
         public string Nome { get; set; }
         public DateTime DtPagamento { get; set; }
         public decimal? Salario { get; set; }
-        public int MetodoPagamento { get; set; }
+        public string MetodoPagamento { get; set; }
 
     }
 }
