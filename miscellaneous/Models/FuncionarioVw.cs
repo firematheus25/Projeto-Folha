@@ -29,15 +29,15 @@ namespace miscellaneous.Models
         public string Agencia { get; set; }
         public string Operacao { get; set; }
         public string Sindicato { get; set; }
-        public decimal? TaxaSindical { get; set; }
+        public double? TaxaSindical { get; set; }
         public int? ComissionadoId { get; set; }
         public int? HoristaId { get; set; }
         public int? AssalariadoId { get; set; }
 
-        public decimal? Salario { get; set; }
+        public double? Salario { get; set; }
         public decimal? SalarioComissao { get; set; }
         public decimal? TaxaComissao { get; set; }
-        public decimal? ValorHora { get; set; }
+        public double? ValorHora { get; set; }
 
         public Assalariado Assalariado { get; set; }
         public Comissionado Comissionado { get; set; }

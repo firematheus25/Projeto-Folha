@@ -13,6 +13,6 @@ namespace miscellaneous.Models
     {
         [Key]
         public int HoristaId { get; set; }
-        public decimal ValorHora { get; set; }
+        public double ValorHora { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace miscellaneous.Models
         public int FuncionariosId { get; set; }
         public string Nome { get; set; }
         public DateTime DtPagamento { get; set; }
-        public decimal? Salario { get; set; }
+        public double? Salario { get; set; }
         public string MetodoPagamento { get; set; }
 
     }

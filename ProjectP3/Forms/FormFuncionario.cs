@@ -102,7 +102,7 @@ namespace ProjectP3
                     {
                         Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
                     }
-                    Horista.ValorHora = Convert.ToDecimal(ValorHora.Text);
+                    Horista.ValorHora = Convert.ToDouble(ValorHora.Text);
                     Funcionario.Horista = Horista;
                 }
 
