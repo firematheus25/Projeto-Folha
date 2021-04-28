@@ -33,18 +33,10 @@ namespace ProjectP3.Forms
             this.DtPagamento = new ProjectP3.componentes.CmpDataCalendario();
             this.GridFolha = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.panelInferior.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.GridFolha);
-            this.panel1.Controls.Add(this.DtPagamento);
-            this.panel1.Controls.Add(this.GerarFolha);
-            this.panel1.Size = new System.Drawing.Size(555, 397);
             // 
             // btnSalvar
             // 
@@ -58,6 +50,19 @@ namespace ProjectP3.Forms
             // 
             this.panelInferior.Location = new System.Drawing.Point(0, 397);
             this.panelInferior.Size = new System.Drawing.Size(555, 53);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.GridFolha);
+            this.panel1.Controls.Add(this.DtPagamento);
+            this.panel1.Controls.Add(this.GerarFolha);
+            this.panel1.Size = new System.Drawing.Size(555, 450);
+            this.panel1.Controls.SetChildIndex(this.GerarFolha, 0);
+            this.panel1.Controls.SetChildIndex(this.DtPagamento, 0);
+            this.panel1.Controls.SetChildIndex(this.GridFolha, 0);
+            this.panel1.Controls.SetChildIndex(this.label1, 0);
+            this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
             // 
             // GerarFolha
             // 
@@ -110,14 +115,16 @@ namespace ProjectP3.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FormFolha";
             this.Text = "FormFolha";
+            this.panelInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelInferior.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

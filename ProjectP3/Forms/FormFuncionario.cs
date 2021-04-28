@@ -278,7 +278,15 @@ namespace ProjectP3
 
         private async void btn_Buscar_Click(object sender, EventArgs e)
         {
-            var funcionarios = await new Services<Funcionario>().Get("api/funcionarios/");
+            var keyword = PalavraChave.Text;
+            if (string.IsNullOrEmpty(PalavraChave.Text))
+            {
+                keyword = "*";
+            }
+
+            var funcionarios = await new Services<Funcionario>().GetByIds("api/funcionarios/KeyWord/", keyword);
+
+
             for (int i = 0; i < funcionarios.Count; i++)
             {
                 if (funcionarios[i].TipoFuncionario == 1)

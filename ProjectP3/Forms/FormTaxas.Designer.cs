@@ -112,7 +112,6 @@ namespace ProjectP3.Forms
             // Competencia
             // 
             this.Competencia.BackColor = System.Drawing.SystemColors.Control;
-            this.Competencia.BackgroundImage = global::ProjectP3.Properties.Resources.calendar;
             this.Competencia.CorFundo = System.Drawing.SystemColors.Control;
             this.Competencia.DataMaxima = new System.DateTime(2609, 12, 31, 0, 0, 0, 0);
             this.Competencia.DataMinima = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);

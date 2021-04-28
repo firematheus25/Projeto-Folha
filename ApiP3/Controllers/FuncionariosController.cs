@@ -1,6 +1,7 @@
 ﻿using ApiP3.DATA;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using miscellaneous.Models;
 using System;
 using System.Collections.Generic;
@@ -32,8 +33,17 @@ namespace ApiP3.Controllers
         }
 
 
+        [HttpGet("KeyWord")]
+        public List<FuncionarioVw> GetByKeyWord(string KeyWord)
+        {
+            var sql = $"select * from funcionariosVw where concat (nome, funcionariosId) like concat ('%','{KeyWord}','%')";
 
-        [HttpGet("List/")]
+            return db.FuncionarioVw.FromSqlRaw(sql).ToList();
+        }
+
+
+
+        [HttpGet("BuscaCB")]
         public List<FuncionarioVw> GetConsulta()
         {
             return db.FuncionarioVw.Select(x => new FuncionarioVw()

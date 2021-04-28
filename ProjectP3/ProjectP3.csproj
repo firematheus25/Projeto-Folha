@@ -191,6 +191,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\calendar.png" />
+    <Content Include="Resources\magnifier.png" />
+    <None Include="Resources\magnifier1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

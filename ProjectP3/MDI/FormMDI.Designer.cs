@@ -35,6 +35,7 @@ namespace ProjectP3.MDI
             this.registroDePontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folhaDePagamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.taxasServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@ namespace ProjectP3.MDI
             this.funcionárioToolStripMenuItem,
             this.registroDePontoToolStripMenuItem,
             this.cadastroDeVendasToolStripMenuItem,
-            this.folhaDePagamentoToolStripMenuItem});
+            this.folhaDePagamentoToolStripMenuItem,
+            this.taxasServiçosToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
             this.toolStripMenuItem1.Text = "Novo";
@@ -87,6 +89,13 @@ namespace ProjectP3.MDI
             this.folhaDePagamentoToolStripMenuItem.Text = "Folha de Pagamento";
             this.folhaDePagamentoToolStripMenuItem.Click += new System.EventHandler(this.folhaDePagamentoToolStripMenuItem_Click);
             // 
+            // taxasServiçosToolStripMenuItem
+            // 
+            this.taxasServiçosToolStripMenuItem.Name = "taxasServiçosToolStripMenuItem";
+            this.taxasServiçosToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.taxasServiçosToolStripMenuItem.Text = "Taxas Serviços";
+            this.taxasServiçosToolStripMenuItem.Click += new System.EventHandler(this.taxasServiçosToolStripMenuItem_Click);
+            // 
             // FormMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,6 +106,7 @@ namespace ProjectP3.MDI
             this.MainMenuStrip = this.Menu;
             this.Name = "FormMDI";
             this.Text = "Folha";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -112,5 +122,6 @@ namespace ProjectP3.MDI
         private System.Windows.Forms.ToolStripMenuItem registroDePontoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastroDeVendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem folhaDePagamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem taxasServiçosToolStripMenuItem;
     }
 }

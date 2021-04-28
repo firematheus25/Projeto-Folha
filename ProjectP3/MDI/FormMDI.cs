@@ -45,5 +45,12 @@ namespace ProjectP3.MDI
             F.MdiParent = this;
             F.Show();
         }
+
+        private void taxasServiçosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTaxas f = new FormTaxas();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

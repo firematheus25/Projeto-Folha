@@ -122,6 +122,7 @@ namespace ProjectP3
             // FuncionariosId1
             // 
             this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId1.BackgroundImage = global::ProjectP3.Properties.Resources.magnifier;
             this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
             this.FuncionariosId1.LarguraCodigo = 100;
