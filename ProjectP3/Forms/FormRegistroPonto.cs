@@ -102,6 +102,7 @@ namespace ProjectP3
         private void FuncionariosId1_ConsultarClick(object sender, EventArgs e)
         {
             var frmConsulta = new RegistroPontoConsulta();
+            frmConsulta.Owner = this;
             frmConsulta.ShowDialog();
         }
 

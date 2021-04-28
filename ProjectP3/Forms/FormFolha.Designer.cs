@@ -40,16 +40,16 @@ namespace ProjectP3.Forms
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(379, 12);
+            this.btnSalvar.Location = new System.Drawing.Point(380, 12);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(460, 12);
+            this.btnLimpar.Location = new System.Drawing.Point(461, 12);
             // 
             // panelInferior
             // 
-            this.panelInferior.Location = new System.Drawing.Point(0, 397);
-            this.panelInferior.Size = new System.Drawing.Size(555, 53);
+            this.panelInferior.Location = new System.Drawing.Point(-2, 397);
+            this.panelInferior.Size = new System.Drawing.Size(557, 53);
             // 
             // panel1
             // 

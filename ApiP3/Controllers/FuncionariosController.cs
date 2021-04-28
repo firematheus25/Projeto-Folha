@@ -26,6 +26,18 @@ namespace ApiP3.Controllers
             return db.FuncionarioVw.ToList();
         }
 
+        [HttpGet("Horista")]
+        public List<FuncionarioVw> GetByHorista()
+        {
+            return db.FuncionarioVw.Where(X => X.HoristaId != null).ToList();
+        }
+
+        [HttpGet("Comissionado")]
+        public List<FuncionarioVw> GetByComissionado()
+        {
+            return db.FuncionarioVw.Where(X => X.ComissionadoId != null).ToList();
+        }
+
         [HttpGet("Id")]
         public FuncionarioVw Get(int Id)
         {
@@ -44,13 +56,13 @@ namespace ApiP3.Controllers
 
 
         [HttpGet("BuscaCB")]
-        public List<FuncionarioVw> GetConsulta()
+        public FuncionarioVw GetConsulta(int Id)
         {
-            return db.FuncionarioVw.Select(x => new FuncionarioVw()
+            return db.FuncionarioVw.Where(X => X.FuncionariosId == Id).Select(x => new FuncionarioVw()
             {
                 FuncionariosId = x.FuncionariosId,
                 Nome = x.Nome
-            }).ToList();
+            }).FirstOrDefault();
 
         }
 

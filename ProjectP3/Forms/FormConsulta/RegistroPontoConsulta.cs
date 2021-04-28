@@ -23,15 +23,22 @@ namespace ProjectP3
 
         private async void RegistroPontoConsulta_Load(object sender, EventArgs e)
         {
-            var ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/");
+            var ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
 
 
             GridConsulta.LoadFromList(ListFuncionarios);
         }
 
-        private void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Teste");
+            var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
+            var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB/", Id);
+
+            var frm = (FormRegistroPonto)this.Owner;
+
+            frm.FuncionariosId1.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
+            frm.FuncionariosId1.TxtDescricao.Text = funcionario.Nome;
+            this.Close();
         }
     }
 }
