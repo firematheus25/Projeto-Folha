@@ -35,8 +35,8 @@ namespace miscellaneous.Models
         public int? AssalariadoId { get; set; }
 
         public double? Salario { get; set; }
-        public decimal? SalarioComissao { get; set; }
-        public decimal? TaxaComissao { get; set; }
+        public double? SalarioComissao { get; set; }
+        public double? TaxaComissao { get; set; }
         public double? ValorHora { get; set; }
 
         public Assalariado Assalariado { get; set; }

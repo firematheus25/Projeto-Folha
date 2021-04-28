@@ -27,5 +27,10 @@ namespace ProjectP3.MDI
         {
             // IMPLEMENTAR NOS FORMS FILHOS 
         }
+
+        private void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

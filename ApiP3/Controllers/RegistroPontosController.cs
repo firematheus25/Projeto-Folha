@@ -21,16 +21,16 @@ namespace ApiP3.Controllers
             this.db = db;
         }
 
-        //[HttpGet]
-        //public List<RegistroPonto> Get()
-        //{
-        //    return db.RegistroPontos.ToList();
-        //}
-
         [HttpGet]
-        public List<RegistroPonto> GetById(int Id)
+        public List<RegistroPonto> Get()
         {
-            return db.RegistroPontos.Where(X => X.FuncionariosId == Id).ToList();
+            return db.RegistroPontos.ToList();
+        }
+
+        [HttpGet("Id")]
+        public RegistroPonto GetById(int Id)
+        {
+            return db.RegistroPontos.Where(X => X.RegistroPontoId == Id).FirstOrDefault();
         }
 
 

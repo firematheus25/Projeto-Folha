@@ -25,6 +25,14 @@ namespace ApiP3.Controllers
             return db.FuncionarioVw.ToList();
         }
 
+        [HttpGet("Id")]
+        public FuncionarioVw Get(int Id)
+        {
+            return db.FuncionarioVw.Where(x => x.FuncionariosId == Id).FirstOrDefault();
+        }
+
+
+
         [HttpGet("List/")]
         public List<FuncionarioVw> GetConsulta()
         {

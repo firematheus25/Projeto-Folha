@@ -28,5 +28,10 @@ namespace ProjectP3
 
             GridConsulta.LoadFromList(ListFuncionarios);
         }
+
+        private void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Teste");
+        }
     }
 }

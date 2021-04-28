@@ -30,6 +30,17 @@ namespace ProjectP3
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             //Implementar na heranca
+            panel1.Visible = false;
+        }
+
+        private void btn_Retornar_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Implementar na Heranca
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using miscellaneous.Models;
 using Newtonsoft.Json;
+using ProjectP3.Forms.FormConsulta;
+using ProjectP3.MDI;
 using ProjectP3.Others;
 using ProjectP3.Services;
 using System;
@@ -21,6 +23,11 @@ namespace ProjectP3
         {
             InitializeComponent();
 
+
+            GridConsultaP.BuilderColumn("funcionariosId", "Matrícula");
+            GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+            GridConsultaP.BuilderColumn("Tipo", "Tipo", DataGridViewAutoSizeColumnMode.Fill);
+
             MetodoPagamento.Items.Add("1 - Cheque pelos correios");
             MetodoPagamento.Items.Add("2 - Cheque em mãos");
             MetodoPagamento.Items.Add("3 - Deposito em conta bancária");
@@ -35,6 +42,50 @@ namespace ProjectP3
             ValorHora.Visible = false;
             lbl_ValorHora.Visible = false;
             MetodoPagamento.DropDownWidth();
+        }
+
+        private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = GridConsultaP.CurrentRow.Cells["FuncionariosId"].Value.ToString();
+            var funcionario = await new Services<FuncionarioVw>().GetById("api/funcionarios/Id", id);
+
+
+            if (funcionario.TipoFuncionario == 1)
+            {
+                Assalariado.Checked = true;
+                Salario.Text = Convert.ToString(funcionario.Salario);
+            }
+            if (funcionario.TipoFuncionario == 2)
+            {
+                Comissionado.Checked = true;
+                Salario.Text = Convert.ToString(funcionario.SalarioComissao);
+                TaxaComissao.Text = Convert.ToString(funcionario.TaxaComissao);
+            }
+            if (funcionario.TipoFuncionario == 3)
+            {
+                Horista.Checked = true;
+            }
+
+            FuncionariosId.Text = funcionario.FuncionariosId.ToString();
+            Nome.Text = funcionario.Nome;
+            MetodoPagamento.SelectedIndex = ((int)(funcionario.MetodoPagamento - 1));
+
+            //Endereco
+            Cep.Text = funcionario.CEP;
+            Rua.Text = funcionario.Rua;
+            Cidade.Text = funcionario.Cidade;
+            Complemento.Text = funcionario.Complemento;
+            Bairro.Text = funcionario.Bairro;
+            Numero.Text = funcionario.Numero;
+            UF.SelectIndex(funcionario.UF);
+
+            //Dados Bancário
+            Banco.Text = funcionario.Banco;
+            Agencia.Text = funcionario.Agencia;
+            Conta.Text = funcionario.Conta;
+            Operacao.Text = funcionario.Operacao;
+            panel1.Visible = true;
+
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
@@ -60,12 +111,12 @@ namespace ProjectP3
                 Funcionario.Banco = Banco.Text;
                 Funcionario.Agencia = Agencia.Text;
                 Funcionario.Conta = Conta.Text;
-                Funcionario.Operacao = NumeroConta.Text;
+                Funcionario.Operacao = Operacao.Text;
 
                 if (Sindicato.SelectedIndex != -1)
                 {
                     Funcionario.Sindicato = Sindicato.Text.Substring(0, 1);
-                    Funcionario.TaxaSindical = Convert.ToDecimal(TaxaSindical.Text);
+                    Funcionario.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);
 
                 }
 
@@ -77,7 +128,7 @@ namespace ProjectP3
                     {
                         Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
                     }
-                    Assalariado.Salario = Convert.ToDecimal(Salario.Text);
+                    Assalariado.Salario = Convert.ToDouble(Salario.Text);
                     Funcionario.Assalariado = Assalariado;
                 }
 
@@ -148,15 +199,10 @@ namespace ProjectP3
             Banco.Clear();
             Agencia.Clear();
             Conta.Clear();
-            NumeroConta.Clear();
+            Operacao.Clear();
             Salario.Clear();
             TaxaComissao.Clear();
             ValorHora.Clear();
-
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -222,6 +268,35 @@ namespace ProjectP3
                 TaxaSindical.Visible = true;
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormConsultaPadraoFuncionarios F = new FormConsultaPadraoFuncionarios();            
+            F.ShowDialog();
+        }
+
+        private async void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            var funcionarios = await new Services<Funcionario>().Get("api/funcionarios/");
+            for (int i = 0; i < funcionarios.Count; i++)
+            {
+                if (funcionarios[i].TipoFuncionario == 1)
+                {
+                    funcionarios[i].Tipo = "Assalariado";
+                }
+                if (funcionarios[i].TipoFuncionario == 2)
+                {
+                    funcionarios[i].Tipo = "Comissionado";
+                }
+                if (funcionarios[i].TipoFuncionario == 3)
+                {
+                    funcionarios[i].Tipo = "Horista";
+                }
+
+            }
+
+            GridConsultaP.LoadFromList(funcionarios);
         }
     }
 }

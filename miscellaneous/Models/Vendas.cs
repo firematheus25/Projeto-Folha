@@ -12,8 +12,9 @@ namespace miscellaneous.Models
         [Key]
         public int VendasId { get; set; }
         public int FuncionariosId { get; set; }
-        public decimal? ValorVenda { get; set; }
+        public string Nome { get; set; }
+        public double? ValorVenda { get; set; }
         public DateTime DtVenda { get; set; }
-        public decimal? Porcentagem { get; set; }
+        public double? Porcentagem { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Humanizer;
 using ProjectP3.Services;
+using ProjectP3.Others;
 
 namespace ProjectP3
 {
@@ -20,6 +21,15 @@ namespace ProjectP3
             InitializeComponent();
             Entrada.Value = DateTimePicker.MinimumDateTime;
             Saida.Value = DateTimePicker.MinimumDateTime;
+            this.GridConsultaP.Size = new System.Drawing.Size(400, 183);
+
+            GridConsultaP.BuilderColumn("RegistroPontoId");
+            GridConsultaP.BuilderColumn("funcionariosId", "Matrícula");
+            GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+            GridConsultaP.BuilderColumn("DtPonto", "Data", DataGridViewAutoSizeColumnMode.None, "dd/MM/yyyy");
+
+            FuncionariosId1.TxtCodigo.Enabled = false;
+
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -28,6 +38,27 @@ namespace ProjectP3
             Data.Clear();
             Entrada.Value = DateTimePicker.MinimumDateTime;
             Saida.Value = DateTimePicker.MinimumDateTime;
+        }
+
+        private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FuncionariosId1.Enabled = false;
+            var id = GridConsultaP.CurrentRow.Cells["RegistroPontoId"].Value.ToString();
+            var Ponto = await new Services<RegistroPonto>().GetById("api/RegistroPontos/Id", id);
+
+            RegistroPontoId.Text = Convert.ToString(Ponto.RegistroPontoId);
+            FuncionariosId1.TxtCodigo.Text = Convert.ToString(Ponto.FuncionariosId);
+            FuncionariosId1.TxtDescricao.Text = Ponto.Nome;
+            Data.Date = Ponto.DtPonto;
+            Entrada.Value = Convert.ToDateTime(Ponto.Entrada);
+            Saida.Value = Convert.ToDateTime(Ponto.Saida);
+            Horas.Text = Ponto.Horas;
+
+
+            panel1.Visible = true;
+
+
+
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
@@ -56,11 +87,6 @@ namespace ProjectP3
 
         }
 
-        private void panelInferior_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Saida_ValueChanged(object sender, EventArgs e)
         {
             if (Saida.Value == DateTimePicker.MinimumDateTime || Saida.Value.TimeOfDay < Entrada.Value.TimeOfDay)
@@ -73,8 +99,6 @@ namespace ProjectP3
             }
         }
 
-
-
         private void FuncionariosId1_ConsultarClick(object sender, EventArgs e)
         {
             var frmConsulta = new RegistroPontoConsulta();
@@ -84,6 +108,13 @@ namespace ProjectP3
         private async void FuncionariosId1_ConsultarAPI(object sender)
         {
 
+        }
+
+        private async void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            var pontos = await new Services<RegistroPonto>().Get("api/RegistroPontos");
+
+            GridConsultaP.LoadFromList(pontos);
         }
     }
 }

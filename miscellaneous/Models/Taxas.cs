@@ -12,7 +12,7 @@ namespace miscellaneous.Models
         [Key]
         public int TaxasId { get; set; }
         public int FuncionariosId { get; set; }
-        public decimal TaxaServico { get; set; }
-        public decimal TaxaSindExtra { get; set; }
+        public double TaxaServico { get; set; }
+        public DateTime Competencia { get; set; }
     }
 }

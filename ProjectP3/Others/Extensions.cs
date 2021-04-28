@@ -29,6 +29,25 @@ namespace ProjectP3.Others
             combo.DropDownWidth = maxWidth;
         }
 
+        public static void SelectIndex(this ComboBox combo, string retorno)
+        {
+
+            if (string.IsNullOrWhiteSpace(retorno))
+            {
+                combo.SelectedIndex = -1;
+                return;
+            }
+
+            var items = combo.Items.OfType<string>().ToList();
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].StartsWith(retorno))
+                {
+                    combo.SelectedIndex = i;
+                }
+            }
+        }
+
         //-----------------------Grid---------------------------------//    
 
 

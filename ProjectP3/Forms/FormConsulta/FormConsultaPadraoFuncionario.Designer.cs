@@ -1,7 +1,7 @@
 ﻿
-namespace ProjectP3
+namespace ProjectP3.Forms.FormConsulta
 {
-    partial class RegistroPontoConsulta
+    partial class FormConsultaPadraoFuncionario
     {
         /// <summary>
         /// Required designer variable.
@@ -31,17 +31,22 @@ namespace ProjectP3
         {
             this.SuspendLayout();
             // 
-            // RegistroPontoConsulta
+            // Btn_Buscar
+            // 
+            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
+            this.GridConsulta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConsulta_CellDoubleClick);
+            // 
+            // ConsultaFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 450);
-            this.Name = "RegistroPontoConsulta";
-            this.Text = "RegistroPontoConsulta";
-            this.Load += new System.EventHandler(this.RegistroPontoConsulta_Load);
+            this.ClientSize = new System.Drawing.Size(464, 450);
+            this.Name = "ConsultaFuncionario";
+            this.Text = "Consulta Funcionário";
+            this.Load += new System.EventHandler(this.ConsultaFuncionario_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
-            this.GridConsulta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConsulta_CellDoubleClick);
         }
 
         #endregion

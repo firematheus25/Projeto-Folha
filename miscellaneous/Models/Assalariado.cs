@@ -14,7 +14,7 @@ namespace miscellaneous.Models
 
         [Key]
         public int AssalariadoId { get; set; }
-        public decimal Salario { get; set; }
+        public double Salario { get; set; }
 
     }
 }
