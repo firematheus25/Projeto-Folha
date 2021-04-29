@@ -1,4 +1,5 @@
 ﻿using miscellaneous.Models;
+using ProjectP3.Forms;
 using ProjectP3.Others;
 using ProjectP3.Services;
 using System;
@@ -25,12 +26,40 @@ namespace ProjectP3.MDI
 
         private async void FormConsulta_Load(object sender, EventArgs e)
         {
-            // IMPLEMENTAR NOS FORMS FILHOS 
+            List<Funcionario> ListFuncionarios;
+            var t = this.Owner.GetType();
+            if (t.Equals(typeof(FormRegistroPonto)))
+            {
+                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
+            }
+            else if (t.Equals(typeof(FormVendas)))
+            {
+                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
+            }
+            else if(t.Equals(typeof(FormTaxas)))
+            {
+                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Sindicato");
+            }
+            else
+            {
+                ListFuncionarios = null;
+            }
+
+
+
+            GridConsulta.LoadFromList(ListFuncionarios);
         }
 
-        private void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
+            var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB/", Id);
 
+            var frm = (FormRegistroPonto)this.Owner;
+
+            frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
+            frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
+            this.Close();
         }
     }
 }

@@ -64,6 +64,7 @@ namespace ProjectP3
             if (funcionario.TipoFuncionario == 3)
             {
                 Horista.Checked = true;
+                ValorHora.Text = Convert.ToString(funcionario.ValorHora);
             }
 
             FuncionariosId.Text = funcionario.FuncionariosId.ToString();

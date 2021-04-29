@@ -79,7 +79,7 @@ namespace ProjectP3.Forms
                                     folha.MetodoPagamento = "Deposito em conta bancária";
                                 }
                                 folha.DtPagamento = DtPagamento.Date.Value;
-                                folha.Salario = salario;
+                                folha.Salario = Math.Round((double)salario,2);
                                                                 
                                 ListFolha.Add(folha);
                             
@@ -88,6 +88,11 @@ namespace ProjectP3.Forms
                     }
                     if (Funcionario[i].TipoFuncionario == 2)//COMISSIONADO
                     {
+                        if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Friday")
+                        {
+
+                        }
+
 
                     }
                     if (Funcionario[i].TipoFuncionario == 3)//HORISTA

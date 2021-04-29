@@ -29,7 +29,7 @@ namespace ProjectP3
         /// </summary>
         private void InitializeComponent()
         {
-            this.FuncionariosId1 = new ProjectP3.componentes.CmpBuscaCombinada();
+            this.FuncionariosId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.Funcionarios = new System.Windows.Forms.Label();
             this.DtVenda = new ProjectP3.componentes.CmpDataCalendario();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,7 +38,6 @@ namespace ProjectP3
             this.label1 = new System.Windows.Forms.Label();
             this.PorcentagemVenda = new ProjectP3.componentes.CmpNumerico();
             this.VendasId = new System.Windows.Forms.TextBox();
-            this.FuncionariosId = new System.Windows.Forms.TextBox();
             this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +63,6 @@ namespace ProjectP3
             // 
             this.btn_Buscar.Location = new System.Drawing.Point(279, 13);
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
-            this.GridConsultaP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConsultaP_CellDoubleClick);
             // 
             // btn_Retornar
             // 
@@ -78,7 +76,6 @@ namespace ProjectP3
             this.panel1.Controls.Add(this.VendasId);
             this.panel1.Controls.Add(this.ValorVenda);
             this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Controls.Add(this.FuncionariosId1);
             this.panel1.Controls.Add(this.DtVenda);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.Funcionarios);
@@ -86,7 +83,6 @@ namespace ProjectP3
             this.panel1.Controls.SetChildIndex(this.Funcionarios, 0);
             this.panel1.Controls.SetChildIndex(this.label4, 0);
             this.panel1.Controls.SetChildIndex(this.DtVenda, 0);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId1, 0);
             this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
             this.panel1.Controls.SetChildIndex(this.ValorVenda, 0);
             this.panel1.Controls.SetChildIndex(this.VendasId, 0);
@@ -99,19 +95,19 @@ namespace ProjectP3
             // 
             this.PalavraChave.Size = new System.Drawing.Size(178, 20);
             // 
-            // FuncionariosId1
+            // FuncionariosId
             // 
-            this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.LarguraCodigo = 100;
-            this.FuncionariosId1.Location = new System.Drawing.Point(87, 15);
-            this.FuncionariosId1.Mascara = "";
-            this.FuncionariosId1.Name = "FuncionariosId1";
-            this.FuncionariosId1.Size = new System.Drawing.Size(320, 21);
-            this.FuncionariosId1.TabIndex = 1;
-            this.FuncionariosId1.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId1_ConsultarAPI);
-            this.FuncionariosId1.ConsultarClick += new System.EventHandler(this.FuncionariosId1_ConsultarClick);
+            this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionariosId.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionariosId.LarguraCodigo = 100;
+            this.FuncionariosId.Location = new System.Drawing.Point(87, 15);
+            this.FuncionariosId.Mascara = "";
+            this.FuncionariosId.Name = "FuncionariosId";
+            this.FuncionariosId.Size = new System.Drawing.Size(320, 21);
+            this.FuncionariosId.TabIndex = 1;
+            this.FuncionariosId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId_ConsultarAPI);
+            this.FuncionariosId.ConsultarClick += new System.EventHandler(this.FuncionariosId_ConsultarClick);
             // 
             // Funcionarios
             // 
@@ -201,13 +197,6 @@ namespace ProjectP3
             this.VendasId.TabIndex = 9;
             this.VendasId.Visible = false;
             // 
-            // FuncionariosId
-            // 
-            this.FuncionariosId.Location = new System.Drawing.Point(277, 43);
-            this.FuncionariosId.Name = "FuncionariosId";
-            this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
-            this.FuncionariosId.TabIndex = 10;
-            // 
             // FormVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,7 +215,7 @@ namespace ProjectP3
 
         #endregion
 
-        private componentes.CmpBuscaCombinada FuncionariosId1;
+        private componentes.CmpBuscaCombinada FuncionariosId;
         private System.Windows.Forms.Label Funcionarios;
         private componentes.CmpDataCalendario DtVenda;
         private System.Windows.Forms.Label label4;
@@ -235,6 +224,5 @@ namespace ProjectP3
         private System.Windows.Forms.Label label1;
         private componentes.CmpNumerico PorcentagemVenda;
         private System.Windows.Forms.TextBox VendasId;
-        private System.Windows.Forms.TextBox FuncionariosId;
     }
 }

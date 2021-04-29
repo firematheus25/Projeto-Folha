@@ -30,14 +30,13 @@ namespace ProjectP3
         private void InitializeComponent()
         {
             this.RegistroPontoId = new System.Windows.Forms.TextBox();
-            this.FuncionariosId1 = new ProjectP3.componentes.CmpBuscaCombinada();
+            this.FuncionariosId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Data = new ProjectP3.componentes.CmpDataCalendario();
             this.Entrada = new System.Windows.Forms.DateTimePicker();
             this.Saida = new System.Windows.Forms.DateTimePicker();
-            this.FuncionariosId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Horas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -88,13 +87,11 @@ namespace ProjectP3
             this.panel1.Controls.Add(this.Data);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.FuncionariosId);
             this.panel1.Controls.Add(this.RegistroPontoId);
-            this.panel1.Controls.Add(this.FuncionariosId1);
+            this.panel1.Controls.Add(this.FuncionariosId);
             this.panel1.Size = new System.Drawing.Size(421, 236);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId1, 0);
-            this.panel1.Controls.SetChildIndex(this.RegistroPontoId, 0);
             this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.panel1.Controls.SetChildIndex(this.RegistroPontoId, 0);
             this.panel1.Controls.SetChildIndex(this.label2, 0);
             this.panel1.Controls.SetChildIndex(this.label5, 0);
             this.panel1.Controls.SetChildIndex(this.Data, 0);
@@ -113,26 +110,26 @@ namespace ProjectP3
             // 
             // RegistroPontoId
             // 
-            this.RegistroPontoId.Location = new System.Drawing.Point(310, 133);
+            this.RegistroPontoId.Location = new System.Drawing.Point(314, 157);
             this.RegistroPontoId.Name = "RegistroPontoId";
             this.RegistroPontoId.Size = new System.Drawing.Size(100, 20);
             this.RegistroPontoId.TabIndex = 1;
             this.RegistroPontoId.Visible = false;
             // 
-            // FuncionariosId1
+            // FuncionariosId
             // 
-            this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.BackgroundImage = global::ProjectP3.Properties.Resources.magnifier;
-            this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.LarguraCodigo = 100;
-            this.FuncionariosId1.Location = new System.Drawing.Point(78, 27);
-            this.FuncionariosId1.Mascara = "";
-            this.FuncionariosId1.Name = "FuncionariosId1";
-            this.FuncionariosId1.Size = new System.Drawing.Size(330, 21);
-            this.FuncionariosId1.TabIndex = 3;
-            this.FuncionariosId1.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId1_ConsultarAPI);
-            this.FuncionariosId1.ConsultarClick += new System.EventHandler(this.FuncionariosId1_ConsultarClick);
+            this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId.BackgroundImage = global::ProjectP3.Properties.Resources.magnifier;
+            this.FuncionariosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionariosId.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionariosId.LarguraCodigo = 100;
+            this.FuncionariosId.Location = new System.Drawing.Point(78, 27);
+            this.FuncionariosId.Mascara = "";
+            this.FuncionariosId.Name = "FuncionariosId";
+            this.FuncionariosId.Size = new System.Drawing.Size(330, 21);
+            this.FuncionariosId.TabIndex = 3;
+            this.FuncionariosId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId1_ConsultarAPI);
+            this.FuncionariosId.ConsultarClick += new System.EventHandler(this.FuncionariosId1_ConsultarClick);
             // 
             // label2
             // 
@@ -195,13 +192,6 @@ namespace ProjectP3
             this.Saida.TabIndex = 10;
             this.Saida.ValueChanged += new System.EventHandler(this.Saida_ValueChanged);
             // 
-            // FuncionariosId
-            // 
-            this.FuncionariosId.Location = new System.Drawing.Point(184, 54);
-            this.FuncionariosId.Name = "FuncionariosId";
-            this.FuncionariosId.Size = new System.Drawing.Size(100, 20);
-            this.FuncionariosId.TabIndex = 11;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -254,10 +244,9 @@ namespace ProjectP3
         private componentes.CmpDataCalendario Data;
         private System.Windows.Forms.DateTimePicker Entrada;
         private System.Windows.Forms.DateTimePicker Saida;
-        private System.Windows.Forms.TextBox FuncionariosId;
         private System.Windows.Forms.TextBox Horas;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        public componentes.CmpBuscaCombinada FuncionariosId1;
+        public componentes.CmpBuscaCombinada FuncionariosId;
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Humanizer;
 using ProjectP3.Services;
 using ProjectP3.Others;
+using ProjectP3.MDI;
 
 namespace ProjectP3
 {
@@ -28,7 +29,7 @@ namespace ProjectP3
             GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
             GridConsultaP.BuilderColumn("DtPonto", "Data", DataGridViewAutoSizeColumnMode.None, "dd/MM/yyyy");
 
-            FuncionariosId1.TxtCodigo.Enabled = false;
+            FuncionariosId.TxtCodigo.Enabled = false;
 
         }
 
@@ -42,13 +43,13 @@ namespace ProjectP3
 
         private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            FuncionariosId1.Enabled = false;
+            FuncionariosId.Enabled = false;
             var id = GridConsultaP.CurrentRow.Cells["RegistroPontoId"].Value.ToString();
             var Ponto = await new Services<RegistroPonto>().GetById("api/RegistroPontos/Id", id);
 
             RegistroPontoId.Text = Convert.ToString(Ponto.RegistroPontoId);
-            FuncionariosId1.TxtCodigo.Text = Convert.ToString(Ponto.FuncionariosId);
-            FuncionariosId1.TxtDescricao.Text = Ponto.Nome;
+            FuncionariosId.TxtCodigo.Text = Convert.ToString(Ponto.FuncionariosId);
+            FuncionariosId.TxtDescricao.Text = Ponto.Nome;
             Data.Date = Ponto.DtPonto;
             Entrada.Value = Convert.ToDateTime(Ponto.Entrada);
             Saida.Value = Convert.ToDateTime(Ponto.Saida);
@@ -101,7 +102,7 @@ namespace ProjectP3
 
         private void FuncionariosId1_ConsultarClick(object sender, EventArgs e)
         {
-            var frmConsulta = new RegistroPontoConsulta();
+            var frmConsulta = new FormConsulta();
             frmConsulta.Owner = this;
             frmConsulta.ShowDialog();
         }

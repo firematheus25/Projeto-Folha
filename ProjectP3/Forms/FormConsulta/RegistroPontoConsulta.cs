@@ -23,7 +23,21 @@ namespace ProjectP3
 
         private async void RegistroPontoConsulta_Load(object sender, EventArgs e)
         {
-            var ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
+            List<Funcionario> ListFuncionarios;
+            var t = this.Owner.GetType();
+            if (t.Equals(typeof(FormRegistroPonto)))
+            {
+                 ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
+            }
+            else if(t.Equals(typeof(Form)))
+            {
+                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
+            }
+            else
+            {
+                ListFuncionarios = null;
+            }
+            
 
 
             GridConsulta.LoadFromList(ListFuncionarios);
@@ -36,8 +50,8 @@ namespace ProjectP3
 
             var frm = (FormRegistroPonto)this.Owner;
 
-            frm.FuncionariosId1.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
-            frm.FuncionariosId1.TxtDescricao.Text = funcionario.Nome;
+            frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
+            frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
             this.Close();
         }
     }

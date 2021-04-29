@@ -107,7 +107,7 @@ create table Folha
 	
 );
 
-create view FuncionariosVw AS
+create or alter view FuncionariosVw AS
 select F.*, A.Salario, C.Salario AS SalarioComissao, C.TaxaComissao, H.ValorHora from Funcionarios F
 Left Join Assalariados A ON (F.AssalariadoId = A.AssalariadoId)
 Left Join Comissionados C ON (F.ComissionadoId = C.ComissionadoId)

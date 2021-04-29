@@ -30,7 +30,7 @@ namespace ProjectP3.Forms
         private void InitializeComponent()
         {
             this.label6 = new System.Windows.Forms.Label();
-            this.FuncionariosId1 = new ProjectP3.componentes.CmpBuscaCombinada();
+            this.FuncionariosId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.label1 = new System.Windows.Forms.Label();
             this.TaxaServico = new System.Windows.Forms.TextBox();
             this.Competencia = new ProjectP3.componentes.CmpDataCalendario();
@@ -61,10 +61,10 @@ namespace ProjectP3.Forms
             this.panel1.Controls.Add(this.TaxaServico);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.FuncionariosId1);
+            this.panel1.Controls.Add(this.FuncionariosId);
             this.panel1.Size = new System.Drawing.Size(421, 236);
             this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId1, 0);
+            this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
             this.panel1.Controls.SetChildIndex(this.label6, 0);
             this.panel1.Controls.SetChildIndex(this.label1, 0);
             this.panel1.Controls.SetChildIndex(this.TaxaServico, 0);
@@ -81,17 +81,17 @@ namespace ProjectP3.Forms
             this.label6.TabIndex = 15;
             this.label6.Text = "Funcionário";
             // 
-            // FuncionariosId1
+            // FuncionariosId
             // 
-            this.FuncionariosId1.BackColor = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FuncionariosId1.CorFundo = System.Drawing.Color.Transparent;
-            this.FuncionariosId1.LarguraCodigo = 100;
-            this.FuncionariosId1.Location = new System.Drawing.Point(77, 31);
-            this.FuncionariosId1.Mascara = "";
-            this.FuncionariosId1.Name = "FuncionariosId1";
-            this.FuncionariosId1.Size = new System.Drawing.Size(330, 21);
-            this.FuncionariosId1.TabIndex = 14;
+            this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionariosId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionariosId.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionariosId.LarguraCodigo = 100;
+            this.FuncionariosId.Location = new System.Drawing.Point(77, 31);
+            this.FuncionariosId.Mascara = "";
+            this.FuncionariosId.Name = "FuncionariosId";
+            this.FuncionariosId.Size = new System.Drawing.Size(330, 21);
+            this.FuncionariosId.TabIndex = 14;
             // 
             // label1
             // 
@@ -156,7 +156,7 @@ namespace ProjectP3.Forms
         #endregion
 
         private System.Windows.Forms.Label label6;
-        private componentes.CmpBuscaCombinada FuncionariosId1;
+        private componentes.CmpBuscaCombinada FuncionariosId;
         private System.Windows.Forms.Label label2;
         private componentes.CmpDataCalendario Competencia;
         private System.Windows.Forms.TextBox TaxaServico;

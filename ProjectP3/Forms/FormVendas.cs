@@ -1,4 +1,5 @@
 ﻿using miscellaneous.Models;
+using ProjectP3.MDI;
 using ProjectP3.Others;
 using ProjectP3.Services;
 using System;
@@ -30,7 +31,7 @@ namespace ProjectP3
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             VendasId.Clear();
-            FuncionariosId1.Clear();
+            FuncionariosId.Clear();
             DtVenda.Clear();
             ValorVenda.Clear();
             PorcentagemVenda.Clear();
@@ -39,13 +40,13 @@ namespace ProjectP3
 
         private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            FuncionariosId1.Enabled = false;
+            FuncionariosId.Enabled = false;
             var id = GridConsultaP.CurrentRow.Cells["VendasId"].Value.ToString();
             var venda = await new Services<Vendas>().GetById("api/Vendas/Id", id);
 
             VendasId.Text = Convert.ToString(venda.VendasId);
-            FuncionariosId1.TxtCodigo.Text = Convert.ToString(venda.FuncionariosId);
-            FuncionariosId1.TxtDescricao.Text = venda.Nome;
+            FuncionariosId.TxtCodigo.Text = Convert.ToString(venda.FuncionariosId);
+            FuncionariosId.TxtDescricao.Text = venda.Nome;
             DtVenda.Date = venda.DtVenda;
             ValorVenda.Text = Convert.ToString(venda.ValorVenda);
             PorcentagemVenda.Text = Convert.ToString(venda.Porcentagem);
@@ -91,13 +92,14 @@ namespace ProjectP3
             GridConsultaP.LoadFromList(pontos);
         }
 
-        private void FuncionariosId1_ConsultarClick(object sender, EventArgs e)
+        private void FuncionariosId_ConsultarClick(object sender, EventArgs e)
         {
-            var frmConsulta = new RegistroPontoConsulta();
+            var frmConsulta = new FormConsulta();
+            frmConsulta.Owner = this;
             frmConsulta.ShowDialog();
         }
 
-        private async void FuncionariosId1_ConsultarAPI(object sender)
+        private async void FuncionariosId_ConsultarAPI(object sender)
         {
 
         }
