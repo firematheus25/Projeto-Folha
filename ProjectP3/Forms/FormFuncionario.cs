@@ -32,8 +32,6 @@ namespace ProjectP3
             MetodoPagamento.Items.Add("2 - Cheque em mãos");
             MetodoPagamento.Items.Add("3 - Deposito em conta bancária");
 
-            Sindicato.Items.Add("Sim");
-            Sindicato.Items.Add("Não");
 
             Salario.Visible = false;
             lbl_Salario.Visible = false;
@@ -114,12 +112,13 @@ namespace ProjectP3
                 Funcionario.Conta = Conta.Text;
                 Funcionario.Operacao = Operacao.Text;
 
-                if (Sindicato.SelectedIndex != -1)
+                if (!string.IsNullOrEmpty(FuncionarioSindicalId.TxtCodigo.Text))
                 {
-                    Funcionario.Sindicato = Sindicato.Text.Substring(0, 1);
-                    Funcionario.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);
 
                 }
+                   // Funcionario.Sindicato = Sindicatos.Text.Substring(0, 1);
+                    Funcionario.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);
+                
 
                 if (Assalariado.Checked)
                 {
@@ -187,7 +186,7 @@ namespace ProjectP3
 
             FuncionariosId.Clear();
             Nome.Clear();
-            Sindicato.SelectedIndex = -1;
+            Sindicatos.SelectedIndex = -1;
             MetodoPagamento.SelectedIndex = -1;
             Salario.Clear();
             Cep.Clear();
@@ -263,7 +262,7 @@ namespace ProjectP3
 
         private void Sindicato_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Sindicato.SelectedIndex == 0)
+            if (Sindicatos.SelectedIndex == 0)
             {
                 lbl_TxSindical.Visible = true;
                 TaxaSindical.Visible = true;

@@ -22,7 +22,7 @@ namespace ApiP3.DATA
         public DbSet<Comissionado> Comissionado { get; set; }
         public DbSet<Assalariado> Assalariado { get; set; }
         public DbSet<Vendas> Vendas { get; set; }
-        public DbSet<Taxas> Taxas { get; set; }
+        public DbSet<TaxaServico> Taxas { get; set; }
         public DbSet<RegistroPonto> RegistroPontos { get; set; }
         public DbSet<Folha> Folhas { get; set; }
 

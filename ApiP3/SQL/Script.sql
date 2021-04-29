@@ -16,8 +16,6 @@
 	Conta varchar(8),
 	Agencia varchar(4),
 	Operacao varchar(3),
-	Sindicato varchar(1),
-	TaxaSindical decimal,
 	ComissionadoId int,
 	HoristaId int,
 	AssalariadoId int,
@@ -25,7 +23,8 @@
 	Primary Key(FuncionariosId),
 	Constraint fk_ComissionadoId foreign key (ComissionadoId) references Comissionado(ComissionadoId),
 	Constraint fk_HoristaId foreign key (HoristaId) references Horista(HoristaId),
-	Constraint fk_AssalariadoId foreign key (AssalariadoId) references Assalariado(AssalariadoId)
+	Constraint fk_AssalariadoId foreign key (AssalariadoId) references Assalariado(AssalariadoId),
+	Constraint fk_SindicatosId	foreign key (SindicatosId) references Sindicatos(SindicatosId) 
 );
 
 drop table Funcionario
@@ -33,10 +32,12 @@ drop table Funcionario
 create table Comissionados
 (
 	ComissionadoId int identity,
+	FuncionariosId int,
 	Salario decimal,
 	TaxaComissao decimal,
 
-	primary key(ComissionadoId)
+	primary key(ComissionadoId),
+	Constraint fk__Comi_FuncionariosId foreign key (FuncionariosId) references Funcionarios(FuncionariosId) 
 		
 );
 
@@ -45,7 +46,8 @@ create table Horistas
 	HoristaId int identity,
 	ValorHora decimal,
 
-	primary key(HoristaId)
+	primary key(HoristaId),
+	Constraint fk_Hor_FuncionariosId foreign key (FuncionariosId) references Funcionarios(FuncionariosId) 
 
 );
 
@@ -54,7 +56,8 @@ create table Assalariados
 	AssalariadoId int identity,
 	Salario decimal,
 
-	primary key(AssalariadoId)
+	primary key(AssalariadoId),
+	Constraint fk_Assa_FuncionariosId foreign key (FuncionariosId) references Funcionarios(FuncionariosId) 
 
 );
 
@@ -106,6 +109,39 @@ create table Folha
 	Constraint FK_FL_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
 	
 );
+
+create table Sindicatos
+(
+	SindicatosId int identity,
+	Nome varchar(50),
+
+	Primary Key(SindicatosId)
+);
+
+create table TaxaServico
+(
+	FuncionarioSindicalId int identity,
+	Competencia date,
+	TaxaServico float,
+
+	primary key(FuncionarioSindicalId, Competencia),
+	Constraint FK_FuncionariosSindicalId foreign key (FuncionarioSindicalId) references FuncionarioSindical(FuncionarioSindicalId)
+
+);
+
+create table FuncionarioSindical
+(
+	FuncionarioSindicalId int identity,
+	FuncionariosId int,
+	SindicatosId int,
+	TaxaSindical float,
+
+	primary key (FuncionarioSindicalId),
+	Constraint FK__FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId),
+	Constraint FK__Sindicatos foreign key (SindicatosId) references Sindicatos(SindicatosId),
+);
+
+
 
 create or alter view FuncionariosVw AS
 select F.*, A.Salario, C.Salario AS SalarioComissao, C.TaxaComissao, H.ValorHora from Funcionarios F

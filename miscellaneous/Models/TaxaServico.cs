@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace miscellaneous.Models
 {
-    public class Taxas
+    public class TaxasServico
     {
         [Key]
-        public int TaxasId { get; set; }
-        public int FuncionariosId { get; set; }
-        public double TaxaServico { get; set; }
+        public int FuncionarioSindicalId { get; set; }
         public DateTime Competencia { get; set; }
+        public double TaxaServico { get; set; }
     }
 }

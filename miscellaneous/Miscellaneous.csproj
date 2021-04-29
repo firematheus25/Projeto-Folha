@@ -47,14 +47,15 @@
   <ItemGroup>
     <Compile Include="Models\Assalariado.cs" />
     <Compile Include="Models\Folha.cs" />
+    <Compile Include="Models\FuncionarioSindical.cs" />
     <Compile Include="Models\FuncionarioVw.cs" />
     <Compile Include="Models\RegistroPonto.cs" />
     <Compile Include="Models\Cheque.cs" />
     <Compile Include="Models\Comissionado.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Horista.cs" />
-    <Compile Include="Models\Sindicato.cs" />
-    <Compile Include="Models\Taxas.cs" />
+    <Compile Include="Models\Sindicatos.cs" />
+    <Compile Include="Models\TaxaServico.cs" />
     <Compile Include="Models\Vendas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -74,9 +74,9 @@ namespace ProjectP3
             this.ComissionadoId = new System.Windows.Forms.TextBox();
             this.AssalariadoId = new System.Windows.Forms.TextBox();
             this.HoristaId = new System.Windows.Forms.TextBox();
-            this.Sindicato = new System.Windows.Forms.ComboBox();
             this.lbl_TxSindical = new System.Windows.Forms.Label();
             this.TaxaSindical = new System.Windows.Forms.TextBox();
+            this.FuncionarioSindicalId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,7 +104,6 @@ namespace ProjectP3
             // 
             this.btn_Buscar.Location = new System.Drawing.Point(400, 13);
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
-            this.GridConsultaP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConsultaP_CellDoubleClick);
             // 
             // btn_Retornar
             // 
@@ -112,10 +111,10 @@ namespace ProjectP3
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.FuncionarioSindicalId);
             this.panel1.Controls.Add(this.lbl_TxSindical);
             this.panel1.Controls.Add(this.TaxaSindical);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.Sindicato);
             this.panel1.Controls.Add(this.FuncionariosId);
             this.panel1.Controls.Add(this.HoristaId);
             this.panel1.Controls.Add(this.label1);
@@ -151,11 +150,11 @@ namespace ProjectP3
             this.panel1.Controls.SetChildIndex(this.label1, 0);
             this.panel1.Controls.SetChildIndex(this.HoristaId, 0);
             this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
-            this.panel1.Controls.SetChildIndex(this.Sindicato, 0);
             this.panel1.Controls.SetChildIndex(this.groupBox1, 0);
             this.panel1.Controls.SetChildIndex(this.TaxaSindical, 0);
             this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
             this.panel1.Controls.SetChildIndex(this.lbl_TxSindical, 0);
+            this.panel1.Controls.SetChildIndex(this.FuncionarioSindicalId, 0);
             // 
             // PalavraChave
             // 
@@ -589,7 +588,7 @@ namespace ProjectP3
             // 
             // ComissionadoId
             // 
-            this.ComissionadoId.Location = new System.Drawing.Point(424, 176);
+            this.ComissionadoId.Location = new System.Drawing.Point(423, 228);
             this.ComissionadoId.Name = "ComissionadoId";
             this.ComissionadoId.Size = new System.Drawing.Size(100, 20);
             this.ComissionadoId.TabIndex = 29;
@@ -605,26 +604,16 @@ namespace ProjectP3
             // 
             // HoristaId
             // 
-            this.HoristaId.Location = new System.Drawing.Point(424, 202);
+            this.HoristaId.Location = new System.Drawing.Point(423, 228);
             this.HoristaId.Name = "HoristaId";
             this.HoristaId.Size = new System.Drawing.Size(100, 20);
             this.HoristaId.TabIndex = 31;
             this.HoristaId.Visible = false;
             // 
-            // Sindicato
-            // 
-            this.Sindicato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Sindicato.FormattingEnabled = true;
-            this.Sindicato.Location = new System.Drawing.Point(114, 123);
-            this.Sindicato.Name = "Sindicato";
-            this.Sindicato.Size = new System.Drawing.Size(100, 21);
-            this.Sindicato.TabIndex = 32;
-            this.Sindicato.SelectedIndexChanged += new System.EventHandler(this.Sindicato_SelectedIndexChanged);
-            // 
             // lbl_TxSindical
             // 
             this.lbl_TxSindical.AutoSize = true;
-            this.lbl_TxSindical.Location = new System.Drawing.Point(256, 126);
+            this.lbl_TxSindical.Location = new System.Drawing.Point(256, 153);
             this.lbl_TxSindical.Name = "lbl_TxSindical";
             this.lbl_TxSindical.Size = new System.Drawing.Size(74, 13);
             this.lbl_TxSindical.TabIndex = 34;
@@ -633,11 +622,23 @@ namespace ProjectP3
             // 
             // TaxaSindical
             // 
-            this.TaxaSindical.Location = new System.Drawing.Point(341, 123);
+            this.TaxaSindical.Location = new System.Drawing.Point(341, 150);
             this.TaxaSindical.Name = "TaxaSindical";
             this.TaxaSindical.Size = new System.Drawing.Size(100, 20);
             this.TaxaSindical.TabIndex = 35;
             this.TaxaSindical.Visible = false;
+            // 
+            // FuncionarioSindicalId
+            // 
+            this.FuncionarioSindicalId.BackColor = System.Drawing.Color.Transparent;
+            this.FuncionarioSindicalId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FuncionarioSindicalId.CorFundo = System.Drawing.Color.Transparent;
+            this.FuncionarioSindicalId.LarguraCodigo = 100;
+            this.FuncionarioSindicalId.Location = new System.Drawing.Point(114, 123);
+            this.FuncionarioSindicalId.Mascara = "";
+            this.FuncionarioSindicalId.Name = "FuncionarioSindicalId";
+            this.FuncionarioSindicalId.Size = new System.Drawing.Size(327, 21);
+            this.FuncionarioSindicalId.TabIndex = 36;
             // 
             // FormFuncionario
             // 
@@ -706,12 +707,12 @@ namespace ProjectP3
         private System.Windows.Forms.TextBox ComissionadoId;
         private System.Windows.Forms.TextBox AssalariadoId;
         private System.Windows.Forms.TextBox HoristaId;
-        private System.Windows.Forms.ComboBox Sindicato;
         private System.Windows.Forms.Label lbl_TxSindical;
         private System.Windows.Forms.TextBox Numero;
         private System.Windows.Forms.TextBox Conta;
         private System.Windows.Forms.TextBox Agencia;
         private System.Windows.Forms.TextBox TaxaSindical;
+        private componentes.CmpBuscaCombinada FuncionarioSindicalId;
     }
 }
 
