@@ -38,7 +38,7 @@ namespace ProjectP3
             panel1.Visible = true;
         }
 
-        private void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public virtual void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Implementar na Heranca
         }

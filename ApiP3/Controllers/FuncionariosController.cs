@@ -21,9 +21,13 @@ namespace ApiP3.Controllers
         }
 
         [HttpGet]
-        public List<FuncionarioVw> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<List<FuncionarioVw>> Get()
         {
-            return db.FuncionarioVw.ToList();
+            var Query = db.FuncionarioVw.ToList();
+            return Ok(Query);
         }
 
         [HttpGet("Horista")]
@@ -51,7 +55,7 @@ namespace ApiP3.Controllers
         }
 
 
-        [HttpGet("KeyWord")]
+        [HttpGet("{KeyWord}")]
         public List<FuncionarioVw> GetByKeyWord(string KeyWord)
         {
             var sql = $"select * from funcionariosVw where concat (nome, funcionariosId) like concat ('%','{KeyWord}','%')";
@@ -75,7 +79,10 @@ namespace ApiP3.Controllers
                     
 
         [HttpPost]
-        public void Post(Funcionario funcionario)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<Funcionario> Post(Funcionario funcionario)
         {
 
             using (var transaction = db.Database.BeginTransaction())
@@ -103,21 +110,34 @@ namespace ApiP3.Controllers
                 db.SaveChanges();
 
                 transaction.Commit();
+                return Ok();
+
             }
 
 
         }
 
         [HttpPut]
-        public void Put(Funcionario funcionario)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<Funcionario> Put(Funcionario funcionario)
         {
             if (funcionario.FuncionariosId != 0)
             {
-                db.Assalariado.Update(funcionario.Assalariado);
-                db.SaveChanges();
-                db.Funcionario.Update(funcionario);
-                db.SaveChanges();
+                using(var transaction = db.Database.BeginTransaction())
+                {
+                    db.Assalariado.Update(funcionario.Assalariado);
+                    db.SaveChanges();
+                    db.Funcionario.Update(funcionario);
+                    db.SaveChanges();
+                    transaction.Commit();
+                    return Ok();                    
+                }
+
             }
+            return Ok();
+
         }
 
 

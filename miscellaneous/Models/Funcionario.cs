@@ -28,7 +28,7 @@ namespace miscellaneous.Models
         public string Conta { get; set; }
         public string Agencia { get; set; }
         public string Operacao { get; set; }
-        public int? SindicatosId { get; set; }
+        public string Sindicato { get; set; }
         public double? TaxaSindical { get; set; }
         public int? ComissionadoId { get; set; }
         public int? HoristaId { get; set; }

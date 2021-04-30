@@ -87,18 +87,19 @@ namespace ProjectP3
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(355, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(357, 16);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(436, 15);
+            this.btnLimpar.Location = new System.Drawing.Point(438, 16);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
             // 
-            this.panelInferior.Location = new System.Drawing.Point(0, 404);
-            this.panelInferior.Size = new System.Drawing.Size(538, 46);
+            this.panelInferior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInferior.Location = new System.Drawing.Point(-2, 404);
+            this.panelInferior.Size = new System.Drawing.Size(540, 46);
             // 
             // btn_Buscar
             // 
@@ -270,7 +271,7 @@ namespace ProjectP3
             this.groupBox1.Size = new System.Drawing.Size(517, 55);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipo Funcionário";
+            this.groupBox1.Text = "0";
             // 
             // tabControl1
             // 

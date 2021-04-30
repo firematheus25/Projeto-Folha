@@ -17,11 +17,25 @@ namespace ProjectP3.Services
             {
                 var url = new MyClient().BuilderUri(Api);
 
-                var teste = JsonConvert.SerializeObject(Objeto, Formatting.None);
+                var Json = JsonConvert.SerializeObject(Objeto, Formatting.None);
 
-                var Content = new StringContent(teste, Encoding.UTF8, "application/Json");
+                var Content = new StringContent(Json, Encoding.UTF8, "application/Json");
 
                 return await client.PostAsync(url, Content);
+            }
+        }
+
+        public async Task<HttpResponseMessage> Put(string Api, T Objeto)
+        {
+            using (var client = new HttpClient())
+            {
+                var url = new MyClient().BuilderUri(Api);
+
+                var Json = JsonConvert.SerializeObject(Objeto, Formatting.None);
+
+                var Content = new StringContent(Json, Encoding.UTF8, "application/Json");
+
+                return await client.PutAsync(url, Content);
             }
         }
 

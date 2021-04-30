@@ -42,7 +42,7 @@ namespace ProjectP3
             MetodoPagamento.DropDownWidth();
         }
 
-        private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = GridConsultaP.CurrentRow.Cells["FuncionariosId"].Value.ToString();
             var funcionario = await new Services<FuncionarioVw>().GetById("api/funcionarios/Id", id);
@@ -51,17 +51,20 @@ namespace ProjectP3
             if (funcionario.TipoFuncionario == 1)
             {
                 Assalariado.Checked = true;
+                AssalariadoId.Text = Convert.ToString(funcionario.AssalariadoId);
                 Salario.Text = Convert.ToString(funcionario.Salario);
             }
             if (funcionario.TipoFuncionario == 2)
             {
                 Comissionado.Checked = true;
+                ComissionadoId.Text = Convert.ToString(funcionario.ComissionadoId);
                 Salario.Text = Convert.ToString(funcionario.SalarioComissao);
                 TaxaComissao.Text = Convert.ToString(funcionario.TaxaComissao);
             }
             if (funcionario.TipoFuncionario == 3)
             {
                 Horista.Checked = true;
+                HoristaId.Text = Convert.ToString(funcionario.HoristaId);
                 ValorHora.Text = Convert.ToString(funcionario.ValorHora);
             }
 
@@ -114,10 +117,10 @@ namespace ProjectP3
 
                 if (!string.IsNullOrEmpty(FuncionarioSindicalId.TxtCodigo.Text))
                 {
-
-                }
-                   // Funcionario.Sindicato = Sindicatos.Text.Substring(0, 1);
+                    // Funcionario.Sindicato = Sindicatos.Text.Substring(0, 1);
                     Funcionario.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);
+                }
+
                 
 
                 if (Assalariado.Checked)
@@ -156,9 +159,27 @@ namespace ProjectP3
                     Horista.ValorHora = Convert.ToDouble(ValorHora.Text);
                     Funcionario.Horista = Horista;
                 }
+                if (string.IsNullOrEmpty(FuncionariosId.Text))
+                {
+                    var Result = await new Services<Funcionario>().Post("api/Funcionarios/", Funcionario);
+                    if (Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        MessageBox.Show("Inserido com sucesso");
 
-                var Result = await new Services<Funcionario>().Post("api/Funcionarios/", Funcionario);
-                var Message = await Result.Content.ReadAsStringAsync();
+                    }
+                }
+                else
+                {
+                    var Result = await new Services<Funcionario>().Put("api/Funcionarios/", Funcionario);
+                    if (Result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        MessageBox.Show("Alterado com sucesso");
+
+                    }
+                }
+                
+                
+
 
             }
             catch (Exception M)
@@ -186,7 +207,7 @@ namespace ProjectP3
 
             FuncionariosId.Clear();
             Nome.Clear();
-            Sindicatos.SelectedIndex = -1;
+            //Sindicatos.SelectedIndex = -1;
             MetodoPagamento.SelectedIndex = -1;
             Salario.Clear();
             Cep.Clear();
@@ -260,15 +281,15 @@ namespace ProjectP3
             lbl_ValorHora.Visible = true;
         }
 
-        private void Sindicato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (Sindicatos.SelectedIndex == 0)
-            {
-                lbl_TxSindical.Visible = true;
-                TaxaSindical.Visible = true;
+        //private void Sindicato_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (Sindicatos.SelectedIndex == 0)
+        //    {
+        //        lbl_TxSindical.Visible = true;
+        //        TaxaSindical.Visible = true;
 
-            }
-        }
+        //    }
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -284,7 +305,7 @@ namespace ProjectP3
                 keyword = "*";
             }
 
-            var funcionarios = await new Services<Funcionario>().GetByIds("api/funcionarios/KeyWord/", keyword);
+            var funcionarios = await new Services<Funcionario>().GetByIds("api/funcionarios/", keyword);
 
 
             for (int i = 0; i < funcionarios.Count; i++)

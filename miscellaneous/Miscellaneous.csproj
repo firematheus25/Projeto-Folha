@@ -55,7 +55,7 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Horista.cs" />
     <Compile Include="Models\Sindicatos.cs" />
-    <Compile Include="Models\TaxaServico.cs" />
+    <Compile Include="Models\TaxasServico.cs" />
     <Compile Include="Models\Vendas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

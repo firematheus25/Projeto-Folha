@@ -36,18 +36,40 @@ namespace ApiP3.Controllers
 
 
         [HttpPost]
-        public void Post(RegistroPonto Ponto)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult Post(RegistroPonto Ponto)
         {
             db.RegistroPontos.Add(Ponto);
-            db.SaveChanges();
+            var Data = db.SaveChanges();
+            return Ok(Data);
         }
 
         [HttpPut]
-        public void Put(RegistroPonto Ponto)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult Put(RegistroPonto Ponto)
         {
             db.RegistroPontos.Update(Ponto);
-            db.SaveChanges();
+            var Data =db.SaveChanges();
+            return Ok(Data);
         }
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<RegistroPonto> Delete(int Id)
+        {
+
+            var Delete = db.RegistroPontos.Where(x => x.RegistroPontoId == Id);
+            db.Remove(Delete);
+            db.SaveChanges();
+            return Ok();
+        }
+       
 
 
     }
