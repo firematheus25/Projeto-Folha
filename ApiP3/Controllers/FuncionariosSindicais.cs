@@ -11,22 +11,36 @@ namespace ApiP3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssalariadoController : ControllerBase
+    public class FuncionariosSindicais : ControllerBase
     {
         private readonly P3Context db;
 
-        public AssalariadoController(P3Context db)
+        public FuncionariosSindicais(P3Context db)
         {
             this.db = db;
         }
+
+
+        [HttpGet]
+        public List<FuncionarioSindical> Get()
+        {
+            return db.FuncionarioSindical.ToList();
+        }
+
+        [HttpGet("Id/{Id}")]
+        public FuncionarioSindical GetById(int Id)
+        {
+            return db.FuncionarioSindical.Where(X => X.FuncionarioSindicalId == Id).FirstOrDefault();
+        }
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Post(Assalariado Assalariado)
+        public ActionResult Post(FuncionarioSindical FuncionarioSindical)
         {
-            db.Assalariado.Add(Assalariado);
+            db.FuncionarioSindical.Add(FuncionarioSindical);
             db.SaveChanges();
             return Ok();
         }
@@ -35,9 +49,9 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Put(Assalariado Assalariado)
+        public ActionResult Put(FuncionarioSindical FuncionarioSindical)
         {
-            db.Assalariado.Update(Assalariado);
+            db.FuncionarioSindical.Update(FuncionarioSindical);
             db.SaveChanges();
             return Ok();
         }

@@ -38,7 +38,7 @@ namespace ProjectP3
             
         }
 
-        private async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             FuncionariosId.Enabled = false;
             var id = GridConsultaP.CurrentRow.Cells["VendasId"].Value.ToString();
@@ -51,8 +51,7 @@ namespace ProjectP3
             ValorVenda.Text = Convert.ToString(venda.ValorVenda);
             PorcentagemVenda.Text = Convert.ToString(venda.Porcentagem);
 
-            panel1.Visible = true;
-
+            AlternaModo.Visible = true;
         }
 
 
@@ -94,12 +93,12 @@ namespace ProjectP3
 
         private void FuncionariosId_ConsultarClick(object sender, EventArgs e)
         {
-            var frmConsulta = new FormConsulta();
+            var frmConsulta = new FormConsult();
             frmConsulta.Owner = this;
             frmConsulta.ShowDialog();
         }
 
-        private async void FuncionariosId_ConsultarAPI(object sender)
+        private void FuncionariosId_ConsultarAPI(object sender)
         {
 
         }

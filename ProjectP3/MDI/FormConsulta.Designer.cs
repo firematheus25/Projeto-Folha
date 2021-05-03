@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectP3.MDI
 {
-    partial class FormConsulta
+    partial class FormConsult
     {
         /// <summary>
         /// Required designer variable.

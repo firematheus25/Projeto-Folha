@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace miscellaneous.Models
 {
-    [Table("Horistas")]
-    public class Horista 
+    [Table("AgendaPagamentos")]
+    public class AgendaPagamento
     {
         [Key]
-        public int HoristaId { get; set; }
-        public int FuncionariosId { get; set; }
-        public double ValorHora { get; set; }
+        public int AgendaId { get; set; }
+        public string Tipo { get; set; }
+        public string Dia { get; set; }
+        public string DiaSemana { get; set; }
+        public string Agenda { get; set; }
     }
 }

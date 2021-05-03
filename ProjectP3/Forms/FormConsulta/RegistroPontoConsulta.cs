@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace ProjectP3
 {
-    public partial class RegistroPontoConsulta : FormConsulta
+    public partial class RegistroPontoConsulta : FormConsult
     {
         public RegistroPontoConsulta()
         {

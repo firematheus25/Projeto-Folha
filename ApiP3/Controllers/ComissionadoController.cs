@@ -11,22 +11,23 @@ namespace ApiP3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssalariadoController : ControllerBase
+    public class ComissionadoController : ControllerBase
     {
         private readonly P3Context db;
 
-        public AssalariadoController(P3Context db)
+        public ComissionadoController(P3Context db)
         {
             this.db = db;
         }
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Post(Assalariado Assalariado)
+        public ActionResult Post(Comissionado Comissionado)
         {
-            db.Assalariado.Add(Assalariado);
+            db.Comissionado.Add(Comissionado);
             db.SaveChanges();
             return Ok();
         }
@@ -35,9 +36,9 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Put(Assalariado Assalariado)
+        public ActionResult Put(Comissionado Comissionado)
         {
-            db.Assalariado.Update(Assalariado);
+            db.Comissionado.Update(Comissionado);
             db.SaveChanges();
             return Ok();
         }

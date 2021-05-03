@@ -52,5 +52,19 @@ namespace ProjectP3.MDI
             f.MdiParent = this;
             f.Show();
         }
+
+        private void agendaDePagamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAgendaPagamento f = new FormAgendaPagamento();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void sindicatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSindicato f = new FormSindicato();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

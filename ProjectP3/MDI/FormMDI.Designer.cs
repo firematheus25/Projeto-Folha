@@ -36,6 +36,8 @@ namespace ProjectP3.MDI
             this.cadastroDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folhaDePagamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agendaDePagamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sindicatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,9 @@ namespace ProjectP3.MDI
             this.registroDePontoToolStripMenuItem,
             this.cadastroDeVendasToolStripMenuItem,
             this.folhaDePagamentoToolStripMenuItem,
-            this.taxasServiçosToolStripMenuItem});
+            this.taxasServiçosToolStripMenuItem,
+            this.agendaDePagamentoToolStripMenuItem,
+            this.sindicatosToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
             this.toolStripMenuItem1.Text = "Novo";
@@ -64,37 +68,51 @@ namespace ProjectP3.MDI
             // funcionárioToolStripMenuItem
             // 
             this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
-            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.funcionárioToolStripMenuItem.Text = "Funcionário";
             this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
             // 
             // registroDePontoToolStripMenuItem
             // 
             this.registroDePontoToolStripMenuItem.Name = "registroDePontoToolStripMenuItem";
-            this.registroDePontoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.registroDePontoToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.registroDePontoToolStripMenuItem.Text = "Registro de Ponto";
             this.registroDePontoToolStripMenuItem.Click += new System.EventHandler(this.registroDePontoToolStripMenuItem_Click);
             // 
             // cadastroDeVendasToolStripMenuItem
             // 
             this.cadastroDeVendasToolStripMenuItem.Name = "cadastroDeVendasToolStripMenuItem";
-            this.cadastroDeVendasToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.cadastroDeVendasToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.cadastroDeVendasToolStripMenuItem.Text = "Cadastro de Vendas";
             this.cadastroDeVendasToolStripMenuItem.Click += new System.EventHandler(this.cadastroDeVendasToolStripMenuItem_Click);
             // 
             // folhaDePagamentoToolStripMenuItem
             // 
             this.folhaDePagamentoToolStripMenuItem.Name = "folhaDePagamentoToolStripMenuItem";
-            this.folhaDePagamentoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.folhaDePagamentoToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.folhaDePagamentoToolStripMenuItem.Text = "Folha de Pagamento";
             this.folhaDePagamentoToolStripMenuItem.Click += new System.EventHandler(this.folhaDePagamentoToolStripMenuItem_Click);
             // 
             // taxasServiçosToolStripMenuItem
             // 
             this.taxasServiçosToolStripMenuItem.Name = "taxasServiçosToolStripMenuItem";
-            this.taxasServiçosToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.taxasServiçosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.taxasServiçosToolStripMenuItem.Text = "Taxas Serviços";
             this.taxasServiçosToolStripMenuItem.Click += new System.EventHandler(this.taxasServiçosToolStripMenuItem_Click);
+            // 
+            // agendaDePagamentoToolStripMenuItem
+            // 
+            this.agendaDePagamentoToolStripMenuItem.Name = "agendaDePagamentoToolStripMenuItem";
+            this.agendaDePagamentoToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.agendaDePagamentoToolStripMenuItem.Text = "Agenda de Pagamento";
+            this.agendaDePagamentoToolStripMenuItem.Click += new System.EventHandler(this.agendaDePagamentoToolStripMenuItem_Click);
+            // 
+            // sindicatosToolStripMenuItem
+            // 
+            this.sindicatosToolStripMenuItem.Name = "sindicatosToolStripMenuItem";
+            this.sindicatosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.sindicatosToolStripMenuItem.Text = "Sindicatos";
+            this.sindicatosToolStripMenuItem.Click += new System.EventHandler(this.sindicatosToolStripMenuItem_Click);
             // 
             // FormMDI
             // 
@@ -123,5 +141,7 @@ namespace ProjectP3.MDI
         private System.Windows.Forms.ToolStripMenuItem cadastroDeVendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem folhaDePagamentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem taxasServiçosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agendaDePagamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sindicatosToolStripMenuItem;
     }
 }

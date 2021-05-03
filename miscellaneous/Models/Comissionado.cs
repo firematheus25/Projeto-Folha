@@ -13,6 +13,7 @@ namespace miscellaneous.Models
     {
         [Key]
         public int ComissionadoId { get; set; }
+        public int FuncionariosId { get; set; }
         public decimal Salario { get; set; }
         public decimal TaxaComissao { get; set; }
 

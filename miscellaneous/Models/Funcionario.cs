@@ -28,16 +28,13 @@ namespace miscellaneous.Models
         public string Conta { get; set; }
         public string Agencia { get; set; }
         public string Operacao { get; set; }
-        public string Sindicato { get; set; }
-        public double? TaxaSindical { get; set; }
-        public int? ComissionadoId { get; set; }
-        public int? HoristaId { get; set; }
-        public int? AssalariadoId { get; set; }
+        public int? AgendaId { get; set; }
 
         public string Tipo { get; set; }
 
-        public Assalariado Assalariado { get; set; }
-        public Comissionado Comissionado { get; set; }
-        public Horista Horista { get; set; }
+        //public Assalariado Assalariado { get; set; }
+        //public Comissionado Comissionado { get; set; }
+        //public Horista Horista { get; set; }
+        //public FuncionarioSindical FuncionarioSindical { get; set; }
     }
 }

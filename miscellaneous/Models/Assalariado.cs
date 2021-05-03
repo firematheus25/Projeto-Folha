@@ -14,6 +14,7 @@ namespace miscellaneous.Models
 
         [Key]
         public int AssalariadoId { get; set; }
+        public int FuncionariosId { get; set; }
         public double Salario { get; set; }
 
     }

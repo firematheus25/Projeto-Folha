@@ -11,33 +11,30 @@ namespace ApiP3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegistroPontosController : ControllerBase
+    public class AgendaPagamentoController : ControllerBase
     {
 
         private readonly P3Context db;
 
-        public RegistroPontosController(P3Context db)
+        public AgendaPagamentoController(P3Context db)
         {
             this.db = db;
         }
 
         [HttpGet]
-        public List<RegistroPonto> Get()
+        public List<AgendaPagamento> Get()
         {
-            return db.RegistroPontos.ToList();
+            return db.AgendaPagamento.ToList();
+
         }
 
         [HttpGet("Id/{Id}")]
-        public RegistroPonto GetById(int Id)
+        public AgendaPagamento Get(int Id)
         {
-            return db.RegistroPontos.Where(X => X.RegistroPontoId == Id).FirstOrDefault();
+            return db.AgendaPagamento.Where(X => X.AgendaId == Id).FirstOrDefault();
+
         }
 
-        [HttpGet("Ids/{Id}")]
-        public List<RegistroPonto> GetByIds(int Id)
-        {
-            return db.RegistroPontos.Where(X => X.FuncionariosId == Id).ToList();
-        }
 
 
 
@@ -45,37 +42,36 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Post(RegistroPonto Ponto)
+        public ActionResult<AgendaPagamento> Post(AgendaPagamento Agenda)
         {
-            db.RegistroPontos.Add(Ponto);
-            var Data = db.SaveChanges();
-            return Ok(Data);
+            db.Add(Agenda);
+            db.SaveChanges();
+            return Ok();
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Put(RegistroPonto Ponto)
+        public ActionResult<AgendaPagamento> Put(AgendaPagamento Agenda)
         {
-            db.RegistroPontos.Update(Ponto);
-            var Data =db.SaveChanges();
-            return Ok(Data);
+            db.Update(Agenda);
+            db.SaveChanges();
+            return Ok();
         }
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<RegistroPonto> Delete(int Id)
+        public ActionResult<AgendaPagamento> Delete(int Id)
         {
-
-            var Delete = db.RegistroPontos.Where(x => x.RegistroPontoId == Id);
+            var Delete = db.AgendaPagamento.Where(X => X.AgendaId == Id);
             db.Remove(Delete);
             db.SaveChanges();
+
             return Ok();
         }
-       
 
 
     }

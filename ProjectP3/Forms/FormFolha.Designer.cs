@@ -34,7 +34,7 @@ namespace ProjectP3.Forms
             this.GridFolha = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.AlternaModo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,16 +53,16 @@ namespace ProjectP3.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.GridFolha);
-            this.panel1.Controls.Add(this.DtPagamento);
-            this.panel1.Controls.Add(this.GerarFolha);
-            this.panel1.Size = new System.Drawing.Size(555, 450);
-            this.panel1.Controls.SetChildIndex(this.GerarFolha, 0);
-            this.panel1.Controls.SetChildIndex(this.DtPagamento, 0);
-            this.panel1.Controls.SetChildIndex(this.GridFolha, 0);
-            this.panel1.Controls.SetChildIndex(this.label1, 0);
-            this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
+            this.AlternaModo.Controls.Add(this.label1);
+            this.AlternaModo.Controls.Add(this.GridFolha);
+            this.AlternaModo.Controls.Add(this.DtPagamento);
+            this.AlternaModo.Controls.Add(this.GerarFolha);
+            this.AlternaModo.Size = new System.Drawing.Size(555, 450);
+            this.AlternaModo.Controls.SetChildIndex(this.GerarFolha, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.DtPagamento, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.GridFolha, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
             // 
             // GerarFolha
             // 
@@ -120,8 +120,8 @@ namespace ProjectP3.Forms
             this.Name = "FormFolha";
             this.Text = "FormFolha";
             this.panelInferior.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AlternaModo.ResumeLayout(false);
+            this.AlternaModo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

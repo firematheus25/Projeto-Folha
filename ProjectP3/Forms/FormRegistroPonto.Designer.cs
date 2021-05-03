@@ -41,7 +41,7 @@ namespace ProjectP3
             this.Horas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -78,30 +78,30 @@ namespace ProjectP3
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.Saida);
-            this.panel1.Controls.Add(this.Entrada);
-            this.panel1.Controls.Add(this.Horas);
-            this.panel1.Controls.Add(this.Data);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.RegistroPontoId);
-            this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Size = new System.Drawing.Size(421, 236);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
-            this.panel1.Controls.SetChildIndex(this.RegistroPontoId, 0);
-            this.panel1.Controls.SetChildIndex(this.label2, 0);
-            this.panel1.Controls.SetChildIndex(this.label5, 0);
-            this.panel1.Controls.SetChildIndex(this.Data, 0);
-            this.panel1.Controls.SetChildIndex(this.Horas, 0);
-            this.panel1.Controls.SetChildIndex(this.Entrada, 0);
-            this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
-            this.panel1.Controls.SetChildIndex(this.Saida, 0);
-            this.panel1.Controls.SetChildIndex(this.label4, 0);
-            this.panel1.Controls.SetChildIndex(this.label3, 0);
-            this.panel1.Controls.SetChildIndex(this.label6, 0);
+            this.AlternaModo.Controls.Add(this.label6);
+            this.AlternaModo.Controls.Add(this.label3);
+            this.AlternaModo.Controls.Add(this.label4);
+            this.AlternaModo.Controls.Add(this.Saida);
+            this.AlternaModo.Controls.Add(this.Entrada);
+            this.AlternaModo.Controls.Add(this.Horas);
+            this.AlternaModo.Controls.Add(this.Data);
+            this.AlternaModo.Controls.Add(this.label5);
+            this.AlternaModo.Controls.Add(this.label2);
+            this.AlternaModo.Controls.Add(this.RegistroPontoId);
+            this.AlternaModo.Controls.Add(this.FuncionariosId);
+            this.AlternaModo.Size = new System.Drawing.Size(421, 236);
+            this.AlternaModo.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.RegistroPontoId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label2, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label5, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.Data, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.Horas, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.Entrada, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.Saida, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label4, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label3, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label6, 0);
             // 
             // PalavraChave
             // 
@@ -128,8 +128,8 @@ namespace ProjectP3
             this.FuncionariosId.Name = "FuncionariosId";
             this.FuncionariosId.Size = new System.Drawing.Size(330, 21);
             this.FuncionariosId.TabIndex = 3;
-            this.FuncionariosId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId1_ConsultarAPI);
-            this.FuncionariosId.ConsultarClick += new System.EventHandler(this.FuncionariosId1_ConsultarClick);
+            this.FuncionariosId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId_ConsultarAPI);
+            this.FuncionariosId.ConsultarClick += new System.EventHandler(this.FuncionariosId_ConsultarClick);
             // 
             // label2
             // 
@@ -227,8 +227,8 @@ namespace ProjectP3
             this.Name = "FormRegistroPonto";
             this.Text = "Registro de Ponto";
             this.panelInferior.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AlternaModo.ResumeLayout(false);
+            this.AlternaModo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

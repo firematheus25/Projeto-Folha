@@ -21,11 +21,27 @@ namespace ApiP3.Controllers
             this.db = db;
         }
 
-        [HttpGet]
-        public Horista Get(int Id)
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult Post(Horista Horista)
         {
-            return db.Horista.Where(x => x.HoristaId == Id).FirstOrDefault();
-
+            db.Horista.Add(Horista);
+            db.SaveChanges();
+            return Ok();
         }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult Put(Horista Horista)
+        {
+            db.Horista.Update(Horista);
+            db.SaveChanges();
+            return Ok();
+        }
+
     }
 }

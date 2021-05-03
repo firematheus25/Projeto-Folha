@@ -14,52 +14,22 @@ using System.Windows.Forms;
 
 namespace ProjectP3.MDI
 {
-    public partial class FormConsulta : Form
+    public partial class FormConsult : Form
     {
-        public FormConsulta()
+        public FormConsult()
         {
             InitializeComponent();
-
-            GridConsulta.BuilderColumn("funcionariosId", "Matrícula");
-            GridConsulta.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+           //
         }
 
-        private async void FormConsulta_Load(object sender, EventArgs e)
+        public virtual void FormConsulta_Load(object sender, EventArgs e)
         {
-            List<Funcionario> ListFuncionarios;
-            var t = this.Owner.GetType();
-            if (t.Equals(typeof(FormRegistroPonto)))
-            {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
-            }
-            else if (t.Equals(typeof(FormVendas)))
-            {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
-            }
-            else if(t.Equals(typeof(FormTaxas)))
-            {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Sindicato");
-            }
-            else
-            {
-                ListFuncionarios = null;
-            }
-
-
-
-            GridConsulta.LoadFromList(ListFuncionarios);
+            //
         }
 
-        private async void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public virtual void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
-            var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB/", Id);
-
-            var frm = (FormRegistroPonto)this.Owner;
-
-            frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
-            frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
-            this.Close();
+            //
         }
     }
 }

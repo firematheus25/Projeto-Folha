@@ -34,6 +34,12 @@ namespace ApiP3.Controllers
             return db.Vendas.Where(x => x.VendasId == Id).FirstOrDefault();
         }
 
+        [HttpGet("Ids/{Id}")]
+        public List<Vendas> GetByIds(int Id)
+        {
+            return db.Vendas.Where(x => x.FuncionariosId == Id).ToList();
+        }
+
         [HttpPost]
         public void Post(Vendas Vendas)
         {
@@ -42,7 +48,7 @@ namespace ApiP3.Controllers
         }
 
         [HttpPut]
-        public OkResult Put(Vendas Vendas)
+        public ActionResult Put(Vendas Vendas)
         {
             if (Vendas.VendasId != 0)
             {

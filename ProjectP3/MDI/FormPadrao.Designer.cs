@@ -38,10 +38,10 @@ namespace ProjectP3
             this.PalavraChave = new System.Windows.Forms.TextBox();
             this.lbl_palavrachave = new System.Windows.Forms.Label();
             this.btn_Retornar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.AlternaModo = new System.Windows.Forms.Panel();
             this.panelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConsultaP)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -137,22 +137,22 @@ namespace ProjectP3
             this.btn_Retornar.UseVisualStyleBackColor = true;
             this.btn_Retornar.Click += new System.EventHandler(this.btn_Retornar_Click);
             // 
-            // panel1
+            // AlternaModo
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.panelInferior);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 450);
-            this.panel1.TabIndex = 3;
+            this.AlternaModo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AlternaModo.Controls.Add(this.panelInferior);
+            this.AlternaModo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AlternaModo.Location = new System.Drawing.Point(0, 0);
+            this.AlternaModo.Name = "AlternaModo";
+            this.AlternaModo.Size = new System.Drawing.Size(544, 450);
+            this.AlternaModo.TabIndex = 3;
             // 
             // FormPadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.AlternaModo);
             this.Controls.Add(this.btn_Retornar);
             this.Controls.Add(this.lbl_palavrachave);
             this.Controls.Add(this.PalavraChave);
@@ -162,7 +162,7 @@ namespace ProjectP3
             this.Text = "FormPadrao";
             this.panelInferior.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridConsultaP)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.AlternaModo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,7 +176,7 @@ namespace ProjectP3
         public System.Windows.Forms.Panel panelInferior;
         public System.Windows.Forms.Button btn_Buscar;
         public System.Windows.Forms.Button btn_Retornar;
-        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel AlternaModo;
         public System.Windows.Forms.TextBox PalavraChave;
         public System.Windows.Forms.Label lbl_palavrachave;
     }

@@ -48,14 +48,14 @@ namespace ApiP3.Controllers
             return db.FuncionarioVw.Where(X => X.ComissionadoId != null).ToList();
         }
 
-        [HttpGet("Id")]
+        [HttpGet("Id/{Id}")]
         public FuncionarioVw Get(int Id)
         {
             return db.FuncionarioVw.Where(x => x.FuncionariosId == Id).FirstOrDefault();
         }
 
 
-        [HttpGet("{KeyWord}")]
+        [HttpGet("KeyWord/{KeyWord}")]
         public List<FuncionarioVw> GetByKeyWord(string KeyWord)
         {
             var sql = $"select * from funcionariosVw where concat (nome, funcionariosId) like concat ('%','{KeyWord}','%')";
@@ -65,7 +65,7 @@ namespace ApiP3.Controllers
 
 
 
-        [HttpGet("BuscaCB")]
+        [HttpGet("BuscaCB/{BuscaCB}")]
         public FuncionarioVw GetConsulta(int Id)
         {
             return db.FuncionarioVw.Where(X => X.FuncionariosId == Id).Select(x => new FuncionarioVw()
@@ -76,7 +76,13 @@ namespace ApiP3.Controllers
 
         }
 
-                    
+        [HttpGet("FuncionariosId/{Id}")]
+        public Funcionario GetFunc(int Id)
+        {
+            return db.Funcionario.FromSqlRaw("select * from funcionarios where funcionariosId = (select max(funcionariosId) from funcionarios)").FirstOrDefault();
+        }
+
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -85,36 +91,10 @@ namespace ApiP3.Controllers
         public ActionResult<Funcionario> Post(Funcionario funcionario)
         {
 
-            using (var transaction = db.Database.BeginTransaction())
-            {
-                if (funcionario.TipoFuncionario == 1)
-                {
-                    db.Assalariado.Add(funcionario.Assalariado);
-                    db.SaveChanges();
-                    funcionario.AssalariadoId = funcionario.Assalariado.AssalariadoId;
-                }
-                else if (funcionario.TipoFuncionario == 2)
-                {
-                    db.Comissionado.Add(funcionario.Comissionado);
-                    db.SaveChanges();
-                    funcionario.ComissionadoId = funcionario.Comissionado.ComissionadoId;
-                }
-                else
-                {
-                    db.Horista.Add(funcionario.Horista);
-                    db.SaveChanges();
-                    funcionario.HoristaId = funcionario.Horista.HoristaId;
-                }
+            db.Funcionario.Add(funcionario);
+            db.SaveChanges();
 
-                db.Funcionario.Add(funcionario);
-                db.SaveChanges();
-
-                transaction.Commit();
-                return Ok();
-
-            }
-
-
+            return Ok();
         }
 
         [HttpPut]
@@ -127,7 +107,7 @@ namespace ApiP3.Controllers
             {
                 using(var transaction = db.Database.BeginTransaction())
                 {
-                    db.Assalariado.Update(funcionario.Assalariado);
+                   // db.Assalariado.Update(funcionario.Assalariado);
                     db.SaveChanges();
                     db.Funcionario.Update(funcionario);
                     db.SaveChanges();

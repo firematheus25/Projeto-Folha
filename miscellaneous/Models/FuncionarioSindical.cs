@@ -8,10 +8,11 @@ namespace miscellaneous.Models
 {
     public class FuncionarioSindical
     {
-        public int FuncionarioSindicalId { get; set; }
-        public int FuncionariosId { get; set; }
-        public int SindicatosId { get; set; }
-        public float TaxaSindical { get; set; }
+        public int? FuncionarioSindicalId { get; set; }
+        public int? FuncionariosId { get; set; }
+        public string Nome { get; set; }
+        public int? SindicatosId { get; set; }
+        public double? TaxaSindical { get; set; }
 
     }
 }

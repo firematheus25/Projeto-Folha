@@ -35,14 +35,15 @@ namespace ProjectP3.Forms
             this.TaxaServico = new System.Windows.Forms.TextBox();
             this.Competencia = new ProjectP3.componentes.CmpDataCalendario();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TaxaServicoId = new System.Windows.Forms.TextBox();
             this.panelInferior.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(255, 15);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
@@ -53,24 +54,37 @@ namespace ProjectP3.Forms
             this.panelInferior.Location = new System.Drawing.Point(-2, 186);
             this.panelInferior.Size = new System.Drawing.Size(421, 48);
             // 
-            // panel1
+            // btn_Buscar
             // 
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.Competencia);
-            this.panel1.Controls.Add(this.TaxaServico);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Size = new System.Drawing.Size(421, 236);
-            this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
-            this.panel1.Controls.SetChildIndex(this.label6, 0);
-            this.panel1.Controls.SetChildIndex(this.label1, 0);
-            this.panel1.Controls.SetChildIndex(this.TaxaServico, 0);
-            this.panel1.Controls.SetChildIndex(this.Competencia, 0);
-            this.panel1.Controls.SetChildIndex(this.label2, 0);
-            this.panel1.Controls.SetChildIndex(this.textBox2, 0);
+            this.btn_Buscar.Location = new System.Drawing.Point(261, 12);
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            // 
+            // btn_Retornar
+            // 
+            this.btn_Retornar.Location = new System.Drawing.Point(346, 12);
+            // 
+            // AlternaModo
+            // 
+            this.AlternaModo.Controls.Add(this.TaxaServicoId);
+            this.AlternaModo.Controls.Add(this.label2);
+            this.AlternaModo.Controls.Add(this.Competencia);
+            this.AlternaModo.Controls.Add(this.TaxaServico);
+            this.AlternaModo.Controls.Add(this.label1);
+            this.AlternaModo.Controls.Add(this.label6);
+            this.AlternaModo.Controls.Add(this.FuncionariosId);
+            this.AlternaModo.Size = new System.Drawing.Size(421, 236);
+            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label6, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.TaxaServico, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.Competencia, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label2, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.TaxaServicoId, 0);
+            // 
+            // PalavraChave
+            // 
+            this.PalavraChave.Size = new System.Drawing.Size(158, 20);
             // 
             // label6
             // 
@@ -92,6 +106,8 @@ namespace ProjectP3.Forms
             this.FuncionariosId.Name = "FuncionariosId";
             this.FuncionariosId.Size = new System.Drawing.Size(330, 21);
             this.FuncionariosId.TabIndex = 14;
+            this.FuncionariosId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionariosId_ConsultarAPI);
+            this.FuncionariosId.ConsultarClick += new System.EventHandler(this.FuncionariosId_ConsultarClick);
             // 
             // label1
             // 
@@ -131,12 +147,13 @@ namespace ProjectP3.Forms
             this.label2.TabIndex = 19;
             this.label2.Text = "Competência:";
             // 
-            // textBox2
+            // TaxaServicoId
             // 
-            this.textBox2.Location = new System.Drawing.Point(314, 102);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 20;
+            this.TaxaServicoId.Location = new System.Drawing.Point(314, 160);
+            this.TaxaServicoId.Name = "TaxaServicoId";
+            this.TaxaServicoId.Size = new System.Drawing.Size(100, 20);
+            this.TaxaServicoId.TabIndex = 20;
+            this.TaxaServicoId.Visible = false;
             // 
             // FormTaxas
             // 
@@ -146,8 +163,8 @@ namespace ProjectP3.Forms
             this.Name = "FormTaxas";
             this.Text = "Taxas";
             this.panelInferior.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AlternaModo.ResumeLayout(false);
+            this.AlternaModo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,11 +173,11 @@ namespace ProjectP3.Forms
         #endregion
 
         private System.Windows.Forms.Label label6;
-        private componentes.CmpBuscaCombinada FuncionariosId;
         private System.Windows.Forms.Label label2;
         private componentes.CmpDataCalendario Competencia;
         private System.Windows.Forms.TextBox TaxaServico;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TaxaServicoId;
+        public componentes.CmpBuscaCombinada FuncionariosId;
     }
 }

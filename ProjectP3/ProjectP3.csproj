@@ -55,11 +55,41 @@
     <Compile Include="Componentes\CmpBuscaCombinada.cs" />
     <Compile Include="Componentes\CmpDataCalendario.cs" />
     <Compile Include="Componentes\CmpNumerico.cs" />
+    <Compile Include="Forms\FormAgendaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAgendaPagamento.Designer.cs">
+      <DependentUpon>FormAgendaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\AgendaConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\AgendaConsulta.Designer.cs">
+      <DependentUpon>AgendaConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.Designer.cs">
       <DependentUpon>FormConsultaPadraoFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\FuncionariosConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\FuncionariosConsulta.Designer.cs">
+      <DependentUpon>FuncionariosConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\FuncionarioSindicalConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\FuncionarioSindicalConsulta.Designer.cs">
+      <DependentUpon>FuncionarioSindicalConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\SindicatoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsulta\SindicatoConsulta.Designer.cs">
+      <DependentUpon>SindicatoConsulta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormConsulta\VendasConsulta.cs">
       <SubType>Form</SubType>
@@ -78,6 +108,12 @@
     </Compile>
     <Compile Include="Forms\FormFuncionario.Designer.cs">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSindicato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSindicato.Designer.cs">
+      <DependentUpon>FormSindicato.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormTaxas.cs">
       <SubType>Form</SubType>
@@ -132,17 +168,35 @@
     </Compile>
     <Compile Include="Services\MyClient.cs" />
     <Compile Include="Services\Services.cs" />
+    <EmbeddedResource Include="Forms\FormAgendaPagamento.resx">
+      <DependentUpon>FormAgendaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormConsulta\AgendaConsulta.resx">
+      <DependentUpon>AgendaConsulta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.resx">
       <DependentUpon>FormConsultaPadraoFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormConsulta\FuncionariosConsulta.resx">
+      <DependentUpon>FuncionariosConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormConsulta\FuncionarioSindicalConsulta.resx">
+      <DependentUpon>FuncionarioSindicalConsulta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta\RegistroPontoConsulta.resx">
       <DependentUpon>RegistroPontoConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormConsulta\SindicatoConsulta.resx">
+      <DependentUpon>SindicatoConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFolha.resx">
       <DependentUpon>FormFolha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFuncionario.resx">
       <DependentUpon>FormFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSindicato.resx">
+      <DependentUpon>FormSindicato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTaxas.resx">
       <DependentUpon>FormTaxas.cs</DependentUpon>

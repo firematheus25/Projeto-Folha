@@ -25,7 +25,10 @@ namespace ApiP3.DATA
         public DbSet<TaxasServico> Taxas { get; set; }
         public DbSet<RegistroPonto> RegistroPontos { get; set; }
         public DbSet<Folha> Folhas { get; set; }
-
+        public DbSet<Sindicato> Sindicato { get; set; }
+        public DbSet<AgendaPagamento> AgendaPagamento { get; set; }
+        public DbSet<FuncionarioSindical> FuncionarioSindical { get; set; }
+        public DbSet<TaxasServico> TaxasServico { get; set; }
         public DbSet<FuncionarioVw> FuncionarioVw { get; set; }
     }
 }

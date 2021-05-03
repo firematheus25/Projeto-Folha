@@ -11,22 +11,37 @@ namespace ApiP3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AssalariadoController : ControllerBase
+    public class TaxasServicoController : ControllerBase
     {
         private readonly P3Context db;
 
-        public AssalariadoController(P3Context db)
+        public TaxasServicoController(P3Context db)
         {
             this.db = db;
         }
+
+
+
+        [HttpGet]
+        public List<TaxasServico> Get()
+        {
+            return db.TaxasServico.ToList();
+        }
+
+        [HttpGet("Id/{Id}")]
+        public TaxasServico GetById(int Id)
+        {
+            return db.TaxasServico.Where(X => X.TaxaServicoId == Id).FirstOrDefault();
+        }
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Post(Assalariado Assalariado)
+        public ActionResult Post(TaxasServico taxasServico)
         {
-            db.Assalariado.Add(Assalariado);
+            db.TaxasServico.Add(taxasServico);
             db.SaveChanges();
             return Ok();
         }
@@ -35,11 +50,12 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Put(Assalariado Assalariado)
+        public ActionResult Put(TaxasServico TaxasServico)
         {
-            db.Assalariado.Update(Assalariado);
+            db.TaxasServico.Update(TaxasServico);
             db.SaveChanges();
             return Ok();
         }
+
     }
 }

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AgendaPagamento.cs" />
     <Compile Include="Models\Assalariado.cs" />
     <Compile Include="Models\Folha.cs" />
     <Compile Include="Models\FuncionarioSindical.cs" />
@@ -54,7 +55,7 @@
     <Compile Include="Models\Comissionado.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Horista.cs" />
-    <Compile Include="Models\Sindicatos.cs" />
+    <Compile Include="Models\Sindicato.cs" />
     <Compile Include="Models\TaxasServico.cs" />
     <Compile Include="Models\Vendas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,7 +39,7 @@ namespace ProjectP3
             this.PorcentagemVenda = new ProjectP3.componentes.CmpNumerico();
             this.VendasId = new System.Windows.Forms.TextBox();
             this.panelInferior.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -70,26 +70,26 @@ namespace ProjectP3
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.PorcentagemVenda);
-            this.panel1.Controls.Add(this.VendasId);
-            this.panel1.Controls.Add(this.ValorVenda);
-            this.panel1.Controls.Add(this.FuncionariosId);
-            this.panel1.Controls.Add(this.DtVenda);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.Funcionarios);
-            this.panel1.Size = new System.Drawing.Size(421, 236);
-            this.panel1.Controls.SetChildIndex(this.Funcionarios, 0);
-            this.panel1.Controls.SetChildIndex(this.label4, 0);
-            this.panel1.Controls.SetChildIndex(this.DtVenda, 0);
-            this.panel1.Controls.SetChildIndex(this.FuncionariosId, 0);
-            this.panel1.Controls.SetChildIndex(this.ValorVenda, 0);
-            this.panel1.Controls.SetChildIndex(this.VendasId, 0);
-            this.panel1.Controls.SetChildIndex(this.panelInferior, 0);
-            this.panel1.Controls.SetChildIndex(this.PorcentagemVenda, 0);
-            this.panel1.Controls.SetChildIndex(this.label1, 0);
-            this.panel1.Controls.SetChildIndex(this.label3, 0);
+            this.AlternaModo.Controls.Add(this.label3);
+            this.AlternaModo.Controls.Add(this.label1);
+            this.AlternaModo.Controls.Add(this.PorcentagemVenda);
+            this.AlternaModo.Controls.Add(this.VendasId);
+            this.AlternaModo.Controls.Add(this.ValorVenda);
+            this.AlternaModo.Controls.Add(this.FuncionariosId);
+            this.AlternaModo.Controls.Add(this.DtVenda);
+            this.AlternaModo.Controls.Add(this.label4);
+            this.AlternaModo.Controls.Add(this.Funcionarios);
+            this.AlternaModo.Size = new System.Drawing.Size(421, 236);
+            this.AlternaModo.Controls.SetChildIndex(this.Funcionarios, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label4, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.DtVenda, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.FuncionariosId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.ValorVenda, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.VendasId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.PorcentagemVenda, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label3, 0);
             // 
             // PalavraChave
             // 
@@ -206,8 +206,8 @@ namespace ProjectP3
             this.Name = "FormVendas";
             this.Text = "Vendas";
             this.panelInferior.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AlternaModo.ResumeLayout(false);
+            this.AlternaModo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

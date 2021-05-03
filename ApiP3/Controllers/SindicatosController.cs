@@ -11,32 +11,26 @@ namespace ApiP3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegistroPontosController : ControllerBase
+    public class SindicatosController : ControllerBase
     {
 
         private readonly P3Context db;
 
-        public RegistroPontosController(P3Context db)
+        public SindicatosController(P3Context db)
         {
             this.db = db;
         }
 
         [HttpGet]
-        public List<RegistroPonto> Get()
+        public List<Sindicato> Get()
         {
-            return db.RegistroPontos.ToList();
+            return db.Sindicato.ToList();
         }
 
         [HttpGet("Id/{Id}")]
-        public RegistroPonto GetById(int Id)
+        public Sindicato GetById(int Id)
         {
-            return db.RegistroPontos.Where(X => X.RegistroPontoId == Id).FirstOrDefault();
-        }
-
-        [HttpGet("Ids/{Id}")]
-        public List<RegistroPonto> GetByIds(int Id)
-        {
-            return db.RegistroPontos.Where(X => X.FuncionariosId == Id).ToList();
+            return db.Sindicato.Where(X => X.SindicatosId == Id).FirstOrDefault();
         }
 
 
@@ -45,9 +39,9 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Post(RegistroPonto Ponto)
+        public ActionResult Post(Sindicato Sindicato)
         {
-            db.RegistroPontos.Add(Ponto);
+            db.Sindicato.Add(Sindicato);
             var Data = db.SaveChanges();
             return Ok(Data);
         }
@@ -56,10 +50,10 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult Put(RegistroPonto Ponto)
+        public ActionResult Put(Sindicato Sindicato)
         {
-            db.RegistroPontos.Update(Ponto);
-            var Data =db.SaveChanges();
+            db.Sindicato.Update(Sindicato);
+            var Data = db.SaveChanges();
             return Ok(Data);
         }
 
@@ -67,16 +61,13 @@ namespace ApiP3.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<RegistroPonto> Delete(int Id)
+        public ActionResult<Sindicato> Delete(int Id)
         {
 
-            var Delete = db.RegistroPontos.Where(x => x.RegistroPontoId == Id);
+            var Delete = db.Sindicato.Where(x => x.SindicatosId == Id);
             db.Remove(Delete);
             db.SaveChanges();
             return Ok();
         }
-       
-
-
     }
 }
