@@ -131,7 +131,7 @@ namespace ProjectP3.Forms
 
                                 }
 
-                                var vendas = await new Services<Vendas>().GetByIds("api/Vendas/Ids", Funcionario[i].VendasId.ToString());
+                                var vendas = await new Services<Vendas>().GetByIds("api/Vendas/Ids", Funcionario[i].FuncionariosId.ToString());
 
                                 for (int v = 0; i < vendas.Count; i++)
                                 {                                    
@@ -334,7 +334,7 @@ namespace ProjectP3.Forms
 
                                 }
 
-                                var vendas = await new Services<Vendas>().GetByIds("api/Vendas/Ids", Funcionario[i].VendasId.ToString());
+                                var vendas = await new Services<Vendas>().GetByIds("api/Vendas/Ids", Funcionario[i].FuncionariosId.ToString());
 
                                 for (int v = 0; i < vendas.Count; i++)
                                 {

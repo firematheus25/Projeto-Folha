@@ -154,3 +154,11 @@ Left Join Vendas V ON (F.FuncionariosId = V.FuncionariosId)
 Left Join AgendaPagamentos AP ON (F.AgendaId = AP.AgendaId)
 Left Join FuncionarioSindical FS ON (F.FuncionariosId = FS.FuncionariosId)
 
+
+create or alter view FuncionariosVw AS
+select F.*,A.AssalariadoId, A.Salario,C.ComissionadoId, C.Salario AS SalarioComissao, c.TaxaComissao, H.HoristaId, H.ValorHora, AP.Tipo as TipoAgenda, AP.Agenda, AP.Dia, AP.DiaSemana, FS.FuncionarioSindicalId, FS.SindicatosId, FS.TaxaSindical from Funcionarios F
+Left Join Assalariados A ON (F.FuncionariosId = A.FuncionariosId)
+Left Join Comissionados C ON (F.FuncionariosId = C.FuncionariosId)
+Left Join Horistas H ON (F.FuncionariosId = H.FuncionariosId)
+Left Join AgendaPagamentos AP ON (F.AgendaId = AP.AgendaId)
+Left Join FuncionarioSindical FS ON (F.FuncionariosId = FS.FuncionariosId)

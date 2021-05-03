@@ -28,7 +28,7 @@ namespace ApiP3.Controllers
             return db.Vendas.ToList();
         }
 
-        [HttpGet("Id")]
+        [HttpGet("Id/{Id}")]
         public Vendas GetById(int Id)
         {
             return db.Vendas.Where(x => x.VendasId == Id).FirstOrDefault();

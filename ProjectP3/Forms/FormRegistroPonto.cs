@@ -82,6 +82,19 @@ namespace ProjectP3
                 Ponto.Saida = Saida.Value.TimeOfDay.ToString();
                 Ponto.Horas = Horas.Text;
 
+                var Erro = await new Services<RegistroPonto>().GetByIds("api/RegistroPontos/Ids", Ponto.FuncionariosId.ToString());
+
+                foreach (var item in Erro)
+                {
+                    if (item.DtPonto == Ponto.DtPonto)
+                    {
+                        MessageBox.Show("Ponto já cadastrado neste dia");
+                        return;
+                    }
+
+                }
+
+
                 if (string.IsNullOrEmpty(RegistroPontoId.Text))
                 {
                     var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
@@ -89,6 +102,11 @@ namespace ProjectP3
                     {
                         MessageBox.Show("Inserido com sucesso");
                     }
+                    if (Result.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        MessageBox.Show("Já existe ponto registrado neste dia");
+                    }
+
                 }
                 else
                 {

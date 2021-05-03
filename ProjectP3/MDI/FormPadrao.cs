@@ -42,7 +42,9 @@ namespace ProjectP3
         public virtual void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Implementar na Heranca
+            btnSalvar.Text = "Alterar";
             AlternaModo.Visible = true;
+            
         }
 
         private void btn_Excluir_Click(object sender, EventArgs e)

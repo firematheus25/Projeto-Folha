@@ -21,6 +21,16 @@ namespace ApiP3.Controllers
             this.db = db;
         }
 
+
+
+        [HttpGet("Horistas/")]
+        public List<FuncionarioVw> GetByHorista()
+        {
+            return db.FuncionarioVw.Where(X => X.HoristaId != null).ToList();
+        }
+
+
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

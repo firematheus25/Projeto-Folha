@@ -1,6 +1,7 @@
 ﻿using ApiP3.DATA;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using miscellaneous.Models;
 using System;
 using System.Collections.Generic;
@@ -39,14 +40,13 @@ namespace ApiP3.Controllers
             return db.RegistroPontos.Where(X => X.FuncionariosId == Id).ToList();
         }
 
-
-
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult Post(RegistroPonto Ponto)
         {
+
             db.RegistroPontos.Add(Ponto);
             var Data = db.SaveChanges();
             return Ok(Data);

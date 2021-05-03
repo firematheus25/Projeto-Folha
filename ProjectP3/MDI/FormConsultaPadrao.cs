@@ -24,6 +24,7 @@ namespace ProjectP3.MDI
 
         private void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             //Implemetar nos Forms Herdados
         }
 

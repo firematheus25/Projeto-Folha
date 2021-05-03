@@ -68,7 +68,7 @@ namespace ProjectP3
             // 
             this.btn_Retornar.Location = new System.Drawing.Point(348, 12);
             // 
-            // panel1
+            // AlternaModo
             // 
             this.AlternaModo.Controls.Add(this.label3);
             this.AlternaModo.Controls.Add(this.label1);
@@ -191,7 +191,7 @@ namespace ProjectP3
             // 
             // VendasId
             // 
-            this.VendasId.Location = new System.Drawing.Point(277, 69);
+            this.VendasId.Location = new System.Drawing.Point(314, 159);
             this.VendasId.Name = "VendasId";
             this.VendasId.Size = new System.Drawing.Size(100, 20);
             this.VendasId.TabIndex = 9;
@@ -214,8 +214,6 @@ namespace ProjectP3
         }
 
         #endregion
-
-        private componentes.CmpBuscaCombinada FuncionariosId;
         private System.Windows.Forms.Label Funcionarios;
         private componentes.CmpDataCalendario DtVenda;
         private System.Windows.Forms.Label label4;
@@ -224,5 +222,6 @@ namespace ProjectP3
         private System.Windows.Forms.Label label1;
         private componentes.CmpNumerico PorcentagemVenda;
         private System.Windows.Forms.TextBox VendasId;
+        public componentes.CmpBuscaCombinada FuncionariosId;
     }
 }

@@ -79,12 +79,14 @@ namespace ProjectP3
             this.AgendaId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Endereco.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -156,12 +158,12 @@ namespace ProjectP3
             this.AlternaModo.Controls.SetChildIndex(this.FuncionariosId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.groupBox1, 0);
             this.AlternaModo.Controls.SetChildIndex(this.TaxaSindical, 0);
-            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_TxSindical, 0);
             this.AlternaModo.Controls.SetChildIndex(this.AgendaId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.FuncionarioSindicalId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label16, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label17, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
             // 
             // PalavraChave
             // 
@@ -676,14 +678,29 @@ namespace ProjectP3
             this.label17.TabIndex = 39;
             this.label17.Text = "Sindicato:";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // FormFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 501);
+            this.Controls.Add(this.dataGridView1);
             this.MaximizeBox = false;
             this.Name = "FormFuncionario";
             this.Text = "Funcionário";
+            this.Controls.SetChildIndex(this.dataGridView1, 0);
+            this.Controls.SetChildIndex(this.btn_Buscar, 0);
+            this.Controls.SetChildIndex(this.PalavraChave, 0);
+            this.Controls.SetChildIndex(this.lbl_palavrachave, 0);
+            this.Controls.SetChildIndex(this.btn_Retornar, 0);
+            this.Controls.SetChildIndex(this.AlternaModo, 0);
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
@@ -694,6 +711,7 @@ namespace ProjectP3
             this.Endereco.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,6 +769,7 @@ namespace ProjectP3
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         public componentes.CmpBuscaCombinada AgendaId;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

@@ -53,11 +53,11 @@ namespace miscellaneous.Models
         public string DiaSemana { get; set; }
         public string Agenda { get; set; }
 
-        //vendas
-        public int? VendasId { get; set; }
+        ////vendas
+        //public int? VendasId { get; set; }
 
-        //RegistroPontos
-        public int? RegistroPontoId { get; set; }
+        ////RegistroPontos
+        //public int? RegistroPontoId { get; set; }
 
         //Funcionario Sindical
         public int? FuncionarioSindicalId { get; set; }

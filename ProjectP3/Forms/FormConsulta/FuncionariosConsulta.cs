@@ -34,23 +34,11 @@ namespace ProjectP3.Forms.FormConsulta
                 var t = this.Owner.GetType();
                 if (t.Equals(typeof(FormRegistroPonto)))
                 {
-                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista/");
+                    ListFuncionarios = await new Services<Funcionario>().Get("api/Horista/Horistas");
                 }
                 else if (t.Equals(typeof(FormVendas)))
                 {
-                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
-                }
-                else if (t.Equals(typeof(FormTaxas)))
-                {
-                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Sindicatos");
-                }
-                else if (t.Equals(typeof(FormFuncionario)))
-                {
-
-                    List<Sindicato> ListSindicato;
-                    ListSindicato = await new Services<Sindicato>().Get("api/Sindicatos");
-                    GridConsulta.LoadFromList(ListSindicato);
-                    return;
+                    ListFuncionarios = await new Services<Funcionario>().Get("api/Comissionado/Comissionados");
                 }
                 else
                 {
@@ -72,29 +60,26 @@ namespace ProjectP3.Forms.FormConsulta
 
         public async override void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var t = this.Owner.GetType();
-            if (t.Equals(typeof(FormFuncionario)))
-            {
-                var IdSind = GridConsulta.CurrentRow.Cells["SindicatosId"].Value.ToString();
-                var Sindicato = await new Services<Sindicato>().GetById("api/Sindicatos/Id", IdSind);
 
-                var frmSind = (FormFuncionario)this.Owner;
-
-                frmSind.FuncionarioSindicalId.TxtCodigo.Text = Convert.ToString(Sindicato.SindicatosId);
-                frmSind.FuncionarioSindicalId.TxtDescricao.Text = Sindicato.Nome;
-
-            }
-            else
-            {
                 var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
                 var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB", Id);
 
+            var t = this.Owner.GetType();
+            if (t.Equals(typeof(FormRegistroPonto)))
+            {
                 var frm = (FormRegistroPonto)this.Owner;
-
                 frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
                 frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
                 this.Close();
             }
+            if (t.Equals(typeof(FormVendas)))
+            {
+                var frm = (FormVendas)this.Owner;
+                frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
+                frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
+                this.Close();
+            }
+
             this.Close();
 
         }

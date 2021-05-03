@@ -20,6 +20,12 @@ namespace ApiP3.Controllers
             this.db = db;
         }
 
+        [HttpGet("Comissionados/")]
+        public List<FuncionarioVw> GetByComissionado()
+        {
+            return db.FuncionarioVw.Where(X => X.ComissionadoId != null).ToList();
+        }
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]

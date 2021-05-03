@@ -67,12 +67,6 @@
     <Compile Include="Forms\FormConsulta\AgendaConsulta.Designer.cs">
       <DependentUpon>AgendaConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.Designer.cs">
-      <DependentUpon>FormConsultaPadraoFuncionarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormConsulta\FuncionariosConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,12 +84,6 @@
     </Compile>
     <Compile Include="Forms\FormConsulta\SindicatoConsulta.Designer.cs">
       <DependentUpon>SindicatoConsulta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormConsulta\VendasConsulta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormConsulta\VendasConsulta.Designer.cs">
-      <DependentUpon>VendasConsulta.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormFolha.cs">
       <SubType>Form</SubType>
@@ -160,12 +148,6 @@
     <Compile Include="Forms\FormVendas.Designer.cs">
       <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormConsulta\RegistroPontoConsulta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormConsulta\RegistroPontoConsulta.Designer.cs">
-      <DependentUpon>RegistroPontoConsulta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\MyClient.cs" />
     <Compile Include="Services\Services.cs" />
     <EmbeddedResource Include="Forms\FormAgendaPagamento.resx">
@@ -174,17 +156,11 @@
     <EmbeddedResource Include="Forms\FormConsulta\AgendaConsulta.resx">
       <DependentUpon>AgendaConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormConsulta\FormConsultaPadraoFuncionarios.resx">
-      <DependentUpon>FormConsultaPadraoFuncionarios.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta\FuncionariosConsulta.resx">
       <DependentUpon>FuncionariosConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta\FuncionarioSindicalConsulta.resx">
       <DependentUpon>FuncionarioSindicalConsulta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormConsulta\RegistroPontoConsulta.resx">
-      <DependentUpon>RegistroPontoConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsulta\SindicatoConsulta.resx">
       <DependentUpon>SindicatoConsulta.cs</DependentUpon>

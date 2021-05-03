@@ -1,4 +1,5 @@
 ﻿using miscellaneous.Models;
+using ProjectP3.Forms.FormConsulta;
 using ProjectP3.MDI;
 using ProjectP3.Others;
 using ProjectP3.Services;
@@ -25,7 +26,9 @@ namespace ProjectP3
             GridConsultaP.BuilderColumn("funcionariosId", "Matrícula");
             GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
             GridConsultaP.BuilderColumn("ValorVenda", "R$");
+            GridConsultaP.BuilderColumn("DtVenda", "Data", DataGridViewAutoSizeColumnMode.None, "dd/MM/yyyy");
 
+            FuncionariosId.TxtCodigo.Enabled = false;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -40,18 +43,28 @@ namespace ProjectP3
 
         public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            FuncionariosId.Enabled = false;
-            var id = GridConsultaP.CurrentRow.Cells["VendasId"].Value.ToString();
-            var venda = await new Services<Vendas>().GetById("api/Vendas/Id", id);
+            try
+            {
+                FuncionariosId.Enabled = false;
+                var id = GridConsultaP.CurrentRow.Cells["VendasId"].Value.ToString();
+                var venda = await new Services<Vendas>().GetById("api/Vendas/Id", id);
 
-            VendasId.Text = Convert.ToString(venda.VendasId);
-            FuncionariosId.TxtCodigo.Text = Convert.ToString(venda.FuncionariosId);
-            FuncionariosId.TxtDescricao.Text = venda.Nome;
-            DtVenda.Date = venda.DtVenda;
-            ValorVenda.Text = Convert.ToString(venda.ValorVenda);
-            PorcentagemVenda.Text = Convert.ToString(venda.Porcentagem);
+                VendasId.Text = Convert.ToString(venda.VendasId);
+                FuncionariosId.TxtCodigo.Text = Convert.ToString(venda.FuncionariosId);
+                FuncionariosId.TxtDescricao.Text = venda.Nome;
+                DtVenda.Date = venda.DtVenda;
+                ValorVenda.Text = Convert.ToString(venda.ValorVenda);
+                PorcentagemVenda.Text = Convert.ToString(venda.Porcentagem);
 
-            AlternaModo.Visible = true;
+                AlternaModo.Visible = true;
+
+            }
+            catch (Exception M)
+            {
+
+                MessageBox.Show(M.Message);
+            }
+
         }
 
 
@@ -66,14 +79,32 @@ namespace ProjectP3
                     Vendas.VendasId = Convert.ToInt32(VendasId.Text);
                 }
 
-                Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
+                Vendas.Nome = FuncionariosId.TxtDescricao.Text;
                 Vendas.DtVenda = DtVenda.Date.Value;
                 Vendas.ValorVenda = (double?)ValorVenda.Valor;
                 Vendas.Porcentagem = (double?)PorcentagemVenda.Valor;
 
+                if (string.IsNullOrEmpty(VendasId.Text))
+                {
+                    var Result = await new Services<Vendas>().Post("api/Vendas/", Vendas);
+                    if (Result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Inserido com sucesso.");
 
-                var Result = await new Services<Vendas>().Post("api/Vendas/", Vendas);
-                var tes2 = await Result.Content.ReadAsStringAsync();
+                    }
+                }
+                else
+                {
+                    var Result = await new Services<Vendas>().Put("api/Vendas/", Vendas);
+                    if (Result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Alterado com sucesso.");
+
+                    }
+
+                }
+               
 
 
             }
@@ -93,15 +124,12 @@ namespace ProjectP3
 
         private void FuncionariosId_ConsultarClick(object sender, EventArgs e)
         {
-            var frmConsulta = new FormConsult();
+            var frmConsulta = new FuncionariosConsulta();
             frmConsulta.Owner = this;
             frmConsulta.ShowDialog();
         }
 
-        private void FuncionariosId_ConsultarAPI(object sender)
-        {
-
-        }
+        private void FuncionariosId_ConsultarAPI(object sender) {    }
 
     }
 }

@@ -31,8 +31,11 @@ namespace ProjectP3
             MetodoPagamento.Items.Add("1 - Cheque pelos correios");
             MetodoPagamento.Items.Add("2 - Cheque em mãos");
             MetodoPagamento.Items.Add("3 - Deposito em conta bancária");
-
             
+            
+            this.GridConsultaP.Size = new System.Drawing.Size(520, 448); 
+
+
             Salario.Visible = false;
             lbl_Salario.Visible = false;
             TaxaComissao.Visible = false;
@@ -48,6 +51,7 @@ namespace ProjectP3
 
         public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnSalvar.Text = "Alterar";
             var id = GridConsultaP.CurrentRow.Cells["FuncionariosId"].Value.ToString();
             var funcionario = await new Services<FuncionarioVw>().GetById("api/funcionarios/Id", id);
 
@@ -239,11 +243,8 @@ namespace ProjectP3
             }
             catch (Exception M)
             {
-
                 MessageBox.Show(M.Message);
-            }
-
-           
+            }        
         }
 
         public void LimpaCadastro()
@@ -259,6 +260,7 @@ namespace ProjectP3
             lbl_ValorHora.Visible = false;
             lbl_TxSindical.Visible = false;
             TaxaSindical.Visible = false;
+            btnSalvar.Text = "Salvar";
 
             FuncionariosId.Clear();
             Nome.Clear();
@@ -286,11 +288,6 @@ namespace ProjectP3
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimpaCadastro();
-        }
-
-        private void MetPagamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Assalariado_CheckedChanged(object sender, EventArgs e)
