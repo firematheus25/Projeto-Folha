@@ -89,12 +89,12 @@ namespace ProjectP3
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(357, 16);
+            this.btnSalvar.Location = new System.Drawing.Point(371, 15);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(438, 16);
+            this.btnLimpar.Location = new System.Drawing.Point(452, 15);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
@@ -170,6 +170,10 @@ namespace ProjectP3
             // lbl_palavrachave
             // 
             this.lbl_palavrachave.Location = new System.Drawing.Point(12, 18);
+            // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // FuncionariosId
             // 

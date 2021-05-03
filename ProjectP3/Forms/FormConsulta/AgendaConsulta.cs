@@ -26,9 +26,18 @@ namespace ProjectP3.Forms.FormConsulta
 
         public async override void FormConsulta_Load(object sender, EventArgs e)
         {
-            var Agenda = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
+            try
+            {
+                var Agenda = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
 
-            GridConsulta.LoadFromList(Agenda);
+                GridConsulta.LoadFromList(Agenda);
+            }
+            catch (Exception M)
+            {
+
+                MessageBox.Show(M.Message);
+            }
+            
         }
 
         public async override void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

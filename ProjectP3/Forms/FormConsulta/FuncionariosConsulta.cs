@@ -27,36 +27,47 @@ namespace ProjectP3.Forms.FormConsulta
 
         public async override void FormConsulta_Load(object sender, EventArgs e)
         {
-            List<Funcionario> ListFuncionarios;
-            var t = this.Owner.GetType();
-            if (t.Equals(typeof(FormRegistroPonto)))
+
+            try
             {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista");
+                List<Funcionario> ListFuncionarios;
+                var t = this.Owner.GetType();
+                if (t.Equals(typeof(FormRegistroPonto)))
+                {
+                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Horista/");
+                }
+                else if (t.Equals(typeof(FormVendas)))
+                {
+                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
+                }
+                else if (t.Equals(typeof(FormTaxas)))
+                {
+                    ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Sindicatos");
+                }
+                else if (t.Equals(typeof(FormFuncionario)))
+                {
+
+                    List<Sindicato> ListSindicato;
+                    ListSindicato = await new Services<Sindicato>().Get("api/Sindicatos");
+                    GridConsulta.LoadFromList(ListSindicato);
+                    return;
+                }
+                else
+                {
+                    ListFuncionarios = null;
+                }
+
+
+
+                GridConsulta.LoadFromList(ListFuncionarios);
+
             }
-            else if (t.Equals(typeof(FormVendas)))
-            {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Comissionado");
-            }
-            else if (t.Equals(typeof(FormTaxas)))
-            {
-                ListFuncionarios = await new Services<Funcionario>().Get("api/Funcionarios/Sindicatos");
-            }
-            else if (t.Equals(typeof(FormFuncionario)))
+            catch (Exception M)
             {
 
-                List<Sindicato> ListSindicato;
-                ListSindicato = await new Services<Sindicato>().Get("api/Sindicatos");
-                GridConsulta.LoadFromList(ListSindicato);
-                return;
+                MessageBox.Show(M.Message);
             }
-            else
-            {
-                ListFuncionarios = null;
-            }
-
-
-
-            GridConsulta.LoadFromList(ListFuncionarios);
+           
         }
 
         public async override void GridConsulta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -76,7 +87,7 @@ namespace ProjectP3.Forms.FormConsulta
             else
             {
                 var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
-                var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB/", Id);
+                var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB", Id);
 
                 var frm = (FormRegistroPonto)this.Owner;
 

@@ -39,6 +39,16 @@ namespace ProjectP3.Services
             }
         }
 
+        public async Task<HttpResponseMessage> Delete(string Api, string Id)
+        {
+            using (var client = new HttpClient())
+            {
+                var url = new MyClient().BuilderUri(Api, Id);
+
+                return await client.DeleteAsync(url);
+            }
+        }
+
         public async Task<List<T>> Get(string Api)
         {
             using (var client = new HttpClient())
@@ -46,6 +56,7 @@ namespace ProjectP3.Services
                 var url = new MyClient().BuilderUri(Api);
 
                 var result = await client.GetAsync(url);
+
                 if(result.IsSuccessStatusCode)
                 {
                     var json = await result.Content.ReadAsStringAsync();

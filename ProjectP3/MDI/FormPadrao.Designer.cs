@@ -33,6 +33,7 @@ namespace ProjectP3
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.panelInferior = new System.Windows.Forms.Panel();
+            this.btn_Excluir = new System.Windows.Forms.Button();
             this.GridConsultaP = new System.Windows.Forms.DataGridView();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.PalavraChave = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@ namespace ProjectP3
             // panelInferior
             // 
             this.panelInferior.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelInferior.Controls.Add(this.btn_Excluir);
             this.panelInferior.Controls.Add(this.btnConsultar);
             this.panelInferior.Controls.Add(this.btnLimpar);
             this.panelInferior.Controls.Add(this.btnSalvar);
@@ -86,6 +88,16 @@ namespace ProjectP3
             this.panelInferior.Name = "panelInferior";
             this.panelInferior.Size = new System.Drawing.Size(544, 48);
             this.panelInferior.TabIndex = 0;
+            // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.Location = new System.Drawing.Point(91, 15);
+            this.btn_Excluir.Name = "btn_Excluir";
+            this.btn_Excluir.Size = new System.Drawing.Size(75, 23);
+            this.btn_Excluir.TabIndex = 3;
+            this.btn_Excluir.Text = "Excluir";
+            this.btn_Excluir.UseVisualStyleBackColor = true;
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // GridConsultaP
             // 
@@ -179,5 +191,6 @@ namespace ProjectP3
         public System.Windows.Forms.Panel AlternaModo;
         public System.Windows.Forms.TextBox PalavraChave;
         public System.Windows.Forms.Label lbl_palavrachave;
+        protected System.Windows.Forms.Button btn_Excluir;
     }
 }

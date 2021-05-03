@@ -30,13 +30,13 @@ namespace ApiP3.Controllers
             return Ok(Query);
         }
 
-        [HttpGet("Horista")]
+        [HttpGet("Horista/{Horista}")]
         public List<FuncionarioVw> GetByHorista()
         {
             return db.FuncionarioVw.Where(X => X.HoristaId != null).ToList();
         }
 
-        [HttpGet("Comissionado")]
+        [HttpGet("{Comissionado}")]
         public List<FuncionarioVw> GetByComissionado()
         {
             return db.FuncionarioVw.Where(X => X.ComissionadoId != null).ToList();
@@ -65,7 +65,7 @@ namespace ApiP3.Controllers
 
 
 
-        [HttpGet("BuscaCB/{BuscaCB}")]
+        [HttpGet("BuscaCB/{Id}")]
         public FuncionarioVw GetConsulta(int Id)
         {
             return db.FuncionarioVw.Where(X => X.FuncionariosId == Id).Select(x => new FuncionarioVw()
@@ -105,19 +105,29 @@ namespace ApiP3.Controllers
         {
             if (funcionario.FuncionariosId != 0)
             {
-                using(var transaction = db.Database.BeginTransaction())
+                using (var transaction = db.Database.BeginTransaction())
                 {
-                   // db.Assalariado.Update(funcionario.Assalariado);
+                    // db.Assalariado.Update(funcionario.Assalariado);
                     db.SaveChanges();
                     db.Funcionario.Update(funcionario);
                     db.SaveChanges();
                     transaction.Commit();
-                    return Ok();                    
+                    return Ok();
                 }
 
             }
             return Ok();
 
+        }
+
+        [HttpDelete("{Id}")]
+        public ActionResult Delete(int Id)
+        {
+
+           // db.Funcionario.Where(x => x.FuncionariosId == Id).DeleteFromQuery();
+   
+            db.SaveChanges();
+            return Ok();
         }
 
 

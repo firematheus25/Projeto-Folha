@@ -52,7 +52,7 @@ namespace ProjectP3
 
                 RegistroPontoId.Text = Convert.ToString(Ponto.RegistroPontoId);
                 FuncionariosId.TxtCodigo.Text = Convert.ToString(Ponto.FuncionariosId);
-                //FuncionariosId.TxtDescricao.Text = Ponto.Nome;
+                FuncionariosId.TxtDescricao.Text = Ponto.Nome;
                 Data.Date = Ponto.DtPonto;
                 Entrada.Value = Convert.ToDateTime(Ponto.Entrada);
                 Saida.Value = Convert.ToDateTime(Ponto.Saida);
@@ -74,16 +74,33 @@ namespace ProjectP3
             {
                 var Ponto = new RegistroPonto();
 
-                //Ponto.RegistroPontoId = 0;
-                Ponto.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                
+                Ponto.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
+                Ponto.Nome = FuncionariosId.TxtDescricao.Text;
                 Ponto.DtPonto = Data.Date.Value;
                 Ponto.Entrada = Entrada.Value.TimeOfDay.ToString();
                 Ponto.Saida = Saida.Value.TimeOfDay.ToString();
                 Ponto.Horas = Horas.Text;
 
-                var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
-                var tes2 = await Result.Content.ReadAsStringAsync();
+                if (string.IsNullOrEmpty(RegistroPontoId.Text))
+                {
+                    var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
+                    if (Result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Inserido com sucesso");
+                    }
+                }
+                else
+                {
+                    Ponto.RegistroPontoId = Convert.ToInt32(RegistroPontoId.Text);
+                    var Result = await new Services<RegistroPonto>().Put("api/RegistroPontos", Ponto);
+                    if (Result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Alterado com sucesso");
+                    }
+                }
 
+              
             }
             catch (Exception M)
             {
@@ -121,7 +138,7 @@ namespace ProjectP3
         private async void btn_Buscar_Click(object sender, EventArgs e)
         {
             var pontos = await new Services<RegistroPonto>().Get("api/RegistroPontos");
-
+            
             GridConsultaP.LoadFromList(pontos);
         }
     }

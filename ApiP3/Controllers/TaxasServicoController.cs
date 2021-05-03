@@ -28,6 +28,12 @@ namespace ApiP3.Controllers
             return db.TaxasServico.ToList();
         }
 
+        [HttpGet("Ids/{Id}")]
+        public List<TaxasServico> GetByIds(int Id)
+        {
+            return db.TaxasServico.Where(X => X.FuncionarioSindicalId == Id).ToList();
+        }
+
         [HttpGet("Id/{Id}")]
         public TaxasServico GetById(int Id)
         {

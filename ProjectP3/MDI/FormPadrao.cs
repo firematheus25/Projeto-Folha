@@ -44,5 +44,10 @@ namespace ProjectP3
             //Implementar na Heranca
             AlternaModo.Visible = true;
         }
+
+        private void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            //Implementar na Heranca
+        }
     }
 }

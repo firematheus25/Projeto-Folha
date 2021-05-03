@@ -29,8 +29,7 @@ namespace miscellaneous.Models
         public string Agencia { get; set; }
         public string Operacao { get; set; }
 
-        public string Sindicato { get; set; }
-        public double? TaxaSindical { get; set; }
+        public int? SindicatosId { get; set; }
 
 
 
@@ -48,17 +47,21 @@ namespace miscellaneous.Models
 
 
         //Agenda
-        public string Tipo { get; set; }
+        public int? AgendaId { get; set; }
+        public string TipoAgenda { get; set; }
         public string Dia { get; set; }
         public string DiaSemana { get; set; }
         public string Agenda { get; set; }
 
-        //taxa servico
-        public double TaxaServico { get; set; }
-        public DateTime Competencia { get; set; }
-
         //vendas
-        public int VendasId { get; set; }
+        public int? VendasId { get; set; }
+
+        //RegistroPontos
+        public int? RegistroPontoId { get; set; }
+
+        //Funcionario Sindical
+        public int? FuncionarioSindicalId { get; set; }
+        public double? TaxaSindical { get; set; }
 
 
 
