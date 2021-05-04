@@ -36,18 +36,20 @@ namespace ProjectP3.Forms
             this.lbl_dia = new System.Windows.Forms.Label();
             this.lbl_Tipo = new System.Windows.Forms.Label();
             this.agenda = new System.Windows.Forms.TextBox();
+            this.lblObrigaInfoMesmoMot = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(233, 16);
+            this.btnSalvar.Location = new System.Drawing.Point(234, 17);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(314, 16);
+            this.btnLimpar.Location = new System.Drawing.Point(315, 17);
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnConsultar
@@ -56,6 +58,7 @@ namespace ProjectP3.Forms
             // 
             // panelInferior
             // 
+            this.panelInferior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInferior.Location = new System.Drawing.Point(-2, 183);
             this.panelInferior.Size = new System.Drawing.Size(396, 53);
             // 
@@ -68,8 +71,10 @@ namespace ProjectP3.Forms
             // 
             this.btn_Retornar.Location = new System.Drawing.Point(321, 12);
             // 
-            // panel1
+            // AlternaModo
             // 
+            this.AlternaModo.Controls.Add(this.label1);
+            this.AlternaModo.Controls.Add(this.lblObrigaInfoMesmoMot);
             this.AlternaModo.Controls.Add(this.agenda);
             this.AlternaModo.Controls.Add(this.lbl_Tipo);
             this.AlternaModo.Controls.Add(this.lbl_dia);
@@ -86,6 +91,8 @@ namespace ProjectP3.Forms
             this.AlternaModo.Controls.SetChildIndex(this.lbl_dia, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_Tipo, 0);
             this.AlternaModo.Controls.SetChildIndex(this.agenda, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.lblObrigaInfoMesmoMot, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
             // 
             // PalavraChave
             // 
@@ -155,11 +162,36 @@ namespace ProjectP3.Forms
             this.agenda.Size = new System.Drawing.Size(213, 20);
             this.agenda.TabIndex = 11;
             // 
+            // lblObrigaInfoMesmoMot
+            // 
+            this.lblObrigaInfoMesmoMot.AutoSize = true;
+            this.lblObrigaInfoMesmoMot.BackColor = System.Drawing.SystemColors.Control;
+            this.lblObrigaInfoMesmoMot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObrigaInfoMesmoMot.ForeColor = System.Drawing.Color.Maroon;
+            this.lblObrigaInfoMesmoMot.Location = new System.Drawing.Point(270, 56);
+            this.lblObrigaInfoMesmoMot.Name = "lblObrigaInfoMesmoMot";
+            this.lblObrigaInfoMesmoMot.Size = new System.Drawing.Size(17, 13);
+            this.lblObrigaInfoMesmoMot.TabIndex = 130;
+            this.lblObrigaInfoMesmoMot.Text = "(*)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(270, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 131;
+            this.label1.Text = "(*)";
+            // 
             // FormAgendaPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 238);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormAgendaPagamento";
             this.Text = "Agenda de Pagamento";
             this.panelInferior.ResumeLayout(false);
@@ -179,5 +211,7 @@ namespace ProjectP3.Forms
         private System.Windows.Forms.ComboBox Tipo;
         private System.Windows.Forms.TextBox AgendaId;
         private System.Windows.Forms.TextBox agenda;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblObrigaInfoMesmoMot;
     }
 }

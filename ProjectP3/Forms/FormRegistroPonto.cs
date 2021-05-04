@@ -34,18 +34,75 @@ namespace ProjectP3
 
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
+
+        public override void LimpaCadastro()
         {
             RegistroPontoId.Clear();
-            Data.Clear();
+            FuncionariosId.Clear();
+            DtPonto.Clear();
             Entrada.Value = DateTimePicker.MinimumDateTime;
             Saida.Value = DateTimePicker.MinimumDateTime;
+            Horas.Clear();
+            btn_Excluir.Visible = false;
         }
 
-        public  override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public override bool validacoes()
+        {
+            string message = null;
+
+            if (string.IsNullOrEmpty(FuncionariosId.TxtCodigo.Text))
+            {
+                message += "Preencher 'Funcionário'\n";
+            }
+
+            if (DtPonto.Date == null)
+            {
+                message += "Preencher 'Data'\n";
+            }
+
+            if (Entrada.Value == DateTimePicker.MinimumDateTime)
+            {
+                message += "Preencher 'Entrada'\n";
+            }
+
+            if (Saida.Value == DateTimePicker.MinimumDateTime)
+            {
+                message += "Preencher 'Saída'\n";
+            }
+
+            if (Saida.Value < Entrada.Value)
+            {
+                MessageBox.Show("Horário de entrada maior do que o horário de saída");
+            }
+            if (string.IsNullOrEmpty(Horas.Text))
+            {
+                Saida.Value = DateTimePicker.MinimumDateTime;
+                Saida.Focus();
+            }
+
+            if (message == null)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(message);
+                return false;
+            }
+
+
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimpaCadastro();
+        }
+
+        public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                btn_Excluir.Visible = true;
                 FuncionariosId.Enabled = false;
                 var id = GridConsultaP.CurrentRow.Cells["RegistroPontoId"].Value.ToString();
                 var Ponto = await new Services<RegistroPonto>().GetById("api/RegistroPontos/Id", id);
@@ -53,7 +110,7 @@ namespace ProjectP3
                 RegistroPontoId.Text = Convert.ToString(Ponto.RegistroPontoId);
                 FuncionariosId.TxtCodigo.Text = Convert.ToString(Ponto.FuncionariosId);
                 FuncionariosId.TxtDescricao.Text = Ponto.Nome;
-                Data.Date = Ponto.DtPonto;
+                DtPonto.Date = Ponto.DtPonto;
                 Entrada.Value = Convert.ToDateTime(Ponto.Entrada);
                 Saida.Value = Convert.ToDateTime(Ponto.Saida);
                 Horas.Text = Ponto.Horas;
@@ -72,53 +129,57 @@ namespace ProjectP3
         {
             try
             {
-                var Ponto = new RegistroPonto();
-
-                
-                Ponto.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
-                Ponto.Nome = FuncionariosId.TxtDescricao.Text;
-                Ponto.DtPonto = Data.Date.Value;
-                Ponto.Entrada = Entrada.Value.TimeOfDay.ToString();
-                Ponto.Saida = Saida.Value.TimeOfDay.ToString();
-                Ponto.Horas = Horas.Text;
-
-                var Erro = await new Services<RegistroPonto>().GetByIds("api/RegistroPontos/Ids", Ponto.FuncionariosId.ToString());
-
-                foreach (var item in Erro)
+                if (validacoes())
                 {
-                    if (item.DtPonto == Ponto.DtPonto)
+                    var Ponto = new RegistroPonto();
+
+                    Ponto.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
+                    Ponto.Nome = FuncionariosId.TxtDescricao.Text;
+                    Ponto.DtPonto = DtPonto.Date.Value;
+                    Ponto.Entrada = Entrada.Value.TimeOfDay.ToString();
+                    Ponto.Saida = Saida.Value.TimeOfDay.ToString();
+                    Ponto.Horas = Horas.Text;
+
+                    var Erro = await new Services<RegistroPonto>().GetByIds("api/RegistroPontos/Ids", Ponto.FuncionariosId.ToString());
+
+                    foreach (var item in Erro)
                     {
-                        MessageBox.Show("Ponto já cadastrado neste dia");
-                        return;
+                        if (item.DtPonto == Ponto.DtPonto)
+                        {
+                            MessageBox.Show("Ponto já cadastrado neste dia");
+                            return;
+                        }
+                    }
+
+
+                    if (string.IsNullOrEmpty(RegistroPontoId.Text))
+                    {
+                        var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Inserido com sucesso");
+                            LimpaCadastro();
+                        }
+                        if (Result.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            MessageBox.Show("Já existe ponto registrado neste dia");
+                        }
+
+                    }
+                    else
+                    {
+                        Ponto.RegistroPontoId = Convert.ToInt32(RegistroPontoId.Text);
+                        var Result = await new Services<RegistroPonto>().Put("api/RegistroPontos", Ponto);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Alterado com sucesso");
+                            LimpaCadastro();
+                        }
                     }
 
                 }
 
 
-                if (string.IsNullOrEmpty(RegistroPontoId.Text))
-                {
-                    var Result = await new Services<RegistroPonto>().Post("api/RegistroPontos", Ponto);
-                    if (Result.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Inserido com sucesso");
-                    }
-                    if (Result.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                    {
-                        MessageBox.Show("Já existe ponto registrado neste dia");
-                    }
-
-                }
-                else
-                {
-                    Ponto.RegistroPontoId = Convert.ToInt32(RegistroPontoId.Text);
-                    var Result = await new Services<RegistroPonto>().Put("api/RegistroPontos", Ponto);
-                    if (Result.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Alterado com sucesso");
-                    }
-                }
-
-              
             }
             catch (Exception M)
             {
@@ -148,7 +209,7 @@ namespace ProjectP3
             frmConsulta.ShowDialog();
         }
 
-        private async void FuncionariosId_ConsultarAPI(object sender)
+        private void FuncionariosId_ConsultarAPI(object sender)
         {
 
         }
@@ -158,6 +219,19 @@ namespace ProjectP3
             var pontos = await new Services<RegistroPonto>().Get("api/RegistroPontos");
             
             GridConsultaP.LoadFromList(pontos);
+        }
+
+        private async void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente excluir este registro de ponto?", "Exclusão Registro Ponto", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                var result = await new Services<RegistroPonto>().Delete("api/registropontos", RegistroPontoId.Text);
+                if (result.IsSuccessStatusCode)
+                {
+                    LimpaCadastro();
+                    MessageBox.Show("Excluido com Sucesso.");                    
+                }
+            }
         }
     }
 }

@@ -97,6 +97,7 @@ namespace ProjectP3
             this.btn_Excluir.TabIndex = 3;
             this.btn_Excluir.Text = "Excluir";
             this.btn_Excluir.UseVisualStyleBackColor = true;
+            this.btn_Excluir.Visible = false;
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // GridConsultaP

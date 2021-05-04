@@ -63,15 +63,15 @@ namespace ApiP3.Controllers
             return Ok(Data);
         }
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<RegistroPonto> Delete(int Id)
         {
 
-            var Delete = db.RegistroPontos.Where(x => x.RegistroPontoId == Id);
-            db.Remove(Delete);
+            var Delete = db.RegistroPontos.Where(x => x.RegistroPontoId == Id).FirstOrDefault();
+            db.RegistroPontos.Remove(Delete);
             db.SaveChanges();
             return Ok();
         }

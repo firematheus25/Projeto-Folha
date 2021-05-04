@@ -44,20 +44,12 @@ namespace miscellaneous.Models
         public int? HoristaId { get; set; }
         public double? ValorHora { get; set; }
 
-
-
         //Agenda
         public int? AgendaId { get; set; }
         public string TipoAgenda { get; set; }
         public string Dia { get; set; }
         public string DiaSemana { get; set; }
         public string Agenda { get; set; }
-
-        ////vendas
-        //public int? VendasId { get; set; }
-
-        ////RegistroPontos
-        //public int? RegistroPontoId { get; set; }
 
         //Funcionario Sindical
         public int? FuncionarioSindicalId { get; set; }

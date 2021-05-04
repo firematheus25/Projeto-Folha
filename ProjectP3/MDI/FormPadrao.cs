@@ -47,6 +47,17 @@ namespace ProjectP3
             
         }
 
+        public virtual void LimpaCadastro()
+        {
+            //Implementat na Heranca
+        }
+
+        public virtual bool validacoes()
+        {
+            //Implementat na Heranca
+            return true;
+        }
+
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
             //Implementar na Heranca

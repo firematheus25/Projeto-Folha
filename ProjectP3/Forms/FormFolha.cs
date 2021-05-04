@@ -31,26 +31,33 @@ namespace ProjectP3.Forms
             ListFolha = new List<Folha>();
         }
 
+
         private async void GerarFolha_Click(object sender, EventArgs e)
         {
+            if (DtPagamento.Date == null)
+            {
+                MessageBox.Show("Informe uma data de pagamento.");
+                return;
+            }
             GridFolha.Rows.Clear();
             ListFolha.Clear();
             try
             {
                 var Funcionario = await new Services<FuncionarioVw>().Get("api/Funcionarios/");
 
+                string DIASEMANA = "";
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Sunday") { DIASEMANA = "Domingo"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Monday") { DIASEMANA = "Segunda-Feira"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Tuesday") { DIASEMANA = "Terça-Feira"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Wednesday") { DIASEMANA = "Quarta-Feira"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Thursday") { DIASEMANA = "Quinta-Feira"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Friday") { DIASEMANA = "Sexta-Feira"; }
+                if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Saturday") { DIASEMANA = "Sábado"; }
+
+                var ultimoDiaDoMes = new DateTime(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month, DateTime.DaysInMonth(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month));
+
                 for (int i = 0; i < Funcionario.Count; i++)
                 {
-                    string DIASEMANA = "";
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Sunday") { DIASEMANA = "Domingo"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Monday") { DIASEMANA = "Segunda-Feira"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Tuesday") { DIASEMANA = "Terça-Feira"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Wednesday") { DIASEMANA = "Quarta-Feira"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Thursday") { DIASEMANA = "Quinta-Feira"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Friday") { DIASEMANA = "Sexta-Feira"; }
-                    if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Saturday") { DIASEMANA = "Sábado"; }
-
-                    var ultimoDiaDoMes = new DateTime(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month, DateTime.DaysInMonth(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month));
 
                     var TaxaServicoSindical = await new Services<TaxasServico>().GetByIds("api/TaxasServico/Ids", Funcionario[i].FuncionarioSindicalId.ToString());
                     if (Funcionario[i].TipoAgenda == "Mensal") //MENSAL

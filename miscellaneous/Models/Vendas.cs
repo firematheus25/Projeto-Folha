@@ -16,5 +16,6 @@ namespace miscellaneous.Models
         public double? ValorVenda { get; set; }
         public DateTime DtVenda { get; set; }
         public double? Porcentagem { get; set; }
+        public double? Comissao { get; set; }
     }
 }

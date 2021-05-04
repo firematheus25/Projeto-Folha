@@ -66,6 +66,7 @@ create table Vendas
 	DtVenda date,
 	ValorVenda float,
 	Porcentagem float,
+	Comissao float,
 
 	primary key(VendasId),
 	Constraint FK_vend_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId) on delete cascade

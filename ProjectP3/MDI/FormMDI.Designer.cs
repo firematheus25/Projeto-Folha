@@ -38,13 +38,20 @@ namespace ProjectP3.MDI
             this.taxasServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agendaDePagamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sindicatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cascataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // Menu
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.windowsToolStripMenuItem,
+            this.fecharToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(800, 24);
@@ -57,10 +64,10 @@ namespace ProjectP3.MDI
             this.funcionárioToolStripMenuItem,
             this.registroDePontoToolStripMenuItem,
             this.cadastroDeVendasToolStripMenuItem,
-            this.folhaDePagamentoToolStripMenuItem,
+            this.sindicatosToolStripMenuItem,
             this.taxasServiçosToolStripMenuItem,
             this.agendaDePagamentoToolStripMenuItem,
-            this.sindicatosToolStripMenuItem});
+            this.folhaDePagamentoToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
             this.toolStripMenuItem1.Text = "Novo";
@@ -114,6 +121,44 @@ namespace ProjectP3.MDI
             this.sindicatosToolStripMenuItem.Text = "Sindicatos";
             this.sindicatosToolStripMenuItem.Click += new System.EventHandler(this.sindicatosToolStripMenuItem_Click);
             // 
+            // windowsToolStripMenuItem
+            // 
+            this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cascataToolStripMenuItem,
+            this.horizontalToolStripMenuItem,
+            this.verticalToolStripMenuItem});
+            this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
+            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.windowsToolStripMenuItem.Text = "Windows";
+            // 
+            // cascataToolStripMenuItem
+            // 
+            this.cascataToolStripMenuItem.Name = "cascataToolStripMenuItem";
+            this.cascataToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.cascataToolStripMenuItem.Text = "Cascata";
+            this.cascataToolStripMenuItem.Click += new System.EventHandler(this.cascataToolStripMenuItem_Click);
+            // 
+            // horizontalToolStripMenuItem
+            // 
+            this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
+            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.horizontalToolStripMenuItem.Text = "Horizontal";
+            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
+            // 
+            // verticalToolStripMenuItem
+            // 
+            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.verticalToolStripMenuItem.Text = "Vertical";
+            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
+            // 
+            // fecharToolStripMenuItem
+            // 
+            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.fecharToolStripMenuItem.Text = "Sair";
+            this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
+            // 
             // FormMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,5 +188,10 @@ namespace ProjectP3.MDI
         private System.Windows.Forms.ToolStripMenuItem taxasServiçosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agendaDePagamentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sindicatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cascataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
     }
 }

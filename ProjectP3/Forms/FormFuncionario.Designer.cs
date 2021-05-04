@@ -42,8 +42,9 @@ namespace ProjectP3
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Endereco = new System.Windows.Forms.TabPage();
+            this.Numero = new ProjectP3.componentes.CmpNumerico();
+            this.Cep = new ProjectP3.componentes.CmpNumerico();
             this.label4 = new System.Windows.Forms.Label();
-            this.Numero = new System.Windows.Forms.TextBox();
             this.Complemento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Bairro = new System.Windows.Forms.TextBox();
@@ -54,39 +55,42 @@ namespace ProjectP3
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Rua = new System.Windows.Forms.TextBox();
-            this.Cep = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Conta = new System.Windows.Forms.TextBox();
-            this.Agencia = new System.Windows.Forms.TextBox();
+            this.Operacao = new ProjectP3.componentes.CmpNumerico();
+            this.Conta = new ProjectP3.componentes.CmpNumerico();
+            this.Agencia = new ProjectP3.componentes.CmpNumerico();
             this.label15 = new System.Windows.Forms.Label();
-            this.Operacao = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Banco = new System.Windows.Forms.TextBox();
             this.lbl_ValorHora = new System.Windows.Forms.Label();
-            this.ValorHora = new System.Windows.Forms.TextBox();
             this.lbl_TaxaComissao = new System.Windows.Forms.Label();
-            this.TaxaComissao = new System.Windows.Forms.TextBox();
             this.lbl_Salario = new System.Windows.Forms.Label();
             this.Salario = new ProjectP3.componentes.CmpNumerico();
             this.ComissionadoId = new System.Windows.Forms.TextBox();
             this.AssalariadoId = new System.Windows.Forms.TextBox();
             this.HoristaId = new System.Windows.Forms.TextBox();
             this.lbl_TxSindical = new System.Windows.Forms.Label();
-            this.TaxaSindical = new System.Windows.Forms.TextBox();
             this.FuncionarioSindicalId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.AgendaId = new ProjectP3.componentes.CmpBuscaCombinada();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblObrigaInfoMesmoMot = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.salario_obrigado = new System.Windows.Forms.Label();
+            this.taxacomissao_Obrigado = new System.Windows.Forms.Label();
+            this.sindical_obrigado = new System.Windows.Forms.Label();
+            this.TaxaSindical = new ProjectP3.componentes.CmpNumerico();
+            this.ValorHora = new ProjectP3.componentes.CmpNumerico();
+            this.TaxaComissao = new ProjectP3.componentes.CmpNumerico();
+            this.label18 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Endereco.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -116,12 +120,20 @@ namespace ProjectP3
             // 
             // AlternaModo
             // 
+            this.AlternaModo.Controls.Add(this.label18);
+            this.AlternaModo.Controls.Add(this.TaxaComissao);
+            this.AlternaModo.Controls.Add(this.ValorHora);
+            this.AlternaModo.Controls.Add(this.TaxaSindical);
+            this.AlternaModo.Controls.Add(this.sindical_obrigado);
+            this.AlternaModo.Controls.Add(this.taxacomissao_Obrigado);
+            this.AlternaModo.Controls.Add(this.salario_obrigado);
+            this.AlternaModo.Controls.Add(this.label9);
+            this.AlternaModo.Controls.Add(this.lblObrigaInfoMesmoMot);
             this.AlternaModo.Controls.Add(this.label17);
             this.AlternaModo.Controls.Add(this.label16);
             this.AlternaModo.Controls.Add(this.FuncionarioSindicalId);
             this.AlternaModo.Controls.Add(this.AgendaId);
             this.AlternaModo.Controls.Add(this.lbl_TxSindical);
-            this.AlternaModo.Controls.Add(this.TaxaSindical);
             this.AlternaModo.Controls.Add(this.groupBox1);
             this.AlternaModo.Controls.Add(this.FuncionariosId);
             this.AlternaModo.Controls.Add(this.HoristaId);
@@ -136,13 +148,9 @@ namespace ProjectP3
             this.AlternaModo.Controls.Add(this.lbl_Salario);
             this.AlternaModo.Controls.Add(this.tabControl1);
             this.AlternaModo.Controls.Add(this.lbl_TaxaComissao);
-            this.AlternaModo.Controls.Add(this.ValorHora);
-            this.AlternaModo.Controls.Add(this.TaxaComissao);
             this.AlternaModo.Controls.Add(this.lbl_ValorHora);
             this.AlternaModo.Size = new System.Drawing.Size(541, 501);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_ValorHora, 0);
-            this.AlternaModo.Controls.SetChildIndex(this.TaxaComissao, 0);
-            this.AlternaModo.Controls.SetChildIndex(this.ValorHora, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_TaxaComissao, 0);
             this.AlternaModo.Controls.SetChildIndex(this.tabControl1, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_Salario, 0);
@@ -157,13 +165,21 @@ namespace ProjectP3
             this.AlternaModo.Controls.SetChildIndex(this.HoristaId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.FuncionariosId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.groupBox1, 0);
-            this.AlternaModo.Controls.SetChildIndex(this.TaxaSindical, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_TxSindical, 0);
             this.AlternaModo.Controls.SetChildIndex(this.AgendaId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.FuncionarioSindicalId, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label16, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label17, 0);
             this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.lblObrigaInfoMesmoMot, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label9, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.salario_obrigado, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.taxacomissao_Obrigado, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.sindical_obrigado, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.TaxaSindical, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.ValorHora, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.TaxaComissao, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.label18, 0);
             // 
             // PalavraChave
             // 
@@ -198,7 +214,7 @@ namespace ProjectP3
             // 
             this.Nome.Location = new System.Drawing.Point(114, 97);
             this.Nome.Name = "Nome";
-            this.Nome.Size = new System.Drawing.Size(327, 20);
+            this.Nome.Size = new System.Drawing.Size(380, 20);
             this.Nome.TabIndex = 2;
             // 
             // label6
@@ -280,7 +296,7 @@ namespace ProjectP3
             this.groupBox1.Controls.Add(this.Comissionado);
             this.groupBox1.Location = new System.Drawing.Point(3, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 55);
+            this.groupBox1.Size = new System.Drawing.Size(531, 55);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo Funcionário";
@@ -289,17 +305,18 @@ namespace ProjectP3
             // 
             this.tabControl1.Controls.Add(this.Endereco);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(10, 302);
+            this.tabControl1.Location = new System.Drawing.Point(3, 302);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(517, 145);
+            this.tabControl1.Size = new System.Drawing.Size(531, 145);
             this.tabControl1.TabIndex = 17;
             // 
             // Endereco
             // 
             this.Endereco.BackColor = System.Drawing.Color.Transparent;
-            this.Endereco.Controls.Add(this.label4);
             this.Endereco.Controls.Add(this.Numero);
+            this.Endereco.Controls.Add(this.Cep);
+            this.Endereco.Controls.Add(this.label4);
             this.Endereco.Controls.Add(this.Complemento);
             this.Endereco.Controls.Add(this.label3);
             this.Endereco.Controls.Add(this.Bairro);
@@ -310,14 +327,43 @@ namespace ProjectP3
             this.Endereco.Controls.Add(this.label11);
             this.Endereco.Controls.Add(this.label10);
             this.Endereco.Controls.Add(this.Rua);
-            this.Endereco.Controls.Add(this.Cep);
             this.Endereco.Controls.Add(this.label6);
             this.Endereco.Location = new System.Drawing.Point(4, 22);
             this.Endereco.Name = "Endereco";
             this.Endereco.Padding = new System.Windows.Forms.Padding(3);
-            this.Endereco.Size = new System.Drawing.Size(509, 119);
+            this.Endereco.Size = new System.Drawing.Size(523, 119);
             this.Endereco.TabIndex = 0;
             this.Endereco.Text = "Endereço";
+            // 
+            // Numero
+            // 
+            this.Numero.CasasDecimais = 2;
+            this.Numero.Location = new System.Drawing.Point(310, 14);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(71, 20);
+            this.Numero.TabIndex = 139;
+            this.Numero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Numero.Valor = null;
+            this.Numero.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // Cep
+            // 
+            this.Cep.CasasDecimais = 2;
+            this.Cep.Location = new System.Drawing.Point(84, 14);
+            this.Cep.Name = "Cep";
+            this.Cep.Size = new System.Drawing.Size(100, 20);
+            this.Cep.TabIndex = 139;
+            this.Cep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Cep.Valor = null;
+            this.Cep.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
@@ -328,18 +374,11 @@ namespace ProjectP3
             this.label4.TabIndex = 19;
             this.label4.Text = "Complemento:";
             // 
-            // Numero
-            // 
-            this.Numero.Location = new System.Drawing.Point(310, 13);
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(48, 20);
-            this.Numero.TabIndex = 35;
-            // 
             // Complemento
             // 
             this.Complemento.Location = new System.Drawing.Point(84, 92);
             this.Complemento.Name = "Complemento";
-            this.Complemento.Size = new System.Drawing.Size(419, 20);
+            this.Complemento.Size = new System.Drawing.Size(433, 20);
             this.Complemento.TabIndex = 18;
             // 
             // label3
@@ -355,13 +394,13 @@ namespace ProjectP3
             // 
             this.Bairro.Location = new System.Drawing.Point(318, 66);
             this.Bairro.Name = "Bairro";
-            this.Bairro.Size = new System.Drawing.Size(185, 20);
+            this.Bairro.Size = new System.Drawing.Size(199, 20);
             this.Bairro.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(414, 16);
+            this.label2.Location = new System.Drawing.Point(436, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 15;
@@ -399,7 +438,7 @@ namespace ProjectP3
             "SE",
             "SP",
             "TO"});
-            this.UF.Location = new System.Drawing.Point(452, 13);
+            this.UF.Location = new System.Drawing.Point(466, 13);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(51, 21);
             this.UF.TabIndex = 14;
@@ -442,23 +481,16 @@ namespace ProjectP3
             // 
             this.Rua.Location = new System.Drawing.Point(84, 40);
             this.Rua.Name = "Rua";
-            this.Rua.Size = new System.Drawing.Size(419, 20);
+            this.Rua.Size = new System.Drawing.Size(433, 20);
             this.Rua.TabIndex = 8;
-            // 
-            // Cep
-            // 
-            this.Cep.Location = new System.Drawing.Point(84, 14);
-            this.Cep.Name = "Cep";
-            this.Cep.Size = new System.Drawing.Size(100, 20);
-            this.Cep.TabIndex = 1;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.Operacao);
             this.tabPage2.Controls.Add(this.Conta);
             this.tabPage2.Controls.Add(this.Agencia);
             this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.Operacao);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label5);
@@ -466,23 +498,54 @@ namespace ProjectP3
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(509, 119);
+            this.tabPage2.Size = new System.Drawing.Size(523, 119);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dados Bancários";
             // 
+            // Operacao
+            // 
+            this.Operacao.CasasDecimais = 2;
+            this.Operacao.Location = new System.Drawing.Point(398, 49);
+            this.Operacao.Name = "Operacao";
+            this.Operacao.Size = new System.Drawing.Size(100, 20);
+            this.Operacao.TabIndex = 139;
+            this.Operacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Operacao.Valor = null;
+            this.Operacao.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
             // Conta
             // 
-            this.Conta.Location = new System.Drawing.Point(224, 49);
+            this.Conta.CasasDecimais = 2;
+            this.Conta.Location = new System.Drawing.Point(224, 50);
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(100, 20);
-            this.Conta.TabIndex = 36;
+            this.Conta.TabIndex = 139;
+            this.Conta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Conta.Valor = null;
+            this.Conta.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
             // 
             // Agencia
             // 
+            this.Agencia.CasasDecimais = 2;
             this.Agencia.Location = new System.Drawing.Point(63, 50);
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(100, 20);
-            this.Agencia.TabIndex = 35;
+            this.Agencia.TabIndex = 139;
+            this.Agencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Agencia.Valor = null;
+            this.Agencia.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
             // 
             // label15
             // 
@@ -492,13 +555,6 @@ namespace ProjectP3
             this.label15.Size = new System.Drawing.Size(57, 13);
             this.label15.TabIndex = 24;
             this.label15.Text = "Operação:";
-            // 
-            // Operacao
-            // 
-            this.Operacao.Location = new System.Drawing.Point(398, 50);
-            this.Operacao.Name = "Operacao";
-            this.Operacao.Size = new System.Drawing.Size(100, 20);
-            this.Operacao.TabIndex = 23;
             // 
             // label14
             // 
@@ -543,13 +599,6 @@ namespace ProjectP3
             this.lbl_ValorHora.TabIndex = 19;
             this.lbl_ValorHora.Text = "Valor por Hora:";
             // 
-            // ValorHora
-            // 
-            this.ValorHora.Location = new System.Drawing.Point(114, 204);
-            this.ValorHora.Name = "ValorHora";
-            this.ValorHora.Size = new System.Drawing.Size(100, 20);
-            this.ValorHora.TabIndex = 18;
-            // 
             // lbl_TaxaComissao
             // 
             this.lbl_TaxaComissao.AutoSize = true;
@@ -558,13 +607,6 @@ namespace ProjectP3
             this.lbl_TaxaComissao.Size = new System.Drawing.Size(82, 13);
             this.lbl_TaxaComissao.TabIndex = 21;
             this.lbl_TaxaComissao.Text = "Taxa Comissão:";
-            // 
-            // TaxaComissao
-            // 
-            this.TaxaComissao.Location = new System.Drawing.Point(114, 230);
-            this.TaxaComissao.Name = "TaxaComissao";
-            this.TaxaComissao.Size = new System.Drawing.Size(100, 20);
-            this.TaxaComissao.TabIndex = 20;
             // 
             // lbl_Salario
             // 
@@ -617,20 +659,12 @@ namespace ProjectP3
             // lbl_TxSindical
             // 
             this.lbl_TxSindical.AutoSize = true;
-            this.lbl_TxSindical.Location = new System.Drawing.Point(256, 180);
+            this.lbl_TxSindical.Location = new System.Drawing.Point(314, 180);
             this.lbl_TxSindical.Name = "lbl_TxSindical";
             this.lbl_TxSindical.Size = new System.Drawing.Size(74, 13);
             this.lbl_TxSindical.TabIndex = 34;
             this.lbl_TxSindical.Text = "Taxa Sindical:";
             this.lbl_TxSindical.Visible = false;
-            // 
-            // TaxaSindical
-            // 
-            this.TaxaSindical.Location = new System.Drawing.Point(341, 177);
-            this.TaxaSindical.Name = "TaxaSindical";
-            this.TaxaSindical.Size = new System.Drawing.Size(100, 20);
-            this.TaxaSindical.TabIndex = 35;
-            this.TaxaSindical.Visible = false;
             // 
             // FuncionarioSindicalId
             // 
@@ -641,7 +675,7 @@ namespace ProjectP3
             this.FuncionarioSindicalId.Location = new System.Drawing.Point(33, 150);
             this.FuncionarioSindicalId.Mascara = "";
             this.FuncionarioSindicalId.Name = "FuncionarioSindicalId";
-            this.FuncionarioSindicalId.Size = new System.Drawing.Size(408, 21);
+            this.FuncionarioSindicalId.Size = new System.Drawing.Size(461, 21);
             this.FuncionarioSindicalId.TabIndex = 36;
             this.FuncionarioSindicalId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.FuncionarioSindicalId_ConsultarAPI);
             this.FuncionarioSindicalId.ConsultarClick += new System.EventHandler(this.FuncionarioSindicalId_ConsultarClick);
@@ -655,7 +689,7 @@ namespace ProjectP3
             this.AgendaId.Location = new System.Drawing.Point(33, 123);
             this.AgendaId.Mascara = "";
             this.AgendaId.Name = "AgendaId";
-            this.AgendaId.Size = new System.Drawing.Size(408, 21);
+            this.AgendaId.Size = new System.Drawing.Size(461, 21);
             this.AgendaId.TabIndex = 37;
             this.AgendaId.ConsultarAPI += new ProjectP3.componentes.CmpBuscaCombinada.EventHandlerCustom(this.AgendaId_ConsultarAPI);
             this.AgendaId.ConsultarClick += new System.EventHandler(this.AgendaId_ConsultarClick);
@@ -678,29 +712,136 @@ namespace ProjectP3
             this.label17.TabIndex = 39;
             this.label17.Text = "Sindicato:";
             // 
-            // dataGridView1
+            // lblObrigaInfoMesmoMot
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 9;
+            this.lblObrigaInfoMesmoMot.AutoSize = true;
+            this.lblObrigaInfoMesmoMot.BackColor = System.Drawing.SystemColors.Control;
+            this.lblObrigaInfoMesmoMot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObrigaInfoMesmoMot.ForeColor = System.Drawing.Color.Maroon;
+            this.lblObrigaInfoMesmoMot.Location = new System.Drawing.Point(500, 100);
+            this.lblObrigaInfoMesmoMot.Name = "lblObrigaInfoMesmoMot";
+            this.lblObrigaInfoMesmoMot.Size = new System.Drawing.Size(17, 13);
+            this.lblObrigaInfoMesmoMot.TabIndex = 131;
+            this.lblObrigaInfoMesmoMot.Text = "(*)";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.Control;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Maroon;
+            this.label9.Location = new System.Drawing.Point(221, 180);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 13);
+            this.label9.TabIndex = 132;
+            this.label9.Text = "(*)";
+            // 
+            // salario_obrigado
+            // 
+            this.salario_obrigado.AutoSize = true;
+            this.salario_obrigado.BackColor = System.Drawing.SystemColors.Control;
+            this.salario_obrigado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salario_obrigado.ForeColor = System.Drawing.Color.Maroon;
+            this.salario_obrigado.Location = new System.Drawing.Point(221, 207);
+            this.salario_obrigado.Name = "salario_obrigado";
+            this.salario_obrigado.Size = new System.Drawing.Size(17, 13);
+            this.salario_obrigado.TabIndex = 133;
+            this.salario_obrigado.Text = "(*)";
+            this.salario_obrigado.Visible = false;
+            // 
+            // taxacomissao_Obrigado
+            // 
+            this.taxacomissao_Obrigado.AutoSize = true;
+            this.taxacomissao_Obrigado.BackColor = System.Drawing.SystemColors.Control;
+            this.taxacomissao_Obrigado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.taxacomissao_Obrigado.ForeColor = System.Drawing.Color.Maroon;
+            this.taxacomissao_Obrigado.Location = new System.Drawing.Point(221, 233);
+            this.taxacomissao_Obrigado.Name = "taxacomissao_Obrigado";
+            this.taxacomissao_Obrigado.Size = new System.Drawing.Size(17, 13);
+            this.taxacomissao_Obrigado.TabIndex = 134;
+            this.taxacomissao_Obrigado.Text = "(*)";
+            this.taxacomissao_Obrigado.Visible = false;
+            // 
+            // sindical_obrigado
+            // 
+            this.sindical_obrigado.AutoSize = true;
+            this.sindical_obrigado.BackColor = System.Drawing.SystemColors.Control;
+            this.sindical_obrigado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sindical_obrigado.ForeColor = System.Drawing.Color.Maroon;
+            this.sindical_obrigado.Location = new System.Drawing.Point(500, 180);
+            this.sindical_obrigado.Name = "sindical_obrigado";
+            this.sindical_obrigado.Size = new System.Drawing.Size(17, 13);
+            this.sindical_obrigado.TabIndex = 135;
+            this.sindical_obrigado.Text = "(*)";
+            this.sindical_obrigado.Visible = false;
+            // 
+            // TaxaSindical
+            // 
+            this.TaxaSindical.CasasDecimais = 2;
+            this.TaxaSindical.Location = new System.Drawing.Point(394, 177);
+            this.TaxaSindical.Name = "TaxaSindical";
+            this.TaxaSindical.Size = new System.Drawing.Size(100, 20);
+            this.TaxaSindical.TabIndex = 136;
+            this.TaxaSindical.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TaxaSindical.Valor = null;
+            this.TaxaSindical.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.TaxaSindical.Visible = false;
+            // 
+            // ValorHora
+            // 
+            this.ValorHora.CasasDecimais = 2;
+            this.ValorHora.Location = new System.Drawing.Point(114, 204);
+            this.ValorHora.Name = "ValorHora";
+            this.ValorHora.Size = new System.Drawing.Size(100, 20);
+            this.ValorHora.TabIndex = 137;
+            this.ValorHora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ValorHora.Valor = null;
+            this.ValorHora.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // TaxaComissao
+            // 
+            this.TaxaComissao.CasasDecimais = 2;
+            this.TaxaComissao.Location = new System.Drawing.Point(114, 230);
+            this.TaxaComissao.Name = "TaxaComissao";
+            this.TaxaComissao.Size = new System.Drawing.Size(100, 20);
+            this.TaxaComissao.TabIndex = 138;
+            this.TaxaComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TaxaComissao.Valor = null;
+            this.TaxaComissao.ValorMaximo = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.Control;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Maroon;
+            this.label18.Location = new System.Drawing.Point(500, 127);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(17, 13);
+            this.label18.TabIndex = 139;
+            this.label18.Text = "(*)";
             // 
             // FormFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 501);
-            this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FormFuncionario";
             this.Text = "Funcionário";
-            this.Controls.SetChildIndex(this.dataGridView1, 0);
-            this.Controls.SetChildIndex(this.btn_Buscar, 0);
-            this.Controls.SetChildIndex(this.PalavraChave, 0);
-            this.Controls.SetChildIndex(this.lbl_palavrachave, 0);
-            this.Controls.SetChildIndex(this.btn_Retornar, 0);
-            this.Controls.SetChildIndex(this.AlternaModo, 0);
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
@@ -711,7 +852,6 @@ namespace ProjectP3
             this.Endereco.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -738,7 +878,6 @@ namespace ProjectP3
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox Rua;
-        private System.Windows.Forms.TextBox Cep;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox UF;
         private System.Windows.Forms.Label label3;
@@ -748,28 +887,34 @@ namespace ProjectP3
         private System.Windows.Forms.TextBox Banco;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox Operacao;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbl_ValorHora;
-        private System.Windows.Forms.TextBox ValorHora;
         private System.Windows.Forms.Label lbl_TaxaComissao;
-        private System.Windows.Forms.TextBox TaxaComissao;
         private System.Windows.Forms.Label lbl_Salario;
         private componentes.CmpNumerico Salario;
         private System.Windows.Forms.TextBox ComissionadoId;
         private System.Windows.Forms.TextBox AssalariadoId;
         private System.Windows.Forms.TextBox HoristaId;
         private System.Windows.Forms.Label lbl_TxSindical;
-        private System.Windows.Forms.TextBox Numero;
-        private System.Windows.Forms.TextBox Conta;
-        private System.Windows.Forms.TextBox Agencia;
-        private System.Windows.Forms.TextBox TaxaSindical;
         public componentes.CmpBuscaCombinada FuncionarioSindicalId;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         public componentes.CmpBuscaCombinada AgendaId;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label taxacomissao_Obrigado;
+        private System.Windows.Forms.Label salario_obrigado;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblObrigaInfoMesmoMot;
+        private System.Windows.Forms.Label sindical_obrigado;
+        private componentes.CmpNumerico TaxaSindical;
+        private componentes.CmpNumerico TaxaComissao;
+        private componentes.CmpNumerico ValorHora;
+        private componentes.CmpNumerico Numero;
+        private componentes.CmpNumerico Cep;
+        private componentes.CmpNumerico Operacao;
+        private componentes.CmpNumerico Conta;
+        private componentes.CmpNumerico Agencia;
+        private System.Windows.Forms.Label label18;
     }
 }
 

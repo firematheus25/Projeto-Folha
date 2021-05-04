@@ -40,18 +40,19 @@ namespace ProjectP3.Forms
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(380, 12);
+            this.btnSalvar.Location = new System.Drawing.Point(381, 13);
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(461, 12);
+            this.btnLimpar.Location = new System.Drawing.Point(462, 13);
             // 
             // panelInferior
             // 
+            this.panelInferior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInferior.Location = new System.Drawing.Point(-2, 397);
             this.panelInferior.Size = new System.Drawing.Size(557, 53);
             // 
-            // panel1
+            // AlternaModo
             // 
             this.AlternaModo.Controls.Add(this.label1);
             this.AlternaModo.Controls.Add(this.GridFolha);

@@ -32,6 +32,7 @@ namespace ProjectP3.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.Nome = new System.Windows.Forms.TextBox();
             this.SindicatosId = new System.Windows.Forms.TextBox();
+            this.lblObrigaInfoMesmoMot = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,7 @@ namespace ProjectP3.Forms
             // 
             // AlternaModo
             // 
+            this.AlternaModo.Controls.Add(this.lblObrigaInfoMesmoMot);
             this.AlternaModo.Controls.Add(this.SindicatosId);
             this.AlternaModo.Controls.Add(this.Nome);
             this.AlternaModo.Controls.Add(this.label1);
@@ -71,6 +73,7 @@ namespace ProjectP3.Forms
             this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
             this.AlternaModo.Controls.SetChildIndex(this.Nome, 0);
             this.AlternaModo.Controls.SetChildIndex(this.SindicatosId, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.lblObrigaInfoMesmoMot, 0);
             // 
             // PalavraChave
             // 
@@ -89,7 +92,7 @@ namespace ProjectP3.Forms
             // 
             this.Nome.Location = new System.Drawing.Point(70, 48);
             this.Nome.Name = "Nome";
-            this.Nome.Size = new System.Drawing.Size(307, 20);
+            this.Nome.Size = new System.Drawing.Size(291, 20);
             this.Nome.TabIndex = 2;
             // 
             // SindicatosId
@@ -100,11 +103,24 @@ namespace ProjectP3.Forms
             this.SindicatosId.TabIndex = 3;
             this.SindicatosId.Visible = false;
             // 
+            // lblObrigaInfoMesmoMot
+            // 
+            this.lblObrigaInfoMesmoMot.AutoSize = true;
+            this.lblObrigaInfoMesmoMot.BackColor = System.Drawing.SystemColors.Control;
+            this.lblObrigaInfoMesmoMot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObrigaInfoMesmoMot.ForeColor = System.Drawing.Color.Maroon;
+            this.lblObrigaInfoMesmoMot.Location = new System.Drawing.Point(367, 51);
+            this.lblObrigaInfoMesmoMot.Name = "lblObrigaInfoMesmoMot";
+            this.lblObrigaInfoMesmoMot.Size = new System.Drawing.Size(17, 13);
+            this.lblObrigaInfoMesmoMot.TabIndex = 131;
+            this.lblObrigaInfoMesmoMot.Text = "(*)";
+            // 
             // FormSindicato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 189);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormSindicato";
             this.Text = "FormSindicato";
             this.panelInferior.ResumeLayout(false);
@@ -120,5 +136,6 @@ namespace ProjectP3.Forms
         private System.Windows.Forms.TextBox SindicatosId;
         private System.Windows.Forms.TextBox Nome;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblObrigaInfoMesmoMot;
     }
 }

@@ -66,5 +66,25 @@ namespace ProjectP3.MDI
             f.MdiParent = this;
             f.Show();
         }
+
+        private void cascataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
+        }
+
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

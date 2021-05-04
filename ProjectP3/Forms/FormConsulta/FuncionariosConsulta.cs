@@ -62,7 +62,7 @@ namespace ProjectP3.Forms.FormConsulta
         {
 
                 var Id = GridConsulta.CurrentRow.Cells["FuncionariosId"].Value.ToString();
-                var funcionario = await new Services<Funcionario>().GetById("api/funcionarios/BuscaCB", Id);
+                var funcionario = await new Services<FuncionarioVw>().GetById("api/funcionarios/Id", Id);
 
             var t = this.Owner.GetType();
             if (t.Equals(typeof(FormRegistroPonto)))
@@ -77,6 +77,7 @@ namespace ProjectP3.Forms.FormConsulta
                 var frm = (FormVendas)this.Owner;
                 frm.FuncionariosId.TxtCodigo.Text = Convert.ToString(funcionario.FuncionariosId);
                 frm.FuncionariosId.TxtDescricao.Text = funcionario.Nome;
+                frm.PorcentagemVenda.Valor = (decimal?)funcionario.TaxaComissao;
                 this.Close();
             }
 
