@@ -8,6 +8,7 @@ namespace ProjectP3.Services
     public class MyClient
     {
         public string BaseAddress { get; set; } = "https://localhost:5001";
+        //public string BaseAddress { get; set; } = "http://www.P3.somee.com";
         public MyClient()
         {
 

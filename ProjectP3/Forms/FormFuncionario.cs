@@ -201,14 +201,12 @@ namespace ProjectP3
                 TaxaSindical.Text = Convert.ToString(funcionario.TaxaSindical);
                 lbl_TxSindical.Visible = true;
                 TaxaSindical.Visible = true;
-
             }
 
             FuncionariosId.Text = funcionario.FuncionariosId.ToString();
             Nome.Text = funcionario.Nome;
             AgendaId.TxtCodigo.Text = Convert.ToString(funcionario.AgendaId);
-            AgendaId.TxtDescricao.Text = funcionario.Agenda;
-            
+            AgendaId.TxtDescricao.Text = funcionario.Agenda;            
 
             MetodoPagamento.SelectedIndex = ((int)(funcionario.MetodoPagamento - 1));
 
@@ -297,6 +295,10 @@ namespace ProjectP3
 
                         await new Services<FuncionarioSindical>().Post("api/FuncionariosSindicais", FuncionarioSindical);
                     }
+                    else
+                    {
+                        await new Services<FuncionarioSindical>().Delete("", FuncionariosId.Text);
+;                    }
 
 
                     if (Assalariado.Checked)
@@ -355,12 +357,8 @@ namespace ProjectP3
                             MessageBox.Show("Inserido com sucesso");
                             LimpaCadastro();
                         }
-
                     }
-
-                }
-                
-                         
+                }                                         
             }
             catch (Exception M)
             {
@@ -371,8 +369,7 @@ namespace ProjectP3
             
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            LimpaCadastro();
-            
+            LimpaCadastro();            
         }
 
         public async void Assalariado_CheckedChanged(object sender, EventArgs e)
@@ -404,9 +401,6 @@ namespace ProjectP3
 
                 Salario.Visible = true;
                 lbl_Salario.Visible = true;
-
-
-
             }
         }
 
@@ -414,7 +408,6 @@ namespace ProjectP3
         {
             if (Comissionado.Checked)
             {
-
                 var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
 
                 foreach (var item in result)
@@ -424,7 +417,6 @@ namespace ProjectP3
                         AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
                         AgendaId.TxtDescricao.Text = item.Agenda;
                     }
-
                 }
 
                 Assalariado.Checked = false;                
@@ -456,7 +448,6 @@ namespace ProjectP3
                         AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
                         AgendaId.TxtDescricao.Text = item.Agenda;
                     }
-
                 }
                 Comissionado.Checked = false;
                 Assalariado.Checked = false;
@@ -488,7 +479,6 @@ namespace ProjectP3
 
                 var funcionarios = await new Services<Funcionario>().Get("api/funcionarios/");
 
-
                 for (int i = 0; i < funcionarios.Count; i++)
                 {
                     if (funcionarios[i].TipoFuncionario == 1)
@@ -503,7 +493,6 @@ namespace ProjectP3
                     {
                         funcionarios[i].Tipo = "Horista";
                     }
-
                 }
 
                 GridConsultaP.LoadFromList(funcionarios);
