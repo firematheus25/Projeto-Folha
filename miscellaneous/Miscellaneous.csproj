@@ -48,6 +48,7 @@
     <Compile Include="Models\AgendaPagamento.cs" />
     <Compile Include="Models\Assalariado.cs" />
     <Compile Include="Models\Folha.cs" />
+    <Compile Include="Models\FolhaEspelho.cs" />
     <Compile Include="Models\FuncionarioSindical.cs" />
     <Compile Include="Models\FuncionarioVw.cs" />
     <Compile Include="Models\RegistroPonto.cs" />

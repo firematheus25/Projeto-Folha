@@ -95,7 +95,7 @@ create table Folhas
 	MetodoPagamento int,
 
 	Primary Key(FolhasId),
-	Constraint FK_FL_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId)
+	Constraint FK_FL_FuncionariosId foreign key (funcionariosId) references Funcionarios(FuncionariosId) on delete cascade
 	
 );
 

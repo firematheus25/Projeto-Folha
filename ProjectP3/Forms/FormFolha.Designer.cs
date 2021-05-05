@@ -41,16 +41,26 @@ namespace ProjectP3.Forms
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(381, 13);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.Location = new System.Drawing.Point(462, 13);
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
             // 
             this.panelInferior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInferior.Location = new System.Drawing.Point(-2, 397);
             this.panelInferior.Size = new System.Drawing.Size(557, 53);
+            // 
+            // btn_Buscar
+            // 
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            // 
+            // btn_Retornar
+            // 
+            this.btn_Retornar.Location = new System.Drawing.Point(480, 12);
             // 
             // AlternaModo
             // 
@@ -119,7 +129,7 @@ namespace ProjectP3.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FormFolha";
-            this.Text = "FormFolha";
+            this.Text = "Folha de Pagamento";
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();

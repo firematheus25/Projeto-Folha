@@ -38,7 +38,7 @@ namespace ProjectP3.Forms.FormConsulta
             this.ClientSize = new System.Drawing.Size(316, 450);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "SindicatoConsulta";
-            this.Text = "SindicatoConsulta";
+            this.Text = "Consulta Sindicato";
             this.ResumeLayout(false);
 
         }

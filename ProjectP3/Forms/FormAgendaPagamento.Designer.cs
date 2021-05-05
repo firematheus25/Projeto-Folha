@@ -98,6 +98,10 @@ namespace ProjectP3.Forms
             // 
             this.PalavraChave.Size = new System.Drawing.Size(133, 20);
             // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
             // AgendaId
             // 
             this.AgendaId.Location = new System.Drawing.Point(143, 27);

@@ -60,14 +60,14 @@ namespace ApiP3.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<AgendaPagamento> Delete(int Id)
         {
-            var Delete = db.AgendaPagamento.Where(X => X.AgendaId == Id);
-            db.Remove(Delete);
+            var Delete = db.AgendaPagamento.Where(X => X.AgendaId == Id).FirstOrDefault();
+            db.AgendaPagamento.Remove(Delete);
             db.SaveChanges();
 
             return Ok();

@@ -41,6 +41,9 @@ namespace ApiP3.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public void Post(Vendas Vendas)
         {
             db.Vendas.Add(Vendas);
@@ -48,6 +51,9 @@ namespace ApiP3.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult Put(Vendas Vendas)
         {
             if (Vendas.VendasId != 0)
@@ -57,6 +63,20 @@ namespace ApiP3.Controllers
 
                 return Ok();
             }
+            return Ok();
+        }
+
+
+        [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<RegistroPonto> Delete(int Id)
+        {
+
+            var Delete = db.Vendas.Where(x => x.VendasId == Id).FirstOrDefault();
+            db.Vendas.Remove(Delete);
+            db.SaveChanges();
             return Ok();
         }
 

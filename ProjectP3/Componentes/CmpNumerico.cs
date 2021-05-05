@@ -202,7 +202,7 @@ namespace ProjectP3.componentes
 
         public void Mascarar()
         {
-            this.Text = this.Valor.Value.ToString("N" + CasasDecimais);
+            this.Text = Convert.ToInt32(this.Text).ToString("N" + CasasDecimais);
         }
 
         //Faz a formatação das casas decimais após a virgula

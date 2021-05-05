@@ -41,10 +41,42 @@ namespace ProjectP3
             Comissao.Clear();
             FuncionariosId.Enabled = true;
             FuncionariosId.TxtCodigo.Enabled = false;
+            btn_Excluir.Visible = false;
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimpaCadastro();            
+        }
+
+        public override bool validacoes()
+        {
+            string message = null;
+
+            if (string.IsNullOrEmpty(FuncionariosId.TxtCodigo.Text))
+            {
+                message += "Preencher 'Funcionário'\n";
+            }
+
+            if (DtVenda.Date == null)
+            {
+                message += "Preencher 'Data'\n";
+            }
+
+            if (string.IsNullOrEmpty(ValorVenda.Text))
+            {
+                message += "Preencher 'R$'\n";
+            }
+
+            if (message == null)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(message);
+                return false;
+            }
+
         }
 
         public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -52,6 +84,7 @@ namespace ProjectP3
             try
             {
                 LimpaCadastro();
+                btn_Excluir.Visible = true;
                 FuncionariosId.Enabled = false;
                 var id = GridConsultaP.CurrentRow.Cells["VendasId"].Value.ToString();
                 var venda = await new Services<Vendas>().GetById("api/Vendas/Id", id);
@@ -78,49 +111,55 @@ namespace ProjectP3
 
         private async void btnSalvar_Click(object sender, EventArgs e)
         {
-            try
+            if (validacoes())
             {
-                var Vendas = new Vendas();
-
-                if (!string.IsNullOrEmpty(VendasId.Text))
+                try
                 {
-                    Vendas.VendasId = Convert.ToInt32(VendasId.Text);
-                }
+                    
+                    var Vendas = new Vendas();
 
-                Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
-                Vendas.Nome = FuncionariosId.TxtDescricao.Text;
-                Vendas.DtVenda = DtVenda.Date.Value;
-                Vendas.ValorVenda = (double?)ValorVenda.Valor;
-                Vendas.Porcentagem = (double?)PorcentagemVenda.Valor;
-                Vendas.Comissao = (double?)Comissao.Valor;
-    
-                if (string.IsNullOrEmpty(VendasId.Text))
-                {
-                    var Result = await new Services<Vendas>().Post("api/Vendas/", Vendas);
-                    if (Result.IsSuccessStatusCode)
+                    if (!string.IsNullOrEmpty(VendasId.Text))
                     {
-                        MessageBox.Show("Inserido com sucesso.");
-
-                    }
-                }
-                else
-                {
-                    var Result = await new Services<Vendas>().Put("api/Vendas/", Vendas);
-                    if (Result.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Alterado com sucesso.");
-
+                        Vendas.VendasId = Convert.ToInt32(VendasId.Text);
                     }
 
+                    Vendas.FuncionariosId = Convert.ToInt32(FuncionariosId.TxtCodigo.Text);
+                    Vendas.Nome = FuncionariosId.TxtDescricao.Text;
+                    Vendas.DtVenda = DtVenda.Date.Value;
+                    Vendas.ValorVenda = (double?)ValorVenda.Valor;
+                    Vendas.Porcentagem = (double?)PorcentagemVenda.Valor;
+                    Vendas.Comissao = (double?)Comissao.Valor;
+
+                    if (string.IsNullOrEmpty(VendasId.Text))
+                    {
+                        var Result = await new Services<Vendas>().Post("api/Vendas/", Vendas);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Inserido com sucesso.");
+
+                        }
+                    }
+                    else
+                    {
+                        var Result = await new Services<Vendas>().Put("api/Vendas/", Vendas);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Alterado com sucesso.");
+
+                        }
+
+                    }
+
+
+
                 }
-               
-
+                catch (Exception M)
+                {
+                    MessageBox.Show(M.Message);
+                }
 
             }
-            catch (Exception M)
-            {
-               MessageBox.Show(M.Message);
-            }
+           
 
         }
 
@@ -142,8 +181,34 @@ namespace ProjectP3
 
         private void ValorVenda_TextChanged(object sender, EventArgs e)
         {
-            var valorcomissao = Convert.ToDouble(PorcentagemVenda.Text) / 100;
-            Comissao.Valor = (decimal?)(Convert.ToDouble(ValorVenda.Text) * valorcomissao);
+            try
+            {
+                if (string.IsNullOrEmpty(ValorVenda.Text))
+                {
+                    Comissao.Clear();
+                }
+                var valorcomissao = Convert.ToDouble(PorcentagemVenda.Text) / 100;
+                Comissao.Valor = (decimal?)(Convert.ToDouble(ValorVenda.Text) * valorcomissao);
+            }
+            catch (Exception M)
+            {
+
+               // MessageBox.Show(M.Message);
+            }
+
+        }
+
+        private async void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente excluir esta Venda?", "Exclusão Venda", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                var result = await new Services<Vendas>().Delete("api/vendas", VendasId.Text);
+                if (result.IsSuccessStatusCode)
+                {
+                    LimpaCadastro();
+                    MessageBox.Show("Excluido com Sucesso.");
+                }
+            }
         }
     }
 }

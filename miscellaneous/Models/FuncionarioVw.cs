@@ -28,9 +28,8 @@ namespace miscellaneous.Models
         public string Conta { get; set; }
         public string Agencia { get; set; }
         public string Operacao { get; set; }
-
         public int? SindicatosId { get; set; }
-
+        public string Tipo { get; set; }
 
 
         public int? AssalariadoId { get; set; }

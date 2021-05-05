@@ -51,6 +51,7 @@ namespace ProjectP3.Forms
             // btnLimpar
             // 
             this.btnLimpar.Location = new System.Drawing.Point(337, 16);
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // panelInferior
             // 
@@ -95,6 +96,10 @@ namespace ProjectP3.Forms
             // PalavraChave
             // 
             this.PalavraChave.Size = new System.Drawing.Size(158, 20);
+            // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // label6
             // 

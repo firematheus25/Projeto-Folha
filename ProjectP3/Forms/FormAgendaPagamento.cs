@@ -60,10 +60,12 @@ namespace ProjectP3.Forms
             Dia.Enabled = false;
             DiaSemana.Enabled = false;
             agenda.Clear();
+            btn_Excluir.Visible = false;
         }
 
         public async override void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            btn_Excluir.Visible = true;
             var Id = GridConsultaP.CurrentRow.Cells["AgendaId"].Value.ToString();
             var result = await new Services<AgendaPagamento>().GetById("api/AgendaPagamento/Id", Id);
             int i = 0;
@@ -111,43 +113,74 @@ namespace ProjectP3.Forms
 
         }
 
+        public override bool validacoes()
+        {
+            string message = null;
+
+            if (Tipo.SelectedIndex == 0  && Dia.SelectedIndex == -1)
+            {
+                message += "Preencher 'Dia'\n";
+            }
+
+            if (Tipo.SelectedIndex != 0 && DiaSemana.SelectedIndex == -1)
+            {
+                message += "Preencher 'Dia'\n";
+            }
+
+            if (message == null)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(message);
+                return false;
+            }
+
+        }
+
         private async void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                AgendaPagamento Agenda = new AgendaPagamento();
-
-
-                Agenda.Tipo = Tipo.SelectedItem.ToString();
-
-                if (Dia.SelectedIndex != -1)
+                if (validacoes())
                 {
-                    Agenda.Dia = Dia.SelectedItem.ToString();
-                }
-                else
-                {
-                    Agenda.DiaSemana = DiaSemana.SelectedItem.ToString();
-                }
+                    AgendaPagamento Agenda = new AgendaPagamento();
 
-                Agenda.Agenda = agenda.Text;
 
-                if (string.IsNullOrEmpty(AgendaId.Text))
-                {
-                    var Result = await new Services<AgendaPagamento>().Post("api/AgendaPagamento", Agenda);
-                    if (Result.IsSuccessStatusCode)
+                    Agenda.Tipo = Tipo.SelectedItem.ToString();
+
+                    if (Dia.SelectedIndex != -1)
                     {
-                        MessageBox.Show("Inserido com Sucesso");
+                        Agenda.Dia = Dia.SelectedItem.ToString();
                     }
-                }
-                else
-                {
-                    Agenda.AgendaId = Convert.ToInt32(AgendaId.Text);
-                    var Result = await new Services<AgendaPagamento>().Put("api/AgendaPagamento", Agenda);
-                    if (Result.IsSuccessStatusCode)
+                    else
                     {
-                        MessageBox.Show("Alterado com Sucesso");
+                        Agenda.DiaSemana = DiaSemana.SelectedItem.ToString();
                     }
+
+                    Agenda.Agenda = agenda.Text;
+
+                    if (string.IsNullOrEmpty(AgendaId.Text))
+                    {
+                        var Result = await new Services<AgendaPagamento>().Post("api/AgendaPagamento", Agenda);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Inserido com Sucesso");
+                        }
+                    }
+                    else
+                    {
+                        Agenda.AgendaId = Convert.ToInt32(AgendaId.Text);
+                        var Result = await new Services<AgendaPagamento>().Put("api/AgendaPagamento", Agenda);
+                        if (Result.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Alterado com Sucesso");
+                        }
+                    }
+
                 }
+
             }
             catch (Exception M)
             {
@@ -239,6 +272,17 @@ namespace ProjectP3.Forms
             GridConsultaP.LoadFromList(result);
         }
 
-
+        private async void btn_Excluir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente excluir esta agenda de pagamento?", "Exclusão Agenda pagamento", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                var result = await new Services<AgendaPagamento>().Delete("api/agendapagamento", AgendaId.Text);
+                if (result.IsSuccessStatusCode)
+                {
+                    LimpaCadastro();
+                    MessageBox.Show("Excluido com Sucesso.");
+                }
+            }
+        }
     }
 }

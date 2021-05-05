@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace miscellaneous.Models
 {
+    [Table("Folhas")]
     public class Folha
     {
         [Key]
@@ -16,6 +18,8 @@ namespace miscellaneous.Models
         public DateTime DtPagamento { get; set; }
         public double? Salario { get; set; }
         public string MetodoPagamento { get; set; }
+
+        //public List<Folha> ListFolha { get; set; }
 
     }
 }

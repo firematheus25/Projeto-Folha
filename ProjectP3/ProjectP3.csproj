@@ -109,28 +109,28 @@
     <Compile Include="Forms\FormTaxas.Designer.cs">
       <DependentUpon>FormTaxas.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDI\FormConsulta.cs">
+    <Compile Include="Core\FormConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDI\FormConsulta.Designer.cs">
+    <Compile Include="Core\FormConsulta.Designer.cs">
       <DependentUpon>FormConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDI\FormConsultaPadrao.cs">
+    <Compile Include="Core\FormConsultaPadrao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDI\FormConsultaPadrao.Designer.cs">
+    <Compile Include="Core\FormConsultaPadrao.Designer.cs">
       <DependentUpon>FormConsultaPadrao.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDI\FormMDI.cs">
+    <Compile Include="Core\FormMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDI\FormMDI.Designer.cs">
+    <Compile Include="Core\FormMDI.Designer.cs">
       <DependentUpon>FormMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MDI\FormPadrao.cs">
+    <Compile Include="Core\FormPadrao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDI\FormPadrao.Designer.cs">
+    <Compile Include="Core\FormPadrao.Designer.cs">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </Compile>
     <Compile Include="Others\Extensions.cs" />
@@ -177,16 +177,16 @@
     <EmbeddedResource Include="Forms\FormTaxas.resx">
       <DependentUpon>FormTaxas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDI\FormConsulta.resx">
+    <EmbeddedResource Include="Core\FormConsulta.resx">
       <DependentUpon>FormConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDI\FormConsultaPadrao.resx">
+    <EmbeddedResource Include="Core\FormConsultaPadrao.resx">
       <DependentUpon>FormConsultaPadrao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDI\FormMDI.resx">
+    <EmbeddedResource Include="Core\FormMDI.resx">
       <DependentUpon>FormMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDI\FormPadrao.resx">
+    <EmbeddedResource Include="Core\FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -27,6 +27,7 @@ namespace ProjectP3
             GridConsultaP.BuilderColumn("funcionariosId", "Matrícula");
             GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
             GridConsultaP.BuilderColumn("Tipo", "Tipo", DataGridViewAutoSizeColumnMode.Fill);
+            GridConsultaP.BuilderColumn("Agenda", "Pagamento", DataGridViewAutoSizeColumnMode.Fill);
 
             MetodoPagamento.Items.Add("1 - Cheque pelos correios");
             MetodoPagamento.Items.Add("2 - Cheque em mãos");
@@ -67,7 +68,7 @@ namespace ProjectP3
 
             if (string.IsNullOrEmpty(AgendaId.TxtDescricao.Text))
             {
-                message += "Preencher 'Agenda Pagamento'";
+                message += "Preencher 'Agenda Pagamento'\n";
             }
 
             if (MetodoPagamento.SelectedIndex == -1)
@@ -77,18 +78,18 @@ namespace ProjectP3
 
             if (Assalariado.Checked)
             {
-                if (string.IsNullOrEmpty(Salario.Valor.ToString()))
+                if (string.IsNullOrEmpty(Salario.Text))
                 {
                     message += "Preencher 'Salário'\n"; 
                 }
             }
             if (Comissionado.Checked)
             {
-                if (string.IsNullOrEmpty(Salario.Valor.ToString()))
+                if (string.IsNullOrEmpty(Salario.Text))
                 {
                     message += "Preencher 'Salário'\n";
                 }
-                if (string.IsNullOrEmpty(TaxaComissao.Valor.ToString()))
+                if (string.IsNullOrEmpty(TaxaComissao.Text))
                 {
                     message += "Preencher 'Taxa Comissão'\n";
                 }
@@ -96,7 +97,7 @@ namespace ProjectP3
 
             if (Horista.Checked)
             {
-                if (string.IsNullOrEmpty(ValorHora.Valor.ToString()))
+                if (string.IsNullOrEmpty(ValorHora.Text))
                 {
                     message += "Preencher 'Valor Hora'\n";
                 }
@@ -109,6 +110,21 @@ namespace ProjectP3
                     message += "Preencher 'Taxa Sindical'\n";
 
                 }
+            }
+
+            if (Agencia.Text.Length > 4)
+            {
+                message += "Agência deve conter no máximo 4 algarismos\n";
+            }
+
+            if (Conta.Text.Length > 8)
+            {
+                message += "Conta deve conter no máximo 8 algarismos\n";
+            }
+
+            if (Operacao.Text.Length > 3)
+            {
+                message += "Operação deve conter no máximo 3 algarismos\n";
             }
 
             if (message == null)
@@ -161,25 +177,30 @@ namespace ProjectP3
             ValorHora.Clear();
             FuncionarioSindicalId.Clear();
             AgendaId.Clear();
+            TaxaSindical.Clear();
 
         }
 
         public override async void GridConsultaP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            LimpaCadastro();
+
             btn_Excluir.Visible = true;
             btnSalvar.Text = "Alterar";
             var id = GridConsultaP.CurrentRow.Cells["FuncionariosId"].Value.ToString();
             var funcionario = await new Services<FuncionarioVw>().GetById("api/funcionarios/Id", id);
 
-
+            FuncionariosId.Text = funcionario.FuncionariosId.ToString();
             if (funcionario.TipoFuncionario == 1)
             {
+                Salario.Focus();
                 Assalariado.Checked = true;
                 AssalariadoId.Text = Convert.ToString(funcionario.AssalariadoId);
                 Salario.Text = Convert.ToString(funcionario.Salario);              
             }
             if (funcionario.TipoFuncionario == 2)
             {
+                Salario.Focus();
                 Comissionado.Checked = true;
                 ComissionadoId.Text = Convert.ToString(funcionario.ComissionadoId);
                 Salario.Text = Convert.ToString(funcionario.SalarioComissao);
@@ -187,9 +208,11 @@ namespace ProjectP3
             }
             if (funcionario.TipoFuncionario == 3)
             {
+                
                 Horista.Checked = true;
                 HoristaId.Text = Convert.ToString(funcionario.HoristaId);
-                ValorHora.Text = Convert.ToString(funcionario.ValorHora);               
+                ValorHora.Text = Convert.ToString(funcionario.ValorHora);
+                ValorHora.Focus();
             }
 
 
@@ -201,9 +224,10 @@ namespace ProjectP3
                 TaxaSindical.Text = Convert.ToString(funcionario.TaxaSindical);
                 lbl_TxSindical.Visible = true;
                 TaxaSindical.Visible = true;
+                sindical_obrigado.Visible = true;
             }
 
-            FuncionariosId.Text = funcionario.FuncionariosId.ToString();
+
             Nome.Text = funcionario.Nome;
             AgendaId.TxtCodigo.Text = Convert.ToString(funcionario.AgendaId);
             AgendaId.TxtDescricao.Text = funcionario.Agenda;            
@@ -227,10 +251,15 @@ namespace ProjectP3
 
             AlternaModo.Visible = true;
 
+            //TaxaComissao.Focus();
+            //Salario.Focus();
+            
+
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
         {
+            TaxaComissao.Focus();
             try
             {
                 if (validacoes())
@@ -282,81 +311,157 @@ namespace ProjectP3
                         var Result = await new Services<Funcionario>().Put("api/Funcionarios/", Funcionario);
                     }
 
-
-
+                    // Verificacoes Sindicato
+                    var U = await new Services<FuncionarioSindical>().GetById("api/FuncionariosSindicais/Funcionario", FuncionariosId.Text);
                     if (!string.IsNullOrEmpty(FuncionarioSindicalId.TxtCodigo.Text))
                     {
                         FuncionarioSindical FuncionarioSindical = new FuncionarioSindical();
 
-                        FuncionarioSindical.FuncionariosId = funcionariostransaction;
+                        FuncionarioSindical.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
                         FuncionarioSindical.Nome = Nome.Text;
                         FuncionarioSindical.SindicatosId = Convert.ToInt32(FuncionarioSindicalId.TxtCodigo.Text);
                         FuncionarioSindical.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);
 
-                        await new Services<FuncionarioSindical>().Post("api/FuncionariosSindicais", FuncionarioSindical);
+ 
+                        if (U == null)
+                        {
+                            await new Services<FuncionarioSindical>().Post("api/FuncionariosSindicais", FuncionarioSindical);
+                        }
+                        else
+                        {
+                            if (U.TaxaSindical != Convert.ToDouble(TaxaSindical.Text) || U.Nome != Nome.Text && U.SindicatosId != Convert.ToInt32(FuncionarioSindicalId.TxtCodigo.Text))
+                            {
+                                FuncionarioSindical.FuncionarioSindicalId = U.FuncionarioSindicalId;
+                                await new Services<FuncionarioSindical>().Put("api/FuncionariosSindicais", FuncionarioSindical);
+                            }
+                        }
                     }
                     else
                     {
-                        await new Services<FuncionarioSindical>().Delete("", FuncionariosId.Text);
-;                    }
+                        if (U == null){}
+                        else
+                        {
+                            await new Services<FuncionarioSindical>().Delete("api/FuncionariosSindicais", FuncionariosId.Text);
+                        }                        
+;                   }
 
 
                     if (Assalariado.Checked)
                     {
                         var Assalariado = new Assalariado();
-                        if (!string.IsNullOrEmpty(AssalariadoId.Text))
+                        if (string.IsNullOrEmpty(FuncionariosId.Text))
                         {
-                            Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
+                            Assalariado.FuncionariosId = funcionariostransaction;
                         }
-                        Assalariado.FuncionariosId = funcionariostransaction;
+                        else
+                        {
+                            Assalariado.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                        }
+                        
                         Assalariado.Salario = Convert.ToDouble(Salario.Text);
 
-                        var assa = await new Services<Assalariado>().Post("api/Assalariado", Assalariado);
-                        if (assa.IsSuccessStatusCode)
+                        //var assa = await new Services<Assalariado>().Post("api/Assalariado", Assalariado);
+
+                        if (string.IsNullOrEmpty(AssalariadoId.Text))
                         {
-                            MessageBox.Show("Inserido com sucesso");
-                            LimpaCadastro();
+                            var assa = await new Services<Assalariado>().Post("api/Assalariado", Assalariado);
+                            if (assa.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Inserido com sucesso.");
+                                LimpaCadastro();
+                            }
                         }
+                        else
+                        {
+                            Assalariado.AssalariadoId = Convert.ToInt32(AssalariadoId.Text);
+                            var UpdAssa = await new Services<Assalariado>().Put("api/Assalariado", Assalariado);
+                            if (UpdAssa.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Alterado com sucesso.");
+                                LimpaCadastro();
+                            }
+                        }
+
                     }
 
                     if (Comissionado.Checked)
                     {
                         var Comissionado = new Comissionado();
-                        if (!string.IsNullOrEmpty(ComissionadoId.Text))
+
+                        if (string.IsNullOrEmpty(FuncionariosId.Text))
+                        {
+                            Comissionado.FuncionariosId = funcionariostransaction;
+                        }
+                        else
+                        {
+                            Comissionado.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                        }
+
+                        
+                        Comissionado.Salario = Convert.ToDecimal(Salario.Text);
+                        Comissionado.TaxaComissao = Convert.ToDecimal(TaxaComissao.Text);                        
+
+                        if (string.IsNullOrEmpty(ComissionadoId.Text))
+                        {
+                            var com = await new Services<Comissionado>().Post("api/Comissionado", Comissionado);
+                            
+                            if (com.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Inserido com sucesso.");
+                                LimpaCadastro();
+                            }
+                        }
+                        else
                         {
                             Comissionado.ComissionadoId = Convert.ToInt32(ComissionadoId.Text);
-                        }
-                        Comissionado.FuncionariosId = funcionariostransaction;
-                        Comissionado.Salario = Convert.ToDecimal(Salario.Text);
-                        Comissionado.TaxaComissao = Convert.ToDecimal(TaxaComissao.Text);
-
-                        var com = await new Services<Comissionado>().Post("api/Comissionado", Comissionado);
-
-                        if (com.IsSuccessStatusCode)
-                        {
-                            MessageBox.Show("Inserido com sucesso");
-                            LimpaCadastro();
+                            var com = await new Services<Comissionado>().Put("api/Comissionado", Comissionado);
+                            if (com.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Alterado com sucesso.");
+                                LimpaCadastro();
+                            }
                         }
                     }
 
                     if (Horista.Checked)
                     {
+
                         var Horista = new Horista();
-                        if (!string.IsNullOrEmpty(HoristaId.Text))
+
+                        if (string.IsNullOrEmpty(FuncionariosId.Text))
                         {
-                            Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
+                            Horista.FuncionariosId = funcionariostransaction;
                         }
-                        Horista.FuncionariosId = funcionariostransaction;
+                        else
+                        {
+                            Horista.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                        }
+
                         Horista.ValorHora = Convert.ToDouble(ValorHora.Text);
 
-                        var hor = await new Services<Horista>().Post("api/Horista", Horista);
+                       
 
-
-                        if (hor.IsSuccessStatusCode)
+                        if (string.IsNullOrEmpty(HoristaId.Text))
                         {
-                            MessageBox.Show("Inserido com sucesso");
-                            LimpaCadastro();
+                            
+                            var hor = await new Services<Horista>().Post("api/Horista", Horista);
+                            if (hor.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Inserido com sucesso");
+                                LimpaCadastro();
+                            }
                         }
+                        else
+                        {
+                            Horista.HoristaId = Convert.ToInt32(HoristaId.Text);
+                            var hor = await new Services<Horista>().Put("api/Horista", Horista);
+                            if (hor.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Alterado com sucesso.");
+                                LimpaCadastro();
+                            }
+                        }
+
                     }
                 }                                         
             }
@@ -376,18 +481,21 @@ namespace ProjectP3
         {
             if (Assalariado.Checked)
             {
-                var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
-
-                foreach (var item in result)
+                if (string.IsNullOrEmpty(FuncionariosId.Text))
                 {
-                    if (item.Agenda == "Mensal $")
+                    var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
+
+                    foreach (var item in result)
                     {
-                        AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
-                        AgendaId.TxtDescricao.Text = item.Agenda;
+                        if (item.Agenda == "Mensal $")
+                        {
+                            AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
+                            AgendaId.TxtDescricao.Text = item.Agenda;
+                        }
+
                     }
 
                 }
-
                 Comissionado.Checked = false;
                 Horista.Checked = false;
 
@@ -408,16 +516,21 @@ namespace ProjectP3
         {
             if (Comissionado.Checked)
             {
-                var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
 
-                foreach (var item in result)
+                if (string.IsNullOrEmpty(FuncionariosId.Text))
                 {
-                    if (item.Agenda == "Bi-semanal - Sexta-Feira")
+                    var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
+
+                    foreach (var item in result)
                     {
-                        AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
-                        AgendaId.TxtDescricao.Text = item.Agenda;
+                        if (item.Agenda == "Bi-semanal - Sexta-Feira")
+                        {
+                            AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
+                            AgendaId.TxtDescricao.Text = item.Agenda;
+                        }
                     }
                 }
+
 
                 Assalariado.Checked = false;                
                 Horista.Checked = false;     
@@ -438,17 +551,20 @@ namespace ProjectP3
         {
             if (Horista.Checked)
             {
-
-                var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
-
-                foreach (var item in result)
+                if (string.IsNullOrEmpty(FuncionariosId.Text))
                 {
-                    if (item.Agenda == "Semanal - Sexta-Feira")
+                    var result = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
+
+                    foreach (var item in result)
                     {
-                        AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
-                        AgendaId.TxtDescricao.Text = item.Agenda;
+                        if (item.Agenda == "Semanal - Sexta-Feira")
+                        {
+                            AgendaId.TxtCodigo.Text = item.AgendaId.ToString();
+                            AgendaId.TxtDescricao.Text = item.Agenda;
+                        }
                     }
                 }
+
                 Comissionado.Checked = false;
                 Assalariado.Checked = false;
 
@@ -477,7 +593,7 @@ namespace ProjectP3
                     keyword = "*";
                 }
 
-                var funcionarios = await new Services<Funcionario>().Get("api/funcionarios/");
+                var funcionarios = await new Services<FuncionarioVw>().Get("api/funcionarios/");
 
                 for (int i = 0; i < funcionarios.Count; i++)
                 {
@@ -541,6 +657,15 @@ namespace ProjectP3
                     LimpaCadastro();
                 }
             }            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FuncionarioSindicalId.Clear();
+            TaxaSindical.Clear();
+            TaxaSindical.Visible = false;
+            sindical_obrigado.Visible = false;
+            lbl_TxSindical.Visible = false;
         }
     }
 }

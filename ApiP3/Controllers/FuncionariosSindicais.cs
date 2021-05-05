@@ -33,6 +33,12 @@ namespace ApiP3.Controllers
             return db.FuncionarioSindical.Where(X => X.FuncionarioSindicalId == Id).FirstOrDefault();
         }
 
+        [HttpGet("Funcionario/{Id}")]
+        public FuncionarioSindical GetByFuncionario(int Id)
+        {
+            return db.FuncionarioSindical.Where(X => X.FuncionariosId == Id).FirstOrDefault();
+        }
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -52,6 +58,19 @@ namespace ApiP3.Controllers
         public ActionResult Put(FuncionarioSindical FuncionarioSindical)
         {
             db.FuncionarioSindical.Update(FuncionarioSindical);
+            db.SaveChanges();
+            return Ok();
+        }
+
+        [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<FuncionarioSindical> Delete(int Id)
+        {
+
+            var Delete = db.FuncionarioSindical.Where(x => x.FuncionariosId == Id).FirstOrDefault();
+            db.FuncionarioSindical.Remove(Delete);
             db.SaveChanges();
             return Ok();
         }

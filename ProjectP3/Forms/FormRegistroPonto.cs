@@ -28,6 +28,7 @@ namespace ProjectP3
             GridConsultaP.BuilderColumn("RegistroPontoId");
             GridConsultaP.BuilderColumn("funcionariosId", "Matrícula");
             GridConsultaP.BuilderColumn("Nome", "Nome", DataGridViewAutoSizeColumnMode.Fill);
+            GridConsultaP.BuilderColumn("Horas", "Horas");
             GridConsultaP.BuilderColumn("DtPonto", "Data", DataGridViewAutoSizeColumnMode.None, "dd/MM/yyyy");
 
             FuncionariosId.TxtCodigo.Enabled = false;
@@ -141,15 +142,18 @@ namespace ProjectP3
                     Ponto.Horas = Horas.Text;
 
                     var Erro = await new Services<RegistroPonto>().GetByIds("api/RegistroPontos/Ids", Ponto.FuncionariosId.ToString());
-
-                    foreach (var item in Erro)
+                    if (string.IsNullOrEmpty(RegistroPontoId.Text))
                     {
-                        if (item.DtPonto == Ponto.DtPonto)
+                        foreach (var item in Erro)
                         {
-                            MessageBox.Show("Ponto já cadastrado neste dia");
-                            return;
+                            if (item.DtPonto == Ponto.DtPonto)
+                            {
+                                MessageBox.Show("Ponto já cadastrado neste dia");
+                                return;
+                            }
                         }
                     }
+
 
 
                     if (string.IsNullOrEmpty(RegistroPontoId.Text))

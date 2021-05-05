@@ -111,6 +111,10 @@ namespace ProjectP3
             // 
             this.PalavraChave.Size = new System.Drawing.Size(178, 20);
             // 
+            // btn_Excluir
+            // 
+            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
             // FuncionariosId
             // 
             this.FuncionariosId.BackColor = System.Drawing.Color.Transparent;

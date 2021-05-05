@@ -57,15 +57,15 @@ namespace ApiP3.Controllers
             return Ok(Data);
         }
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<Sindicato> Delete(int Id)
         {
 
-            var Delete = db.Sindicato.Where(x => x.SindicatosId == Id);
-            db.Remove(Delete);
+            var Delete = db.Sindicato.Where(x => x.SindicatosId == Id).FirstOrDefault();
+            db.Sindicato.Remove(Delete);
             db.SaveChanges();
             return Ok();
         }

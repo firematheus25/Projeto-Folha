@@ -63,5 +63,18 @@ namespace ApiP3.Controllers
             return Ok();
         }
 
+        [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<TaxasServico> Delete(int Id)
+        {
+
+            var Delete = db.TaxasServico.Where(x => x.TaxaServicoId == Id).FirstOrDefault();
+            db.TaxasServico.Remove(Delete);
+            db.SaveChanges();
+            return Ok();
+        }
+
     }
 }
