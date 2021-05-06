@@ -43,6 +43,7 @@ namespace ProjectP3.Forms
                 Nome.Text = Sindicato.Nome;
 
                 AlternaModo.Visible = true;
+                GridConsultaP.Rows.Clear();
             }
             catch (Exception M)
             {

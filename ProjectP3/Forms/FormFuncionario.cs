@@ -250,10 +250,7 @@ namespace ProjectP3
             Operacao.Text = funcionario.Operacao;
 
             AlternaModo.Visible = true;
-
-            //TaxaComissao.Focus();
-            //Salario.Focus();
-            
+            GridConsultaP.Rows.Clear();
 
         }
 
@@ -317,7 +314,15 @@ namespace ProjectP3
                     {
                         FuncionarioSindical FuncionarioSindical = new FuncionarioSindical();
 
-                        FuncionarioSindical.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                        if (string.IsNullOrEmpty(FuncionariosId.Text))
+                        {
+                            FuncionarioSindical.FuncionariosId = Convert.ToInt32(funcionariostransaction);
+                        }
+                        else
+                        {
+                            FuncionarioSindical.FuncionariosId = Convert.ToInt32(FuncionariosId.Text);
+                        }
+                        
                         FuncionarioSindical.Nome = Nome.Text;
                         FuncionarioSindical.SindicatosId = Convert.ToInt32(FuncionarioSindicalId.TxtCodigo.Text);
                         FuncionarioSindical.TaxaSindical = Convert.ToDouble(TaxaSindical.Text);

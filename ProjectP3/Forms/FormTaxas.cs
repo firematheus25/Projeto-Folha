@@ -46,6 +46,7 @@ namespace ProjectP3.Forms
                 Competencia.Date = taxa.Competencia;
 
                 AlternaModo.Visible = true;
+                GridConsultaP.Rows.Clear();
             }
             catch (Exception M)
             {

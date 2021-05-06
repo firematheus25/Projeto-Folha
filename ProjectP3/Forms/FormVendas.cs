@@ -98,6 +98,7 @@ namespace ProjectP3
                 Comissao.Text = Convert.ToString(venda.Comissao);
 
                 AlternaModo.Visible = true;
+                GridConsultaP.Rows.Clear();
 
             }
             catch (Exception M)

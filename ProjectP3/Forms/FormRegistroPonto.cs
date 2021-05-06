@@ -117,6 +117,7 @@ namespace ProjectP3
                 Horas.Text = Ponto.Horas;
 
                 AlternaModo.Visible = true;
+                GridConsultaP.Rows.Clear();
             }
             catch (Exception M)
             {
