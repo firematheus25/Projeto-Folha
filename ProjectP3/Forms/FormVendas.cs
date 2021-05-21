@@ -194,7 +194,7 @@ namespace ProjectP3
             catch (Exception M)
             {
 
-               // MessageBox.Show(M.Message);
+               MessageBox.Show(M.Message);
             }
 
         }

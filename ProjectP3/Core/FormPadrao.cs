@@ -32,6 +32,7 @@ namespace ProjectP3
             //Implementar na heranca
             PalavraChave.Focus();
             AlternaModo.Visible = false;
+            
         }
 
         private void btn_Retornar_Click(object sender, EventArgs e)
@@ -61,6 +62,23 @@ namespace ProjectP3
         private void btn_Excluir_Click(object sender, EventArgs e)
         {
             //Implementar na Heranca
+        }
+        public void freeze()
+        {
+            AlternaModo.Enabled = false;
+            Load.Visible = true;
+        }
+
+        public void unfreeze()
+        {
+            AlternaModo.Enabled = true;
+            Load.Visible = false;
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            freeze();
+            unfreeze();
         }
     }
 }

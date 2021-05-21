@@ -30,6 +30,7 @@ namespace ProjectP3.Forms.FormConsulta
             {
                 var Agenda = await new Services<AgendaPagamento>().Get("api/AgendaPagamento");
 
+                Agenda = Agenda.OrderBy(x => x.Dia).ToList();
                 GridConsulta.LoadFromList(Agenda);
             }
             catch (Exception M)

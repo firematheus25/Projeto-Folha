@@ -55,6 +55,7 @@
     <Compile Include="Componentes\CmpBuscaCombinada.cs" />
     <Compile Include="Componentes\CmpDataCalendario.cs" />
     <Compile Include="Componentes\CmpNumerico.cs" />
+    <Compile Include="Componentes\CpmNumericwithoutmask.cs" />
     <Compile Include="Forms\FormAgendaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\calendar.png" />
+    <Content Include="Resources\load.gif" />
     <Content Include="Resources\magnifier.png" />
     <None Include="Resources\magnifier1.png" />
   </ItemGroup>

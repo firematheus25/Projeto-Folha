@@ -35,6 +35,7 @@ namespace ProjectP3.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +70,7 @@ namespace ProjectP3.Forms
             this.AlternaModo.Controls.Add(this.DtPagamento);
             this.AlternaModo.Controls.Add(this.GerarFolha);
             this.AlternaModo.Size = new System.Drawing.Size(555, 450);
+            this.AlternaModo.Controls.SetChildIndex(this.Load, 0);
             this.AlternaModo.Controls.SetChildIndex(this.GerarFolha, 0);
             this.AlternaModo.Controls.SetChildIndex(this.DtPagamento, 0);
             this.AlternaModo.Controls.SetChildIndex(this.GridFolha, 0);
@@ -133,6 +135,7 @@ namespace ProjectP3.Forms
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridFolha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

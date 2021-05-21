@@ -45,6 +45,7 @@ namespace ProjectP3
             this.label6 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -91,6 +92,7 @@ namespace ProjectP3
             this.AlternaModo.Controls.Add(this.label4);
             this.AlternaModo.Controls.Add(this.Funcionarios);
             this.AlternaModo.Size = new System.Drawing.Size(421, 236);
+            this.AlternaModo.Controls.SetChildIndex(this.Load, 0);
             this.AlternaModo.Controls.SetChildIndex(this.Funcionarios, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label4, 0);
             this.AlternaModo.Controls.SetChildIndex(this.DtVenda, 0);
@@ -114,6 +116,10 @@ namespace ProjectP3
             // btn_Excluir
             // 
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
+            // Load
+            // 
+            this.Load.Location = new System.Drawing.Point(170, 74);
             // 
             // FuncionariosId
             // 
@@ -291,6 +297,7 @@ namespace ProjectP3
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

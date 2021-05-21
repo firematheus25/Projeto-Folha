@@ -50,21 +50,22 @@ namespace ProjectP3.Forms
             GridFolha.Rows.Clear();
             ListFolha.Clear();
 
-            var List = await new Services<Folha>().Get("api/folha");
-
-            foreach (var item in List)
-            {
-                if (item.DtPagamento == DtPagamento.Date )
-                {
-                    MessageBox.Show("Folha já gerada nesta data.");
-                    return;
-                }
-            }
-
-
-
+            freeze();
             try
             {
+
+                var List = await new Services<Folha>().Get("api/folha");
+
+                foreach (var item in List)
+                {
+                    if (item.DtPagamento == DtPagamento.Date)
+                    {
+                        MessageBox.Show("Folha já gerada nesta data.");
+                        return;
+                    }
+                }
+
+
                 var Funcionario = await new Services<FuncionarioVw>().Get("api/Funcionarios/");
 
                 string DIASEMANA = "";
@@ -77,7 +78,7 @@ namespace ProjectP3.Forms
                 if (DtPagamento.Date.Value.DayOfWeek.ToString() == "Saturday") { DIASEMANA = "Sábado"; }
 
 
-                
+
 
 
                 var ultimoDiaDoMes = new DateTime(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month, DateTime.DaysInMonth(DtPagamento.Date.Value.Year, DtPagamento.Date.Value.Month));
@@ -108,20 +109,20 @@ namespace ProjectP3.Forms
                     var TaxaServicoSindical = await new Services<TaxasServico>().GetByIds("api/TaxasServico/Ids", Funcionario[i].FuncionarioSindicalId.ToString());
                     if (Funcionario[i].TipoAgenda == "Mensal") //MENSAL
                     {
-                        
+
                         if (Funcionario[i].Dia == DtPagamento.Date.Value.Day.ToString())
                         {
-                           
+
 
                             if (Funcionario[i].TipoFuncionario == 1) //Assalariado
                             {
                                 var X = Funcionario[i];
 
                                 double? salario = X.Salario;
-                                
+
                                 if (!string.IsNullOrEmpty(Funcionario[i].SindicatosId.ToString()))
                                 {
-                                    var taxa = Funcionario[i].TaxaSindical;                                   
+                                    var taxa = Funcionario[i].TaxaSindical;
                                     salario = salario - taxa;
                                 }
 
@@ -197,7 +198,7 @@ namespace ProjectP3.Forms
                                     for (int v = 0; v < vendas.Count; v++)
                                     {
                                         if (vendas[v].DtVenda.Date > DataMes.Date && vendas[v].DtVenda.Date <= DtPagamento.Date)
-                                        {                                            
+                                        {
                                             salario += salario + vendas[v].Comissao;
                                         }
                                     }
@@ -324,11 +325,11 @@ namespace ProjectP3.Forms
                                 var X = Funcionario[i];
                                 double? salario = (X.Salario / ultimoDiaDoMes.Date.Day) * 7;
 
-                                
+
                                 if (!string.IsNullOrEmpty(Funcionario[i].SindicatosId.ToString()))
                                 {
                                     var taxa = Funcionario[i].TaxaSindical;
-                                    var taxasemanal = (taxa / ultimoDiaDoMes.Date.Day) * 7; 
+                                    var taxasemanal = (taxa / ultimoDiaDoMes.Date.Day) * 7;
                                     salario = salario - taxasemanal;
                                 }
 
@@ -381,11 +382,11 @@ namespace ProjectP3.Forms
                                 salario = Math.Round((double)salario, 2);
 
 
-                                
+
                                 if (!string.IsNullOrEmpty(Funcionario[i].SindicatosId.ToString()))
                                 {
                                     var taxa = Funcionario[i].TaxaSindical;
-                                    var taxasemanal = (taxa / ultimoDiaDoMes.Date.Day) * 7;                                    
+                                    var taxasemanal = (taxa / ultimoDiaDoMes.Date.Day) * 7;
                                     salario = salario - taxasemanal;
                                 }
 
@@ -416,7 +417,7 @@ namespace ProjectP3.Forms
                                         var Day = DtPagamento.Date.Value.AddDays(-6);
 
                                         if (vendas[v].DtVenda.Date > Day.Date && vendas[v].DtVenda.Date <= DtPagamento.Date)
-                                        {                                           
+                                        {
                                             salario += vendas[v].Comissao;
                                         }
                                     }
@@ -494,7 +495,7 @@ namespace ProjectP3.Forms
                                 }
 
 
-                                if (TaxaServicoSindical != null )
+                                if (TaxaServicoSindical != null)
                                 {
                                     if (TaxaServicoSindical.Count > 0)
                                     {
@@ -529,7 +530,7 @@ namespace ProjectP3.Forms
                                     folha.MetodoPagamento = "Deposito em conta bancária";
                                 }
                                 folha.DtPagamento = DtPagamento.Date.Value;
-                                folha.Salario = Math.Round((double)salarioHorista, 2); 
+                                folha.Salario = Math.Round((double)salarioHorista, 2);
                                 ListFolha.Add(folha);
                             }
                         }
@@ -545,7 +546,7 @@ namespace ProjectP3.Forms
                             var date = DtPagamento.Date.Value.AddDays(-7);
                             if (date.Date == item.DtPagamento)
                             {
-                               validacao = false;
+                                validacao = false;
                             }
                         }
                     }
@@ -554,7 +555,7 @@ namespace ProjectP3.Forms
 
                         if (Funcionario[i].DiaSemana == DIASEMANA)
                         {
-                         
+
                             if (Funcionario[i].TipoFuncionario == 1) //ASSALARIADO
                             {
 
@@ -605,7 +606,7 @@ namespace ProjectP3.Forms
                                     folha.Salario = Math.Round((double)salario, 2);
                                     ListFolha.Add(folha);
                                 }
-                              
+
                             }
 
                             if (Funcionario[i].TipoFuncionario == 2) //Comissionado
@@ -680,7 +681,7 @@ namespace ProjectP3.Forms
                                     ListFolha.Add(folha);
                                 }
 
-                                
+
 
 
 
@@ -775,43 +776,59 @@ namespace ProjectP3.Forms
                                     folha.Salario = Math.Round((double)salarioHorista, 2);
                                     ListFolha.Add(folha);
 
-                                }                              
+                                }
                             }
 
                         }
                     }
-                
+
                     GridFolha.LoadFromList(ListFolha);
 
 
                 }
+
                 if (ListFolha.Count == 0)
                 {
                     MessageBox.Show("Nenhum pagamento para esta data");
                 }
             }
 
-
-
             catch (Exception M)
             {
-
                 MessageBox.Show(M.Message);
+            }
+            finally
+            {
+                unfreeze();
             }
 
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
         {
-            var Folha = new FolhaEspelho();
-            Folha.ListFolha = ListFolha;
-
-            var result = await new Services<FolhaEspelho>().Post("api/folhaespelho", Folha);
-            if (result.IsSuccessStatusCode)
+            freeze();
+            try
             {
-                MessageBox.Show("Inserido com sucesso.");
+                var Folha = new FolhaEspelho();
+                Folha.ListFolha = ListFolha;
 
+                var result = await new Services<FolhaEspelho>().Post("api/folhaespelho", Folha);
+                if (result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Inserido com sucesso.");
+
+                }
             }
+            catch (Exception M)
+            {
+
+                MessageBox.Show(M.Message);
+            }
+            finally
+            {
+                unfreeze();
+            }
+
         }
 
         private async  void btn_Buscar_Click(object sender, EventArgs e)

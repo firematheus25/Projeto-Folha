@@ -40,9 +40,11 @@ namespace ProjectP3
             this.lbl_palavrachave = new System.Windows.Forms.Label();
             this.btn_Retornar = new System.Windows.Forms.Button();
             this.AlternaModo = new System.Windows.Forms.Panel();
+            this.Load = new System.Windows.Forms.PictureBox();
             this.panelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConsultaP)).BeginInit();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -123,6 +125,7 @@ namespace ProjectP3
             this.btn_Buscar.TabIndex = 5;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // PalavraChave
             // 
@@ -153,12 +156,28 @@ namespace ProjectP3
             // AlternaModo
             // 
             this.AlternaModo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AlternaModo.Controls.Add(this.Load);
             this.AlternaModo.Controls.Add(this.panelInferior);
             this.AlternaModo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AlternaModo.Location = new System.Drawing.Point(0, 0);
             this.AlternaModo.Name = "AlternaModo";
             this.AlternaModo.Size = new System.Drawing.Size(544, 450);
             this.AlternaModo.TabIndex = 3;
+            // 
+            // Load
+            // 
+            this.Load.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Load.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Load.ErrorImage = null;
+            this.Load.Image = global::ProjectP3.Properties.Resources.load;
+            this.Load.InitialImage = null;
+            this.Load.Location = new System.Drawing.Point(245, 169);
+            this.Load.Name = "Load";
+            this.Load.Size = new System.Drawing.Size(41, 41);
+            this.Load.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Load.TabIndex = 5;
+            this.Load.TabStop = false;
+            this.Load.Visible = false;
             // 
             // FormPadrao
             // 
@@ -176,6 +195,7 @@ namespace ProjectP3
             this.panelInferior.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridConsultaP)).EndInit();
             this.AlternaModo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +213,6 @@ namespace ProjectP3
         public System.Windows.Forms.TextBox PalavraChave;
         public System.Windows.Forms.Label lbl_palavrachave;
         protected System.Windows.Forms.Button btn_Excluir;
+        public System.Windows.Forms.PictureBox Load;
     }
 }

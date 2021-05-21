@@ -35,6 +35,7 @@ namespace ProjectP3.Forms
             this.lblObrigaInfoMesmoMot = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -68,7 +69,8 @@ namespace ProjectP3.Forms
             this.AlternaModo.Controls.Add(this.SindicatosId);
             this.AlternaModo.Controls.Add(this.Nome);
             this.AlternaModo.Controls.Add(this.label1);
-            this.AlternaModo.Size = new System.Drawing.Size(391, 189);
+            this.AlternaModo.Size = new System.Drawing.Size(391, 190);
+            this.AlternaModo.Controls.SetChildIndex(this.Load, 0);
             this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label1, 0);
             this.AlternaModo.Controls.SetChildIndex(this.Nome, 0);
@@ -82,6 +84,10 @@ namespace ProjectP3.Forms
             // btn_Excluir
             // 
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
+            // Load
+            // 
+            this.Load.Location = new System.Drawing.Point(170, 51);
             // 
             // label1
             // 
@@ -123,13 +129,14 @@ namespace ProjectP3.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 189);
+            this.ClientSize = new System.Drawing.Size(391, 190);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormSindicato";
             this.Text = "Sindicatos";
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

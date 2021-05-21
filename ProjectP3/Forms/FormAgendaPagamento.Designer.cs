@@ -40,6 +40,7 @@ namespace ProjectP3.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -83,6 +84,7 @@ namespace ProjectP3.Forms
             this.AlternaModo.Controls.Add(this.Dia);
             this.AlternaModo.Controls.Add(this.Tipo);
             this.AlternaModo.Size = new System.Drawing.Size(396, 238);
+            this.AlternaModo.Controls.SetChildIndex(this.Load, 0);
             this.AlternaModo.Controls.SetChildIndex(this.panelInferior, 0);
             this.AlternaModo.Controls.SetChildIndex(this.Tipo, 0);
             this.AlternaModo.Controls.SetChildIndex(this.Dia, 0);
@@ -101,6 +103,10 @@ namespace ProjectP3.Forms
             // btn_Excluir
             // 
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            // 
+            // Load
+            // 
+            this.Load.Location = new System.Drawing.Point(171, 60);
             // 
             // AgendaId
             // 
@@ -201,6 +207,7 @@ namespace ProjectP3.Forms
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -42,8 +42,8 @@ namespace ProjectP3
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Endereco = new System.Windows.Forms.TabPage();
-            this.Numero = new ProjectP3.componentes.CmpNumerico();
-            this.Cep = new ProjectP3.componentes.CmpNumerico();
+            this.Cep = new ProjectP3.Componentes.CpmNumericwithoutmask();
+            this.Numero = new ProjectP3.Componentes.CpmNumericwithoutmask();
             this.label4 = new System.Windows.Forms.Label();
             this.Complemento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,9 +56,9 @@ namespace ProjectP3
             this.label10 = new System.Windows.Forms.Label();
             this.Rua = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Operacao = new ProjectP3.componentes.CmpNumerico();
-            this.Conta = new ProjectP3.componentes.CmpNumerico();
-            this.Agencia = new ProjectP3.componentes.CmpNumerico();
+            this.Operacao = new ProjectP3.Componentes.CpmNumericwithoutmask();
+            this.Conta = new ProjectP3.Componentes.CpmNumericwithoutmask();
+            this.Agencia = new ProjectP3.Componentes.CpmNumericwithoutmask();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -85,9 +85,10 @@ namespace ProjectP3
             this.ValorHora = new ProjectP3.componentes.CmpNumerico();
             this.TaxaComissao = new ProjectP3.componentes.CmpNumerico();
             this.label18 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CleanSindicato = new System.Windows.Forms.RadioButton();
             this.panelInferior.SuspendLayout();
             this.AlternaModo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Endereco.SuspendLayout();
@@ -121,7 +122,7 @@ namespace ProjectP3
             // 
             // AlternaModo
             // 
-            this.AlternaModo.Controls.Add(this.button1);
+            this.AlternaModo.Controls.Add(this.CleanSindicato);
             this.AlternaModo.Controls.Add(this.label18);
             this.AlternaModo.Controls.Add(this.TaxaComissao);
             this.AlternaModo.Controls.Add(this.ValorHora);
@@ -152,6 +153,7 @@ namespace ProjectP3
             this.AlternaModo.Controls.Add(this.lbl_TaxaComissao);
             this.AlternaModo.Controls.Add(this.lbl_ValorHora);
             this.AlternaModo.Size = new System.Drawing.Size(541, 501);
+            this.AlternaModo.Controls.SetChildIndex(this.Load, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_ValorHora, 0);
             this.AlternaModo.Controls.SetChildIndex(this.lbl_TaxaComissao, 0);
             this.AlternaModo.Controls.SetChildIndex(this.tabControl1, 0);
@@ -182,7 +184,7 @@ namespace ProjectP3
             this.AlternaModo.Controls.SetChildIndex(this.ValorHora, 0);
             this.AlternaModo.Controls.SetChildIndex(this.TaxaComissao, 0);
             this.AlternaModo.Controls.SetChildIndex(this.label18, 0);
-            this.AlternaModo.Controls.SetChildIndex(this.button1, 0);
+            this.AlternaModo.Controls.SetChildIndex(this.CleanSindicato, 0);
             // 
             // PalavraChave
             // 
@@ -317,8 +319,8 @@ namespace ProjectP3
             // Endereco
             // 
             this.Endereco.BackColor = System.Drawing.Color.Transparent;
-            this.Endereco.Controls.Add(this.Numero);
             this.Endereco.Controls.Add(this.Cep);
+            this.Endereco.Controls.Add(this.Numero);
             this.Endereco.Controls.Add(this.label4);
             this.Endereco.Controls.Add(this.Complemento);
             this.Endereco.Controls.Add(this.label3);
@@ -338,31 +340,31 @@ namespace ProjectP3
             this.Endereco.TabIndex = 0;
             this.Endereco.Text = "Endereço";
             // 
-            // Numero
+            // Cep
             // 
-            this.Numero.CasasDecimais = 2;
-            this.Numero.Location = new System.Drawing.Point(310, 14);
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(71, 20);
-            this.Numero.TabIndex = 139;
-            this.Numero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Numero.Valor = null;
-            this.Numero.ValorMaximo = new decimal(new int[] {
+            this.Cep.CasasDecimais = 2;
+            this.Cep.Location = new System.Drawing.Point(84, 13);
+            this.Cep.Name = "Cep";
+            this.Cep.Size = new System.Drawing.Size(100, 20);
+            this.Cep.TabIndex = 142;
+            this.Cep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Cep.Valor = null;
+            this.Cep.ValorMaximo = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
             // 
-            // Cep
+            // Numero
             // 
-            this.Cep.CasasDecimais = 2;
-            this.Cep.Location = new System.Drawing.Point(84, 14);
-            this.Cep.Name = "Cep";
-            this.Cep.Size = new System.Drawing.Size(100, 20);
-            this.Cep.TabIndex = 139;
-            this.Cep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Cep.Valor = null;
-            this.Cep.ValorMaximo = new decimal(new int[] {
+            this.Numero.CasasDecimais = 2;
+            this.Numero.Location = new System.Drawing.Point(318, 13);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(75, 20);
+            this.Numero.TabIndex = 141;
+            this.Numero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Numero.Valor = null;
+            this.Numero.ValorMaximo = new decimal(new int[] {
             999999999,
             0,
             0,
@@ -508,10 +510,10 @@ namespace ProjectP3
             // Operacao
             // 
             this.Operacao.CasasDecimais = 2;
-            this.Operacao.Location = new System.Drawing.Point(398, 49);
+            this.Operacao.Location = new System.Drawing.Point(398, 50);
             this.Operacao.Name = "Operacao";
             this.Operacao.Size = new System.Drawing.Size(100, 20);
-            this.Operacao.TabIndex = 139;
+            this.Operacao.TabIndex = 144;
             this.Operacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Operacao.Valor = null;
             this.Operacao.ValorMaximo = new decimal(new int[] {
@@ -526,7 +528,7 @@ namespace ProjectP3
             this.Conta.Location = new System.Drawing.Point(224, 50);
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(100, 20);
-            this.Conta.TabIndex = 139;
+            this.Conta.TabIndex = 143;
             this.Conta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Conta.Valor = null;
             this.Conta.ValorMaximo = new decimal(new int[] {
@@ -541,7 +543,7 @@ namespace ProjectP3
             this.Agencia.Location = new System.Drawing.Point(63, 50);
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(100, 20);
-            this.Agencia.TabIndex = 139;
+            this.Agencia.TabIndex = 142;
             this.Agencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Agencia.Valor = null;
             this.Agencia.ValorMaximo = new decimal(new int[] {
@@ -836,15 +838,16 @@ namespace ProjectP3
             this.label18.TabIndex = 139;
             this.label18.Text = "(*)";
             // 
-            // button1
+            // CleanSindicato
             // 
-            this.button1.Location = new System.Drawing.Point(500, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(18, 23);
-            this.button1.TabIndex = 140;
-            this.button1.Text = "x";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CleanSindicato.AutoSize = true;
+            this.CleanSindicato.Location = new System.Drawing.Point(501, 154);
+            this.CleanSindicato.Name = "CleanSindicato";
+            this.CleanSindicato.Size = new System.Drawing.Size(14, 13);
+            this.CleanSindicato.TabIndex = 141;
+            this.CleanSindicato.TabStop = true;
+            this.CleanSindicato.UseVisualStyleBackColor = true;
+            this.CleanSindicato.CheckedChanged += new System.EventHandler(this.CleanSindicato_CheckedChanged);
             // 
             // FormFuncionario
             // 
@@ -858,6 +861,7 @@ namespace ProjectP3
             this.panelInferior.ResumeLayout(false);
             this.AlternaModo.ResumeLayout(false);
             this.AlternaModo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Load)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -922,13 +926,13 @@ namespace ProjectP3
         private componentes.CmpNumerico TaxaSindical;
         private componentes.CmpNumerico TaxaComissao;
         private componentes.CmpNumerico ValorHora;
-        private componentes.CmpNumerico Numero;
-        private componentes.CmpNumerico Cep;
-        private componentes.CmpNumerico Operacao;
-        private componentes.CmpNumerico Conta;
-        private componentes.CmpNumerico Agencia;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button1;
+        private Componentes.CpmNumericwithoutmask Numero;
+        private Componentes.CpmNumericwithoutmask Operacao;
+        private Componentes.CpmNumericwithoutmask Conta;
+        private Componentes.CpmNumericwithoutmask Agencia;
+        private Componentes.CpmNumericwithoutmask Cep;
+        private System.Windows.Forms.RadioButton CleanSindicato;
     }
 }
 
