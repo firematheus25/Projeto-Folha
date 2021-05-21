@@ -52,6 +52,17 @@ namespace ProjectP3.Forms
             
         }
 
+
+        public override void LimpaCadastro()
+        {
+            AgendaId.Clear();
+            Tipo.SelectedIndex = -1;
+            Dia.SelectedIndex = -1;
+            DiaSemana.SelectedIndex = -1;
+            agenda.Clear();
+            
+        }
+
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             Tipo.SelectedIndex = -1;
@@ -83,6 +94,7 @@ namespace ProjectP3.Forms
 
             if (result.Dia != null)
             {
+                i = 0;
                 foreach (var item in Dia.Items)
                 {
                     if (item.ToString() == result.Dia)
@@ -95,6 +107,7 @@ namespace ProjectP3.Forms
             }
             else
             {
+                i = 0;
                 foreach (var item in DiaSemana.Items)
                 {
                     if (item.ToString() == result.DiaSemana)
@@ -167,6 +180,7 @@ namespace ProjectP3.Forms
                         if (Result.IsSuccessStatusCode)
                         {
                             MessageBox.Show("Inserido com Sucesso");
+                            LimpaCadastro();
                         }
                     }
                     else
@@ -176,6 +190,7 @@ namespace ProjectP3.Forms
                         if (Result.IsSuccessStatusCode)
                         {
                             MessageBox.Show("Alterado com Sucesso");
+                            LimpaCadastro();
                         }
                     }
 
