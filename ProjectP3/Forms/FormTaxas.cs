@@ -24,6 +24,8 @@ namespace ProjectP3.Forms
             GridConsultaP.BuilderColumn("FuncionarioSindicalId", "Matricula Sindicato");
             GridConsultaP.BuilderColumn("Nome", "Funcionário", DataGridViewAutoSizeColumnMode.Fill);
             GridConsultaP.BuilderColumn("taxaservico", "Taxa");
+            GridConsultaP.BuilderColumn("competencia", "Competência", DataGridViewAutoSizeColumnMode.None, "MM/yyyy");
+
 
             this.GridConsultaP.Size = new System.Drawing.Size(397, 184);
 
